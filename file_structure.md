@@ -5,6 +5,7 @@ This document outlines the purpose of each folder and file in the **CAV-Zambia-A
 ---
 
 ## File Stucture Schema
+
 ```
 /CAV-Zambia-Airlines
 │
@@ -73,6 +74,7 @@ This document outlines the purpose of each folder and file in the **CAV-Zambia-A
 └── index.php                  # redirector
 
 ```
+
 ---
 
 ## 📁 Root Folder: `CAV-Zambia-Airlines/`
@@ -83,7 +85,7 @@ Main directory containing the full system — frontend, backend, admin panel, an
 
 ## 📂 `/docs/` — 📚 Project Documentation
 
-Stores all design drafts, schema files, project guides, and technical references. 
+Stores all design drafts, schema files, project guides, and technical references.
 
 ### Contents
 
