@@ -12,7 +12,7 @@ Main directory containing the full system — frontend, backend, admin panel, an
 
 ## 📂 `/docs/` — 📚 Project Documentation
 
-Stores all design drafts, schema files, project guides, and technical references.
+Stores all design drafts, schema files, project guides, and technical references. 
 
 ### Contents
 
