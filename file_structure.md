@@ -176,12 +176,12 @@ Allows logged-in users to:
 
 ## 📋 Summary Table
 
-| **Folder**        | **Purpose**                                           | **Managed By**            |
-|-------------------|--------------------------------------------------------|---------------------------|
-| `/docs/`          | Project documentation, database schema, guides         | PM, Designers, Tech Leads |
-| `/frontend/`      | User interface, styling, client-side logic             | Frontend Developers       |
-| `/backend/`       | Business logic, database access, file uploads          | Backend Developers        |
-| `/admin/`         | Admin-only interface for managing users/flights/bookings | Admin Panel Devs, QA      |
-| `/uploads/`       | Stores uploaded documents securely                     | DevOps, Backend           |
+| **Folder**        | **Purpose**                                              | **Managed By**            |
+|-------------------|----------------------------------------------------------|---------------------------|
+| `/docs/`          | Project documentation, database schema, guides           | Tech Leads, Designers     |
+| `/frontend/`      | User interface, styling, client-side logic               | Frontend Developers       |
+| `/backend/`       | Business logic, database access, file uploads            | Backend Developers        |
+| `/admin/`         | Admin-only interface for managing users/flights/bookings | Backend Developers        |
+| `/uploads/`       | Stores uploaded documents securely                       | DevOps, Backend           |
 
 ---
