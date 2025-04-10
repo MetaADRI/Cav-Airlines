@@ -4,6 +4,77 @@ This document outlines the purpose of each folder and file in the **CAV-Zambia-A
 
 ---
 
+## File Stucture Schema
+```
+/CAV-Zambia-Airlines
+│
+├── docs/                        # Documentation (project notes, ERD, design drafts, etc.)                  
+│   ├── database/
+│   │   ├── database_schema.sql  # SQL schema file
+│   │   └── ERD.png              # Entity Relationship Diagram
+│   │              
+│   ├── ui-ux_design/
+│   │   ├── Wireframes 
+│   │   └── Design sketches
+│   │   
+│   ├── documentation            # official documentation (docx or pdf)
+│   ├── requirements.txt         # Original requirements or feature list                
+│   └── user reference manual    # user manual (docx or pdf)
+│
+├── frontend/
+│   ├── assets/
+│   │   ├── images/              # All static images (jpg, png, gif)
+│   │   ├── videos/              # All video files
+│   │   └── uploads/             # Uploaded ID/passport files (pdf/jpg)
+│   │
+│   ├── css/
+│   │   ├── home.css
+│   │   ├── booking.css
+│   │   ├── services.css 
+│   │   ├── about_us.css
+│   │   ├── contact.css
+│   │   └── user_dashboard.css  
+│   │
+│   ├── js/
+│   │   ├── home.js
+│   │   ├── booking.js
+│   │   ├── services.js 
+│   │   ├── about_us.js
+│   │   ├── contact.js
+│   │   └── user_dashboard.js  
+│   │
+│   ├── home.html
+│   ├── booking.html
+│   ├── services.html
+│   ├── about_us.html
+│   ├── contact.html
+│   └── user_dashboard.html   
+│
+├── backend/
+│   ├── home.php
+│   ├── services.php
+│   ├── booking.php
+│   ├── contact.php
+│   ├── login.php
+│   ├── register.php
+│   ├── upload.php
+│   ├── track_booking.php
+│   ├── user_dashboard.php     
+│   └── utils/                 # Reusable backend utilities
+│       ├── db_connect.php
+│       └── auth.php
+│
+├── admin/
+│   ├── dashboard.php
+│   ├── manage_users.php
+│   ├── manage_bookings.php
+│   └── manage_flights.php
+│
+└── index.php                  # redirector
+
+```
+---
+
 ## 📁 Root Folder: `CAV-Zambia-Airlines/`
 
 Main directory containing the full system — frontend, backend, admin panel, and documentation.
