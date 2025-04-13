@@ -6,7 +6,8 @@ This document outlines the purpose of each folder and file in the **CAV-Zambia-A
 
 ## File Stucture Schema
 
-```
+``` 'Graphql':
+
 /CAV-Zambia-Airlines
 │
 ├── docs/                        # Documentation (project notes, ERD, design drafts, etc.)                  
