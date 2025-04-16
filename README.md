@@ -1,6 +1,6 @@
 # CAV-Zambia-Airlines
 COM322 (Group 2) - Web Design and Development Project
 
-$${\color{red}(This part can be erased after everyone is clear with whats going on)}$$ 
+$${\color{red}(This \space part can be erased after everyone is clear with whats going on)}$$ 
 
 In this project, we’re using a main CSS file called common.css to store all the default styles that are shared across the entire website. Inside common.css, we define reusable CSS variables under the :root selector — like --montserrat-font and --oxygen-font for fonts, and --purple-color and --white-color for colors. These variables help us keep our design consistent and make it easy to make changes in one place instead of repeating the same styles on every page. If we want to use these variables in other CSS files like home.css or about.css, we just import common.css at the top using @import url('common.css');. Then we can use the variables by writing things like font-family: var(--montserrat-font); or color: var(--purple-color);. We're also going to include the default styles for the navigation bar (<nav>) in common.css. That way, the nav bar will have the same font, colors, layout, and spacing on every page without having to copy the styles into each file. Adding the nav bar styling to common.css makes our code cleaner, easier to manage, and ensures the navigation looks the same across the whole site.
