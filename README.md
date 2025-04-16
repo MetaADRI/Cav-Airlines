@@ -1,6 +1,6 @@
 # CAV-Zambia-Airlines
 COM322 (Group 2) - Web Design and Development Project
-
+``html
 <div style="border: 1px solid #ccc; padding: 1rem; border-radius: 8px; font-family: sans-serif; line-height: 1.6;">
   <p style="color: red; font-weight: bold;">
     (This part can be erased after everyone is clear with what's going on)
@@ -64,3 +64,4 @@ COM322 (Group 2) - Web Design and Development Project
     makes our code cleaner, easier to manage, and ensures the navigation looks the same across the whole site.
   </p>
 </div>
+``
