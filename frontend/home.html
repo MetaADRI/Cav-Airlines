@@ -1,82 +1,108 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="css/common.css">
-    <script src="https://kit.fontawesome.com/d7280c9e9b.js" crossorigin="anonymous"></script>
-	<title>CAVAIR - Home</title>
-</head>
-<body>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!--Hero Section-->
-  <div class="hero-section">
-    <div class="nav-bar"> 
-      <h2>CAVAIR</h2>
-        <ul> 
-          <li><a href="booking.html">Booking</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="about_us.html">About Us</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      <div class="icon-login">
-        <a href="https://www.facebook.com/mwenda.mwakoi.1"><i class="fas fa-globe"></i></a>
-        <a href="https://www.facebook.com/mwenda.mwakoi.1"></a>
-        <a href="https://x.com/mwendamwakoi?s=21"><i class="fas fa-search"></i></a>
-        <button>Login</button>
-      </div>
-    </div>
-  </div> 
-        <!--Hero Section -->
-        <div class="fly">
-            <h1>Fly With Us</h1>
-            <p> Experience our world class Services <br>Onboard our fleet</p>
-        </div>
-        <div class="flight-card">
-            <div class="list">
-                <button class="btn1">✈Book a Flight</button>
-                <button class="btn1">Manage/Check In</button>
-                <button class="btn1">Flight Status</button>
-            </div>
-            <section class="form-box">
-                <div class="overlay">
-                  <div class="booking-box">
-                    <form class="flight-form">
-                      <div class="form-row">
-                        <select class="slt1">
-                          <option>Round Trip</option>
-                          <option>One Way</option>
-                        </select>
-                        <input class="inp3" type="text" placeholder="From (e.g. Lusaka LUN)">
-                        <input class="inp4" type="text" placeholder="To (e.g. London LHR)">
-                      </div>
-              
-                      <div class="form-row">
-                        <select class="slt2">
-                          <option>2 Passengers</option>
-                        </select>
-                        <select>
-                          <option>Economy Class</option>
-                        </select>
-                        <input class="inp1" type="date" value="2025-04-15">
-                        <input class="inp2" type="date" value="2025-05-23">
-                      </div>
-              
-                      <button class="btn2" type="submit" class="search-btn">Search Flights</button>
-                    </form>
-                  </div>
-                </div>
-              </section>
-          </div>
+    <!-- This is for the global styles shared across all pages -->
+    <link rel="stylesheet" href="css/common.css" />
+
+    <!--This is for the styles specific to the home page -->
+    <link rel="stylesheet" href="css/home.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>The title of the page should be in here</title>
+  </head>
+  <body>
+    <!--Header Section -->
+    <header>
+
+      <!-- Navigation Bar -->
+      <!-- Remember to give it a style of flex -->
+      <nav>
         
- </div>
- 
+        <!-- Logo / Website Name....put it in the h1 element -->
+        <div>
+          <h1></h1>
+        </div>
 
-<div class="section">
+        <div>
+          <!-- Navigation Links -->
+          <div>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Booking</a></li>
+              <li><a href="#">Services</a></li>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
 
-</div>
+          <!-- Icons And Login Button -->
+          <div>
+            <span>
+              <!-- Add the search and translator icons in here -->
+            </span>
+            <span>
+              <!-- Add the login button in here -->
+            </span>
+          </div>
+        </div>
+      </nav>
 
+      <!-- Hero Section -->
+      <section>
+        <!-- Add your hero image and text in here -->
+      </section>
+    </header>
 
+    <!-- Main Content -->
+    <main>
+      <!-- Add the main content of your home page here -->
+    </main>
 
-</body>
+    <!-- Footer Section -->
+    <div class="footer">
+      <footer id="footer">
+          <div class="footer_header">
+              <h2>CAVAIR</h2>
+          </div>
+          <div class="footer_header">
+              <h2>Flights and Travel</h2>
+              <ul>
+                  <li>Travel Requirements</li>
+                  <li>Fly with Cavair</li>
+                  <li>Book Flights</li>
+                  <li>International flight deals</li>
+                  <li>Flight status</li>
+              </ul>
+          </div>
+          <div class="footer_header">
+              <h2>About Us</h2>
+              <ul>
+                  <li>Corporate Prifile</li>
+                  <li>News</li>
+                  <li>Our Partners</li>
+                  <li>Ethics and compliance</li>
+                  <li>Our Responsibility</li>
+              </ul>
+          </div>
+          <div class="footer_header">
+              <h2>Connect with Us</h2>
+              <p>Follow us on social media and <br> keep up with the latest news <br> and updates</p>
+              <a href="#" class="fa fa-facebook"></a>
+              <a href="#" class="fa fa-twitter"></a>
+              <a href="#" class="fa fa-instagram"></a>
+              <a href="#" class="fa fa-youtube"></a>
+          </div>
+
+      </footer>
+      <hr>
+      <p class="copy">&copy; 2025 Cav Zambia Airlines. All right reserved.</p>
+   </div>
+
+    <!-- JavaScript -->
+    <script src="js/home.js"></script>
+  </body>
 </html>
