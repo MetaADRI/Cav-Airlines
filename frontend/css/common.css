@@ -1,0 +1,20 @@
+/* The styling in here is imported to all other css files */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Oxygen&display=swap');
+
+:root {
+    --purple-color: purple;
+    --white-color: white;
+    --montserrat-font: 'Montserrat', sans-serif;
+    --oxygen-font: 'Oxygen', sans-serif;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* This is the default font for the body text */
+    font-family: var(--montserrat-font);
+    /* Add the font below to your headings and elementary text */
+    /* font-family: var(--oxygen-font); */
+}
