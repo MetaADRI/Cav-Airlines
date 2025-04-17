@@ -11,56 +11,89 @@
     <link rel="stylesheet" href="css/home.css" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <title>The title of the page should be in here</title>
+    <script src="https://kit.fontawesome.com/d7280c9e9b.js" crossorigin="anonymous"></script>
+    <title>CAVAIR - Home</title>
   </head>
   <body>
-    <!--Header Section -->
-    <header>
-
-      <!-- Navigation Bar -->
-      <!-- Remember to give it a style of flex -->
-      <nav>
-        
-        <!-- Logo / Website Name....put it in the h1 element -->
-        <div>
-          <h1></h1>
-        </div>
-
-        <div>
-          <!-- Navigation Links -->
-          <div>
-            <ul>
-              <li><a href="#">Home</a></li>
-              <li><a href="#">Booking</a></li>
-              <li><a href="#">Services</a></li>
-              <li><a href="#">About Us</a></li>
-              <li><a href="#">Contact</a></li>
-            </ul>
+     <!--This is the Hero Section-->
+ <div class="hero-section">
+  <div class="nav-bar"> 
+     <h2>CAVAIR</h2>
+     <ul class="nav-tags"> 
+         <li><a href="#">Booking</a></li>
+         <li><a href="#">Services</a></li>
+         <li><a href="#">About Us</a></li>
+         <li><a href="#">Contact</a></li>
+     </ul>
+      <div class="icon-login">
+         <a href="https://www.facebook.com/mwenda.mwakoi.1"><i class="fas fa-globe"></i></a>
+         <a href="https://www.facebook.com/mwenda.mwakoi.1"></a>
+         <a href="https://x.com/mwendamwakoi?s=21"><i class="fas fa-search"></i></a>
+         <button>Login</button>
+ 
+     </div>
+   
+ </div> 
+ 
+ 
+         <!--This is the text for fly with us -->
+         <div class="fly">
+             <h1>Fly With Us</h1>
+             <p> Experience our world class Services <br>Onboard our fleet</p>
+         </div>
+ 
+         <!--The Flight Card -->
+         <div class="flight-card">
+             <div class="list">
+                 <button class="btn1">✈Book a Flight</button>
+                 <button class="btn1">Manage/Check In</button>
+                 <button class="btn1">Flight Status</button>
+             </div>
+             <section class="form-box">
+                 <div class="overlay">
+                   <div class="booking-box">
+                     <form class="flight-form">
+                       <div class="form-row">
+                         <select class="slt1">
+                           <option>Round Trip</option>
+                           <option>One Way</option>
+                         </select>
+                         <input class="inp3" type="text" placeholder="From (e.g. Lusaka LUN)">
+                         <input class="inp4" type="text" placeholder="To (e.g. London LHR)">
+                       </div>
+               
+                       <div class="form-row">
+                         <select class="slt2">
+                           <option>2 Passengers</option>
+                         </select>
+                         <select>
+                           <option>Economy Class</option>
+                         </select>
+                         <input class="inp1" type="date" value="2025-04-15">
+                         <input class="inp2" type="date" value="2025-05-23">
+                       </div>
+               
+                       <button class="btn2" type="submit" class="search-btn">Search Flights</button>
+                     </form>
+                   </div>
+                 </div>
+               </section>
+            
           </div>
+         
+  </div>
+  
+  <!--The Section for the other part-->
+ <div class="section">
+ 
 
-          <!-- Icons And Login Button -->
-          <div>
-            <span>
-              <!-- Add the search and translator icons in here -->
-            </span>
-            <span>
-              <!-- Add the login button in here -->
-            </span>
-          </div>
-        </div>
-      </nav>
+  
+ </div>
 
-      <!-- Hero Section -->
-      <section>
-        <!-- Add your hero image and text in here -->
-      </section>
-    </header>
 
-    <!-- Main Content -->
-    <main>
-      <!-- Add the main content of your home page here -->
-    </main>
+
+
+
 
     <!-- Footer Section -->
     <div class="footer">
