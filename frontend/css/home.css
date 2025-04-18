@@ -143,3 +143,45 @@ select,option{
     
 }
 
+  .form-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    background-color: #00b359;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 10px 6px 0 0;
+  }
+ 
+  .form-control::placeholder {
+    color: gray;
+  } 
+  .btn-brown {
+    background-color: #996633;
+  }
+  .form-control {
+    flex: 1;
+    padding: 12px;
+    background: #f2f2f2;
+    border: none;
+    border-radius: 10px;
+    color: #58006c;
+    font-size: 15px;
+  }
+ 
+  .form-row2 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 15px;
+  }
+  .manage-checkin{
+
+    display: none;
+
+  }
+  .form-section-content3{
+    display: none;
+
+  }
