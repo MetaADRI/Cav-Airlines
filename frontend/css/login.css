@@ -1,0 +1,149 @@
+/* Reset default browser styles and set global font */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Oxygen', Arial, sans-serif;
+}
+
+/* Set up the two-column layout with full viewport height */
+body {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Left container with login form */
+.login-container {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    background-color: #f9f9f9;
+}
+
+/* Right container with background image */
+.image-container {
+    flex: 1;
+    background-image: url('../assets/images/login_page_image.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+/* Page heading style */
+h1 {
+    font-size: 32px;
+    margin-bottom: 40px;
+    color: #222;
+    font-weight: normal;
+}
+
+/* Form container with light gray background */
+form {
+    background-color: #f2f2f2;
+    padding: 30px;
+    border-radius: 5px;
+}
+
+/* Container for each form field with relative positioning for floating labels */
+.form-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+/* Input field styling with bottom border only */
+input {
+    width: 100%;
+    padding: 15px 0 10px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    background-color: transparent;
+    font-size: 16px;
+    outline: none;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 1; /* Higher z-index than label for proper interaction */
+}
+
+/* Floating label styling */
+.floating-label {
+    position: absolute;
+    left: 0;
+    top: 15px;
+    color: #999;
+    font-size: 16px;
+    transition: 0.2s ease all; /* Smooth transition for floating effect */
+    pointer-events: none; /* Prevents label from intercepting clicks */
+    z-index: 0;
+}
+
+/* Floating label animation - moves up and changes color when input is focused or has content */
+input:focus ~ .floating-label,
+input:not(:placeholder-shown) ~ .floating-label {
+    top: 0;
+    font-size: 12px;
+    color: #6a0dad;
+}
+
+/* Change border color and thickness when input is focused */
+input:focus {
+    border-bottom: 2px solid #6a0dad;
+}
+
+/* Hide the placeholder text (we're using floating labels instead) */
+input::placeholder {
+    color: transparent;
+}
+
+/* Login button styling with purple background */
+.login-btn {
+    background-color: #b400ff;
+    color: white;
+    border: none;
+    padding: 15px;
+    width: 100%;
+    border-radius: 30px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    transition: background-color 0.3s ease; /* Smooth color transition for hover effect */
+}
+
+/* Darken button color on hover */
+.login-btn:hover {
+    background-color: #9900d5;
+}
+
+/* Registration link text styling */
+.register-text {
+    text-align: center;
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+/* Register link styling with purple color */
+.register-link {
+    color: #6a0dad;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+/* Darken register link on hover */
+.register-link:hover {
+    color: #4b0980;
+}
+
+/* CAVAIR banner at the bottom of the form section */
+.cavair-banner {
+    background-color: #6a0dad;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-top: auto; /* Pushes the banner to the bottom of the container */
+}
