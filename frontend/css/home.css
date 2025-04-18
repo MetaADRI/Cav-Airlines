@@ -28,7 +28,7 @@
     left: 175px;
     bottom: -120px;
     width: 75%;
-    height: 230px;
+    height: 270px;
     background-color:white;
     border-radius: 20px;
     z-index: 2;
@@ -37,16 +37,18 @@
     width: 60%;
     height: 70px;
     background-color:white;
-    box-shadow: 0 4px 10px gray;
+    box-shadow: 0 4px 6px rgba(0, 0,0, 0.3);
     border-radius: 35px;
     position: absolute;
     top: -35px;
     left: 60px;
+    margin-bottom:7px;
+    
 }
 .btn1{
     color: purple;
     font-size: 12px;
-    font-weight: 550;
+    font-weight: bolder;
     margin-left: 22px;
     margin-top: 7.5px;
     padding: 20px 40px;
@@ -70,6 +72,7 @@ select{
     padding: 10px 40px;
    background-color: lightgray;
     border-radius: 7px;
+    margin-right: 7px;
 }
 .slt1{
     padding: 10px 25px;
@@ -79,6 +82,10 @@ select{
 }
 input{
     background-color: lightgray;
+    margin-left: 10px;
+    border: none;
+    color: purple;
+    font-weight: bold;
 }
 .inp1{
     padding: 10px 35px;
@@ -92,6 +99,18 @@ input{
 .inp3{
     padding: 10px 70px;
     border-radius: 7px;
+    color: purple;
+    
+
+}
+input::placeholder{
+    color: purple;
+    font-weight: bold;
+}
+
+select,option{
+    color: purple;
+    font-weight: bold;
 }
 .inp4{
     padding: 10px 70px;
@@ -115,3 +134,12 @@ input{
     height: 1500px;
      background-color: purple;
 }
+.form-row{
+    margin-bottom: 20px;
+
+}
+.flight-form{
+    margin-right: 40px;
+    
+}
+

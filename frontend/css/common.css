@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Oxygen&display=swap');
 
 :root {
-    --purple-color: purple;
+    --purple-color: rgb(173, 144, 173);
     --white-color: white;
     --montserrat-font: 'Montserrat', sans-serif;
     --oxygen-font: 'Oxygen', sans-serif;
