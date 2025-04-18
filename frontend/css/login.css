@@ -112,7 +112,14 @@ input::placeholder {
 
 /* Darken button color on hover */
 .login-btn:hover {
-    background-color: #9900d5;
+    background-color: #8000b3;
+}
+
+/* Ensure error message is visually separated from login button and register link */
+#login-message {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 /* Registration link text styling */
@@ -121,6 +128,28 @@ input::placeholder {
     font-size: 16px;
     color: #555;
     margin-bottom: 15px;
+}
+
+.login-message {
+    min-height: 24px;
+    margin-top: 20px;
+    margin-bottom: 0;
+    font-size: 16px;
+    text-align: center;
+    transition: color 0.2s;
+    width: 100%;
+    display: block;
+}
+
+.login-message.error {
+    color: #d8000c;
+    background: none;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 18px;
+    margin-bottom: 16px;
+    width: 100%;
+    display: block;
 }
 
 /* Register link styling with purple color */
@@ -138,7 +167,7 @@ input::placeholder {
 
 /* CAVAIR banner at the bottom of the form section */
 .cavair-banner {
-    background-color: #6a0dad;
+    background: linear-gradient(90deg, #4b0980 0%, #9b2eea 100%);
     color: white;
     text-align: center;
     padding: 20px;

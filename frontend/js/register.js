@@ -7,9 +7,61 @@
  * @author [David L.] Group 2 - COM322 Web Development Project
  * @version 1.0
  */
+/**
+ * Register Page JavaScript
+ * 
+ * This script handles the floating label functionality for the registration form
+ * and implements validation for the phone number field to accept only digits.
+ * 
+ * @author [David.L] Group 2 - COM322 Web Development Project
+ * @version 1.0
+ */
 
 // Wait for the DOM to be fully loaded before running the script
 document.addEventListener('DOMContentLoaded', function() {
+    // AJAX registration logic
+    const form = document.getElementById('register-form');
+    const messageDiv = document.getElementById('register-message');
+    // Login link redirect logic
+    const loginLink = document.querySelector('.login-link');
+    if (loginLink) {
+        loginLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            // Redirect to login page in the same directory
+window.location.href = '/CAV-Zambia-Airlines/frontend/login.html';
+        });
+    }
+
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            messageDiv.textContent = '';
+            messageDiv.className = 'register-message';
+            const formData = new FormData(form);
+            fetch('../backend/register.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    messageDiv.textContent = data.message || 'Registration successful';
+                    messageDiv.classList.add('success');
+                    setTimeout(() => {
+                        // Redirect to the dashboard in the frontend directory
+window.location.href = '/CAV-Zambia-Airlines/frontend/user_dashboard.html';
+                    }, 2000);
+                } else {
+                    messageDiv.textContent = data.message || 'Registration failed';
+                    messageDiv.classList.add('error');
+                }
+            })
+            .catch(() => {
+                messageDiv.textContent = 'An error occurred. Please try again.';
+                messageDiv.classList.add('error');
+            });
+        });
+    }
     /**
      * FLOATING LABEL FUNCTIONALITY
      * This section handles the behavior of the floating labels that move up when

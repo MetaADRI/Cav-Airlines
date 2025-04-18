@@ -7,13 +7,17 @@
  * 
  * Database: group2_cavair_db
  * 
- * @author [Michael, David L.] Group 2 - COM322 Web Development Project
+ * @author [Micheal, David L.] Group 2 - COM322 Web Development Project
  * @version 1.0
  */
 
 // Include database connection and authentication utilities
 require_once 'utils/db_connect.php';
 require_once 'utils/auth.php';
+
+// Always return JSON for POST requests
+header('Content-Type: application/json');
+$response = ["success" => false, "message" => "Unknown error."];
 
 // Initialize variables
 $full_name = '';
@@ -22,66 +26,57 @@ $phone = '';
 $error_message = '';
 $success = false;
 
-// Check if user is already logged in
-if (isLoggedIn()) {
-    // User is already logged in, redirect to dashboard
-    header('Location: user_dashboard.php');
+// If this is a GET request and the user is logged in, redirect to homepage
+if ($_SERVER['REQUEST_METHOD'] !== 'POST' && isLoggedIn()) {
+    header('Location: ../frontend/index.php');
     exit();
 }
 
-// Check if the form was submitted
+// Handle registration POST request
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Get form data and sanitize inputs
-    $full_name = sanitizeInput($_POST['full_name']);
-    $email = sanitizeInput($_POST['email']);
-    $phone = sanitizeInput($_POST['phone']); // Optional field
-    $password = $_POST['password']; // Will be hashed, no need to sanitize
-    
+    $full_name = isset($_POST['full_name']) ? sanitizeInput($_POST['full_name']) : '';
+    $email = isset($_POST['email']) ? sanitizeInput($_POST['email']) : '';
+    $phone = isset($_POST['phone']) ? sanitizeInput($_POST['phone']) : '';
+    $password = isset($_POST['password']) ? $_POST['password'] : '';
+
     // Validate inputs
     if (empty($full_name) || strlen($full_name) < 3) {
-        $error_message = 'Please enter a valid full name (at least 3 characters).';
+        $response["success"] = false;
+        $response["message"] = 'Please enter a valid full name (at least 3 characters).';
     } elseif (!isValidEmail($email)) {
-        $error_message = 'Please enter a valid email address.';
+        $response["success"] = false;
+        $response["message"] = 'Please enter a valid email address.';
     } elseif (empty($password) || !isStrongPassword($password)) {
-        $error_message = 'Password must be at least 8 characters long and include uppercase, lowercase, numbers, and special characters.';
+        $response["success"] = false;
+        $response["message"] = 'Password must be at least 8 characters long and include uppercase, lowercase, numbers, and special characters.';
     } else {
         // Register new user
         $user_id = registerUser($full_name, $email, $password, $phone, $conn);
-        
         if ($user_id) {
             // Registration successful
-            // Create user data array for session creation
             $user = [
                 'user_id' => $user_id,
                 'full_name' => $full_name,
                 'email' => $email
             ];
-            
-            // Create session for the new user
             createUserSession($user);
-            
-            // Set success flag
-            $success = true;
-            
-            // Redirect to dashboard
-            header('Location: user_dashboard.php');
-            exit();
+            $response["success"] = true;
+            $response["message"] = 'Registration successful';
         } else {
-            // Registration failed - likely email already exists
-            $error_message = 'This email address is already registered. Please use a different email or login.';
+            $response["success"] = false;
+            $response["message"] = 'This email address is already registered. Please use a different email or login.';
         }
     }
+    echo json_encode($response);
+    exit();
 }
 
-// If not redirected (registration failed), show the registration form
-if (!$success) {
-    // Include registration form HTML
+
+// For GET requests, show the HTML registration form (not AJAX)
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     include '../frontend/register.html';
-    
-    // Display error message if any
-    if (!empty($error_message)) {
-        echo "<script>alert('$error_message');</script>";
-    }
+    exit();
 }
 
 // Close database connection

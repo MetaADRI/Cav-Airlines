@@ -16,7 +16,7 @@
         <h1>Create Account</h1>
         
         <!-- Registration form - submits to backend/register.php -->
-        <form action="../backend/register.php" method="post">
+        <form id="register-form">
             <!-- Full Name input field with floating label -->
             <div class="form-group">
                 <input type="text" name="full_name" id="full_name" required>
@@ -43,6 +43,7 @@
             
             <!-- Register button -->
             <button type="submit" class="register-btn">Register</button>
+<div id="register-message" class="register-message"></div>
             
             <!-- Login link for users who already have accounts -->
             <p class="login-text">Do you have an account? <a href="../backend/login.php" class="login-link">Login</a></p>

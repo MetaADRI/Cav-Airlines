@@ -7,7 +7,7 @@
  * 
  * Database: group2_cavair_db
  * 
- * @author [Michael, David L.] Group 2 - COM322 Web Development Project
+ * @author [Micheal, David L.] Group 2 - COM322 Web Development Project
  * @version 1.0
  */
 
@@ -20,52 +20,44 @@ $email = '';
 $error_message = '';
 $success = false;
 
-// Check if user is already logged in
-if (isLoggedIn()) {
-    // User is already logged in, redirect to dashboard
-    header('Location: user_dashboard.php');
+// If user is already logged in and this is not a POST (AJAX), redirect to dashboard
+if ($_SERVER['REQUEST_METHOD'] !== 'POST' && isLoggedIn()) {
+    header('Location: frontend/user_dashboard.html');
     exit();
 }
 
-// Check if the form was submitted
+// Handle login POST (AJAX)
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    header('Content-Type: application/json');
     // Get form data and sanitize inputs
     $email = sanitizeInput($_POST['email']);
     $password = $_POST['password']; // Password will be verified securely, no need to sanitize
     
     // Validate email format
     if (!isValidEmail($email)) {
-        $error_message = 'Please enter a valid email address.';
-    } else {
-        // Authenticate user
-        $user = authenticateUser($email, $password, $conn);
-        
-        if ($user) {
-            // Authentication successful
-            // Create user session
-            createUserSession($user);
-            
-            // Set success flag
-            $success = true;
-            
-            // Redirect to dashboard
-            header('Location: user_dashboard.php');
-            exit();
-        } else {
-            // Authentication failed
-            $error_message = 'Invalid email or password. Please try again.';
-        }
+        echo json_encode([
+            'success' => false,
+            'message' => 'Please enter a valid email address.'
+        ]);
+        exit();
     }
-}
-
-// If not redirected (login failed), show the login form
-if (!$success) {
-    // Include login form HTML
-    include '../frontend/login.html';
-    
-    // Display error message if any
-    if (!empty($error_message)) {
-        echo "<script>alert('$error_message');</script>";
+    // Authenticate user
+    $user = authenticateUser($email, $password, $conn);
+    if ($user) {
+        // Authentication successful
+        createUserSession($user);
+        echo json_encode([
+            'success' => true,
+            'message' => 'Login successful.'
+        ]);
+        exit();
+    } else {
+        // Authentication failed
+        echo json_encode([
+            'success' => false,
+            'message' => 'Invalid email or password.'
+        ]);
+        exit();
     }
 }
 

@@ -7,36 +7,68 @@
  *  @version 1.0
  */
 
+// Debug: Confirm that the JS file is loaded
+console.log('login.js loaded!');
+
 // Wait for the DOM to be fully loaded before running the script
 document.addEventListener('DOMContentLoaded', function() {
-    // Select all input fields in the form
+    // Get references to the login form and message div
+    const form = document.getElementById('login-form');
+    const messageDiv = document.getElementById('login-message');
+
+    // Only proceed if both the form and message div exist
+    if (form && messageDiv) {
+        // Intercept the form submission to handle via AJAX
+        form.addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent default form submission (page reload)
+            messageDiv.textContent = '';
+            messageDiv.className = 'login-message'; // Reset message styling
+
+            // Collect form data
+            const formData = new FormData(form);
+
+            // Send login credentials to the backend using fetch (AJAX)
+            fetch('../backend/login.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json()) // Parse JSON response
+            .then(data => {
+                if (data.success) {
+                    // On successful login, redirect to user dashboard (HTML)
+                    // Redirect to the dashboard in the frontend directory
+window.location.href = '/CAV-Zambia-Airlines/frontend/user_dashboard.html';
+                } else {
+                    // On failed login, show error message in red below the button
+                    messageDiv.textContent = data.message || 'Invalid email or password';
+                    messageDiv.classList.add('error');
+                }
+            })
+            .catch(() => {
+                // Handle network or server errors
+                messageDiv.textContent = 'An error occurred. Please try again.';
+                messageDiv.classList.add('error');
+            });
+        });
+    }
+
+    // Floating label functionality for all input fields
     const inputs = document.querySelectorAll('input');
-    
-    // Process each input field
     inputs.forEach(input => {
-        // Add a space as placeholder to make CSS selectors work
-        // This is needed for the :not(:placeholder-shown) selector
+        // Add a space as placeholder to enable :not(:placeholder-shown) CSS selector
         input.setAttribute('placeholder', ' ');
-        
-        // When an input field receives focus
+        // When input is focused, add 'focused' class to parent for label animation
         input.addEventListener('focus', function() {
-            // Add the 'focused' class to the parent element (form-group)
             this.parentElement.classList.add('focused');
         });
-        
-        // When an input field loses focus
         input.addEventListener('blur', function() {
-            // If the field is empty, remove the 'focused' class
-            // This allows the label to return to its original position
             if (this.value === '') {
                 this.parentElement.classList.remove('focused');
             }
         });
-        
-        // Handle case where field already has a value (e.g., on page refresh or form error)
         if (input.value !== '') {
-            // Keep the label in the 'focused' position
             input.parentElement.classList.add('focused');
         }
     });
 });
+
