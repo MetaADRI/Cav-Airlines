@@ -13,6 +13,7 @@ html, body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    
     /* This is the default font for the body text */
     font-family: var(--montserrat-font);
     /* Add the font below to your headings and elementary text */
@@ -85,14 +86,17 @@ i{
 /*----------------- footer-------------------- */
 
 .footer{
-    background-color: rgb(94, 4, 94);
+    background-color:rgb(82, 1, 82);
     color: white;
+    margin-bottom: -25px;
+    
 }
 #footer{
     color: white;
     display: flex;
-    margin: 20px 30px;
-    justify-content: space-between;
+    margin-bottom: 0;
+    justify-content: space-evenly;
+    
 }
 .footer_header ul li{
     list-style: none;
@@ -131,10 +135,11 @@ hr{
 }
 .copy{
     text-align: center;
-    margin-top: 15px;
-    padding-bottom: 20px;
+    margin-top: 10px;
+    padding-bottom: 27px;
     font-weight: 500;
     font-family: var(--oxygen-font);
+    
 
 }
 /* ----------------end of footer------------- */
