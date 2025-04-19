@@ -1,206 +1,66 @@
 <?php
-require_once __DIR__ . '/utils/config.php';
-session_start();
+/**
+ * Login Page Handler
+ * 
+ * This script handles user login authentication by validating credentials
+ * against the database and creating a session for authenticated users.
+ * 
+ * Database: group2_cavair_db
+ * 
+ * @author [Micheal, David L.] Group 2 - COM322 Web Development Project
+ * @version 1.0
+ */
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+// Include database connection and authentication utilities
+require_once 'utils/db_connect.php';
+require_once 'utils/auth.php';
 
-    try {
-        $stmt = $conn->prepare("SELECT * FROM users WHERE email = ?");
-        $stmt->execute([$email]);
-        $user = $stmt->fetch();
+// Initialize variables
+$email = '';
+$error_message = '';
+$success = false;
 
-        if ($user && password_verify($password, $user['password'])) {
-            $_SESSION['user_id'] = $user['user_id'];
-            $_SESSION['full_name'] = $user['full_name'];
-            $_SESSION['email'] = $user['email'];
+// If user is already logged in and this is not a POST (AJAX), redirect to dashboard
+if ($_SERVER['REQUEST_METHOD'] !== 'POST' && isLoggedIn()) {
+    header('Location: frontend/user_dashboard.html');
+    exit();
+}
 
-            header("Location: dashboard.php");
-            exit();
-        } else {
-            $error = "Invalid email or password";
-        }
-    } catch (PDOException $e) {
-        $error = "Error: " . $e->getMessage();
+// Handle login POST (AJAX)
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    header('Content-Type: application/json');
+    // Get form data and sanitize inputs
+    $email = sanitizeInput($_POST['email']);
+    $password = $_POST['password']; // Password will be verified securely, no need to sanitize
+    
+    // Validate email format
+    if (!isValidEmail($email)) {
+        echo json_encode([
+            'success' => false,
+            'message' => 'Please enter a valid email address.'
+        ]);
+        exit();
+    }
+    // Authenticate user
+    $user = authenticateUser($email, $password, $conn);
+    if ($user) {
+        // Authentication successful
+        createUserSession($user);
+        echo json_encode([
+            'success' => true,
+            'message' => 'Login successful.'
+        ]);
+        exit();
+    } else {
+        // Authentication failed
+        echo json_encode([
+            'success' => false,
+            'message' => 'Invalid email or password.'
+        ]);
+        exit();
     }
 }
 
-if (isset($_GET['registration']) && $_GET['registration'] == 'success') {
-    $success = "Registration successful! Please login.";
-}
+// Close database connection
+$conn->close();
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Login - CAVAIR</title>
-    <style>
-        /* login-style.css */
-
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            height: 100vh;
-            display: flex;
-        }
-
-        .left-panel {
-            flex: 1;
-            background: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            padding: 40px;
-        }
-
-        .right-panel {
-            flex: 1;
-            background: url('../frontend/assets/images/Doha.png') no-repeat center center;
-            background-size: cover;
-        }
-
-        form {
-            width: 100%;
-            max-width: 400px;
-            background: #f2f2f2;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
-        }
-
-        h2 {
-            font-size: 28px;
-            margin-bottom: 25px;
-            text-align: left;
-            color: #111;
-        }
-
-        input[type="email"],
-        input[type="password"] {
-            width: 100%;
-            padding: 14px;
-            margin-bottom: 20px;
-            border: none;
-            border-bottom: 2px solid #ccc;
-            background: transparent;
-            font-size: 16px;
-            outline: none;
-        }
-
-        input::placeholder {
-            color: #777;
-        }
-
-        button {
-            width: 100%;
-            padding: 14px;
-            border: none;
-            border-radius: 25px;
-            background: linear-gradient(to right, #8e2de2, #4a00e0);
-            color: white;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-
-        button:hover {
-            background: linear-gradient(to right, #7b1fa2, #3700b3);
-        }
-
-        a {
-            color: #8e2de2;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        .login-link {
-            text-align: center;
-            margin-top: 15px;
-        }
-
-        .brand {
-            margin-top: 20px;
-            width: 100%;
-            text-align: center;
-            background: linear-gradient(to right, #2c003e, #6a0dad);
-            color: white;
-            padding: 15px;
-            border-radius: 12px;
-            font-weight: bold;
-            font-size: 20px;
-        }
-
-        .error,
-        .success {
-            max-width: 400px;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-
-        .error {
-            color: red;
-        }
-
-        .success {
-            color: green;
-        }
-
-        @media (max-width: 768px) {
-  body {
-    flex-direction: column;
-  }
-
-  .right-panel {
-    display: none;
-  }
-
-  .left-panel {
-    flex: 1;
-    width: 100%;
-    padding: 20px;
-  }
-
-  form {
-    max-width: 100%;
-  }
-}
-
-    </style>
-</head>
-<body>
-    <div class="left-panel">
-        <h2>Log into your account</h2>
-
-        <?php if (isset($error)): ?>
-            <p class="error"><?php echo $error; ?></p>
-        <?php endif; ?>
-
-        <?php if (isset($success)): ?>
-            <p class="success"><?php echo $success; ?></p>
-        <?php endif; ?>
-
-        <form action="login.php" method="post">
-            <input type="email" name="email" placeholder="Email Address" required>
-            <input type="password" name="password" placeholder="Password*" required>
-            <button type="submit">Log in</button>
-            <div class="login-link">
-                Don’t have an account yet? <a href="register.php">Register</a>
-            </div>
-            <div class="brand">CAVAIR</div>
-        </form>
-    </div>
-    <div class="right-panel"></div>
-</body>
-</html>

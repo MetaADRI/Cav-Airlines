@@ -1,154 +1,84 @@
 <?php
-require_once(__DIR__ . '/utils/config.php');
-session_start();
+/**
+ * Registration Page Handler
+ * 
+ * This script processes user registration by validating input data,
+ * checking for existing users, and creating new user accounts in the database.
+ * 
+ * Database: group2_cavair_db
+ * 
+ * @author [Micheal, David L.] Group 2 - COM322 Web Development Project
+ * @version 1.0
+ */
 
-$error = '';
-$success = '';
+// Include database connection and authentication utilities
+require_once 'utils/db_connect.php';
+require_once 'utils/auth.php';
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $full_name = trim($_POST["full_name"]);
-    $email = trim($_POST["email"]);
-    $phone = trim($_POST["phone"]);
-    $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
+// Always return JSON for POST requests
+header('Content-Type: application/json');
+$response = ["success" => false, "message" => "Unknown error."];
 
-    // Check if email already exists
-    $stmt = $conn->prepare("SELECT * FROM users WHERE email = ?");
-    $stmt->execute([$email]);
+// Initialize variables
+$full_name = '';
+$email = '';
+$phone = '';
+$error_message = '';
+$success = false;
 
-    if ($stmt->rowCount() > 0) {
-        $error = "Email already exists!";
+// If this is a GET request and the user is logged in, redirect to homepage
+if ($_SERVER['REQUEST_METHOD'] !== 'POST' && isLoggedIn()) {
+    header('Location: ../frontend/index.php');
+    exit();
+}
+
+// Handle registration POST request
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Get form data and sanitize inputs
+    $full_name = isset($_POST['full_name']) ? sanitizeInput($_POST['full_name']) : '';
+    $email = isset($_POST['email']) ? sanitizeInput($_POST['email']) : '';
+    $phone = isset($_POST['phone']) ? sanitizeInput($_POST['phone']) : '';
+    $password = isset($_POST['password']) ? $_POST['password'] : '';
+
+    // Validate inputs
+    if (empty($full_name) || strlen($full_name) < 3) {
+        $response["success"] = false;
+        $response["message"] = 'Please enter a valid full name (at least 3 characters).';
+    } elseif (!isValidEmail($email)) {
+        $response["success"] = false;
+        $response["message"] = 'Please enter a valid email address.';
+    } elseif (empty($password) || !isStrongPassword($password)) {
+        $response["success"] = false;
+        $response["message"] = 'Password must be at least 8 characters long and include uppercase, lowercase, numbers, and special characters.';
     } else {
-        $stmt = $conn->prepare("INSERT INTO users (full_name, email, phone, password) VALUES (?, ?, ?, ?)");
-        if ($stmt->execute([$full_name, $email, $phone, $password])) {
-            $success = "Registration successful! <a href='login.php'>Login here</a>";
+        // Register new user
+        $user_id = registerUser($full_name, $email, $password, $phone, $conn);
+        if ($user_id) {
+            // Registration successful
+            $user = [
+                'user_id' => $user_id,
+                'full_name' => $full_name,
+                'email' => $email
+            ];
+            createUserSession($user);
+            $response["success"] = true;
+            $response["message"] = 'Registration successful';
         } else {
-            $error = "Error registering user.";
+            $response["success"] = false;
+            $response["message"] = 'This email address is already registered. Please use a different email or login.';
         }
     }
+    echo json_encode($response);
+    exit();
 }
+
+
+// For GET requests, show the HTML registration form (not AJAX)
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    include '../frontend/register.html';
+    exit();
+}
+
+// Close database connection
+$conn->close();
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Create Account - CAVAIR</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      display: flex;
-      height: 100vh;
-    }
-
-    .form-container {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #f5f5f5;
-    }
-
-    form {
-      background: white;
-      padding: 40px;
-      border-radius: 20px;
-      width: 350px;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    }
-
-    h2 {
-      margin-bottom: 20px;
-    }
-
-    input[type="text"], input[type="email"], input[type="password"] {
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-    }
-
-    .message {
-      margin: 10px 0;
-      padding: 10px;
-      border-radius: 6px;
-      font-weight: bold;
-    }
-
-    .success {
-      color: green;
-    }
-
-    .error {
-      color: red;
-    }
-
-    button {
-      width: 100%;
-      padding: 12px;
-      background: goldenrod;
-      color: white;
-      font-weight: bold;
-      border: none;
-      border-radius: 25px;
-      cursor: pointer;
-      margin-top: 10px;
-    }
-
-    .login-link {
-      margin-top: 15px;
-      text-align: center;
-    }
-
-    .login-link a {
-      color: #6a0dad;
-      text-decoration: none;
-    }
-
-    .brand {
-      margin-top: 20px;
-      padding: 15px;
-      text-align: center;
-      background: linear-gradient(to right, indigo, purple);
-      color: white;
-      border-radius: 12px;
-      font-weight: bold;
-    }
-
-    .image-side {
-      flex: 1;
-      background: url('../frontend/assets/images/Doha.png') no-repeat center center;
-      background-size: cover;
-    }
-
-    
-  </style>
-</head>
-<body>
-  <div class="form-container">
-    <form action="register.php" method="POST">
-      <h2>Create Account</h2>
-
-      <?php if ($error): ?>
-        <div class="message error"><?= $error ?></div>
-      <?php endif; ?>
-
-      <?php if ($success): ?>
-        <div class="message success"><?= $success ?></div>
-      <?php endif; ?>
-
-      <input type="text" name="full_name" placeholder="Full Name" required>
-      <input type="email" name="email" placeholder="Email Address" required>
-      <input type="text" name="phone" placeholder="Phone Number (optional)">
-      <input type="password" name="password" placeholder="Password" required>
-      <button type="submit">Register</button>
-      <div class="login-link">
-        Do you have an account? <a href="login.php">Login</a>
-      </div>
-      <div class="brand">CAVAIR</div>
-    </form>
-  </div>
-  <div class="image-side"></div>
-</body>
-</html>

@@ -3,171 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Login - CAVAIR</title>
-    <style>
-        /* login-style.css */
-
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            height: 100vh;
-            display: flex;
-        }
-
-        .left-panel {
-            flex: 1;
-            background: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            padding: 40px;
-        }
-
-        .right-panel {
-            flex: 1;
-            background: url('../frontend/assets/images/Doha.png') no-repeat center center;
-            background-size: cover;
-        }
-
-        form {
-            width: 100%;
-            max-width: 400px;
-            background: #f2f2f2;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
-        }
-
-        h2 {
-            font-size: 28px;
-            margin-bottom: 25px;
-            text-align: left;
-            color: #111;
-        }
-
-        input[type="email"],
-        input[type="password"] {
-            width: 100%;
-            padding: 14px;
-            margin-bottom: 20px;
-            border: none;
-            border-bottom: 2px solid #ccc;
-            background: transparent;
-            font-size: 16px;
-            outline: none;
-        }
-
-        input::placeholder {
-            color: #777;
-        }
-
-        button {
-            width: 100%;
-            padding: 14px;
-            border: none;
-            border-radius: 25px;
-            background: linear-gradient(to right, #8e2de2, #4a00e0);
-            color: white;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-
-        button:hover {
-            background: linear-gradient(to right, #7b1fa2, #3700b3);
-        }
-
-        a {
-            color: #8e2de2;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        .login-link {
-            text-align: center;
-            margin-top: 15px;
-        }
-
-        .brand {
-            margin-top: 20px;
-            width: 100%;
-            text-align: center;
-            background: linear-gradient(to right, #2c003e, #6a0dad);
-            color: white;
-            padding: 15px;
-            border-radius: 12px;
-            font-weight: bold;
-            font-size: 20px;
-        }
-
-        .error,
-        .success {
-            max-width: 400px;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-
-        .error {
-            color: red;
-        }
-
-        .success {
-            color: green;
-        }
-
-        @media (max-width: 768px) {
-  body {
-    flex-direction: column;
-  }
-
-  .right-panel {
-    display: none;
-  }
-
-  .left-panel {
-    flex: 1;
-    width: 100%;
-    padding: 20px;
-  }
-
-  form {
-    max-width: 100%;
-  }
-}
-
-    </style>
+    <!-- Page title -->
+    <title>CAV-Zambia Airlines - Login</title>
+    <!-- Google Fonts - Oxygen font family -->
+    <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
-    <div class="left-panel">
-        <h2>Log into your account</h2>
-
-        <?php if (isset($error)): ?>
-            <p class="error"><?php echo $error; ?></p>
-        <?php endif; ?>
-
-        <?php if (isset($success)): ?>
-            <p class="success"><?php echo $success; ?></p>
-        <?php endif; ?>
-
-        <form action="login.php" method="post">
-            <input type="email" name="email" placeholder="Email Address" required>
-            <input type="password" name="password" placeholder="Password*" required>
-            <button type="submit">Log in</button>
-            <div class="login-link">
-                Don’t have an account yet? <a href="register.php">Register</a>
+    <!-- Left container with login form -->
+    <div class="login-container">
+        <!-- Page heading -->
+        <h1>Log into your account</h1>
+        
+        <!-- Login form - submits to backend/login.php -->
+        <form id="login-form">
+            <!-- Email input field with floating label -->
+            <div class="form-group">
+                <input type="email" name="email" id="email" required>
+                <label for="email" class="floating-label">Email Address</label>
             </div>
-            <div class="brand">CAVAIR</div>
+            
+            <!-- Password input field with floating label -->
+            <div class="form-group">
+                <input type="password" name="password" id="password" required>
+                <label for="password" class="floating-label">Password*</label>
+            </div>
+            
+            <!-- Login button -->
+            <button type="submit" class="login-btn">Log in</button>
+            <div id="login-message" class="login-message"></div>
+            <!-- Registration link for users without accounts -->
+            <p class="register-text">Don't have an account yet? <a href="register.html" class="register-link">Register</a></p>
         </form>
+        
+        <!-- CAVAIR banner at the bottom of the form section -->
+        <div class="cavair-banner">CAVAIR</div>
     </div>
-    <div class="right-panel"></div>
+    
+    <!-- Right container with background image -->
+    <div class="image-container"></div>
+    
+    <!-- JavaScript for form functionality -->
+    <script src="js/login.js"></script>
 </body>
 </html>
