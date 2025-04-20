@@ -115,6 +115,50 @@ input::placeholder {
     background-color: #8e7346;
 }
 
+/* Login link text styling */
+.login-text {
+    text-align: center;
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+/* Login link styling with purple color */
+.login-link {
+    color: #6a0dad;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+/* Darken login link on hover */
+.login-link:hover {
+    color: #4b0980;
+}
+
+/* CAVAIR banner at the bottom of the form section */
+.cavair-banner {
+    background-color: #6a0dad;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-top: auto; /* Pushes the banner to the bottom of the container */
+}
+
+/* Error message below form fields */
+.field-error {
+    color: #d32f2f;
+    font-size: 0.93em;
+    margin-top: 2px;
+    display: block;
+    min-height: 20px;
+    font-family: 'Oxygen', sans-serif;
+    font-weight: 600;
+}
+
 /* Register message styling */
 .register-message {
     margin-top: 18px;
@@ -132,35 +176,3 @@ input::placeholder {
     color: #d32f2f;
 }
 
-/* Login link text styling */
-.login-text {
-    text-align: center;
-    font-size: 16px;
-    color: #555;
-    margin-bottom: 15px;
-}
-
-/* Login link styling with purple color */
-.login-link {
-    color: #9b2eea;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
-}
-
-/* Darken login link on hover */
-.login-link:hover {
-    color: #4b0980;
-}
-
-/* CAVAIR banner at the bottom of the form section */
-.cavair-banner {
-    background: linear-gradient(90deg, #4b0980 0%, #9b2eea 100%);
-    color: white;
-    text-align: center;
-    padding: 20px;
-    font-size: 24px;
-    font-weight: bold;
-    border-radius: 5px;
-    margin-top: auto; /* Pushes the banner to the bottom of the container */
-}

@@ -4,15 +4,6 @@
  * This script handles the floating label functionality for the registration form
  * and implements validation for the phone number field to accept only digits.
  * 
- * @author [David L.] Group 2 - COM322 Web Development Project
- * @version 1.0
- */
-/**
- * Register Page JavaScript
- * 
- * This script handles the floating label functionality for the registration form
- * and implements validation for the phone number field to accept only digits.
- * 
  * @author [David.L] Group 2 - COM322 Web Development Project
  * @version 1.0
  */
@@ -28,15 +19,42 @@ document.addEventListener('DOMContentLoaded', function() {
         loginLink.addEventListener('click', function(e) {
             e.preventDefault();
             // Redirect to login page in the same directory
-window.location.href = '/CAV-Zambia-Airlines/frontend/login.html';
+window.location.href = 'login.html';
         });
     }
 
     if (form) {
         form.addEventListener('submit', function(e) {
             e.preventDefault();
+            // Clear previous errors
             messageDiv.textContent = '';
             messageDiv.className = 'register-message';
+            document.getElementById('full_name_error').textContent = '';
+            document.getElementById('password_error').textContent = '';
+
+            // Client-side validation
+            let valid = true;
+            const fullName = document.getElementById('full_name').value.trim();
+            const password = document.getElementById('password').value;
+
+            if (fullName.length < 3) {
+                document.getElementById('full_name_error').textContent = 'Full name must be at least 3 characters.';
+                valid = false;
+            } else {
+                document.getElementById('full_name_error').textContent = '';
+            }
+
+            // Password: at least 8 chars, upper, lower, number, special char
+            const pwRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]).{8,}$/;
+            if (!pwRegex.test(password)) {
+                document.getElementById('password_error').textContent = 'Password must be at least 8 characters, include uppercase, lowercase, a number, and a special character.';
+                valid = false;
+            } else {
+                document.getElementById('password_error').textContent = '';
+            }
+
+            if (!valid) return;
+
             const formData = new FormData(form);
             fetch('../backend/register.php', {
                 method: 'POST',
@@ -48,12 +66,18 @@ window.location.href = '/CAV-Zambia-Airlines/frontend/login.html';
                     messageDiv.textContent = data.message || 'Registration successful';
                     messageDiv.classList.add('success');
                     setTimeout(() => {
-                        // Redirect to the dashboard in the frontend directory
-window.location.href = '/CAV-Zambia-Airlines/frontend/user_dashboard.html';
+                        window.location.href = '/CAV-Zambia-Airlines/frontend/user_dashboard.html';
                     }, 2000);
                 } else {
-                    messageDiv.textContent = data.message || 'Registration failed';
-                    messageDiv.classList.add('error');
+                    // Try to match backend error to a field
+                    if (data.message && data.message.toLowerCase().includes('name')) {
+                        document.getElementById('full_name_error').textContent = data.message;
+                    } else if (data.message && data.message.toLowerCase().includes('password')) {
+                        document.getElementById('password_error').textContent = data.message;
+                    } else {
+                        messageDiv.textContent = data.message || 'Registration failed';
+                        messageDiv.classList.add('error');
+                    }
                 }
             })
             .catch(() => {

@@ -7,7 +7,7 @@
  * 
  * Database: group2_cavair_db
  * 
- * @author [Micheal, David L.] Group 2 - COM322 Web Development Project
+ * @author [David L.] Group 2 - COM322 Web Development Project
  * @version 1.0
  */
 
