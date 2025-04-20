@@ -6,13 +6,14 @@
   
     flex-direction: column;
     align-items: center;
-    margin-top: 100px;
+    margin-top: 55px;
 }
 
 .fly h1{
     font-size: 70px;
     font-weight: 600;
     color: rgb(255, 255, 255);
+
    
 }
 
@@ -20,15 +21,15 @@
     font-size: 22px;
     color: white;
     font-weight:500 ;
-    margin-top: -45px;
+    margin-top: -50px;
 }
 
 .flight-card{
     position: absolute;
     left: 175px;
-    bottom: -120px;
+    bottom: -150px;
     width: 75%;
-    height: 230px;
+    height: 270px;
     background-color:white;
     border-radius: 20px;
     z-index: 2;
@@ -37,16 +38,18 @@
     width: 60%;
     height: 70px;
     background-color:white;
-    box-shadow: 0 4px 10px gray;
+    box-shadow: 0 4px 6px rgba(0, 0,0, 0.3);
     border-radius: 35px;
     position: absolute;
     top: -35px;
     left: 60px;
+    margin-bottom:7px;
+    
 }
 .btn1{
     color: purple;
     font-size: 12px;
-    font-weight: 550;
+    font-weight: bolder;
     margin-left: 22px;
     margin-top: 7.5px;
     padding: 20px 40px;
@@ -70,6 +73,7 @@ select{
     padding: 10px 40px;
    background-color: lightgray;
     border-radius: 7px;
+    margin-right: 7px;
 }
 .slt1{
     padding: 10px 25px;
@@ -79,6 +83,10 @@ select{
 }
 input{
     background-color: lightgray;
+    margin-left: 10px;
+    border: none;
+    color: purple;
+    font-weight: bold;
 }
 .inp1{
     padding: 10px 35px;
@@ -92,6 +100,18 @@ input{
 .inp3{
     padding: 10px 70px;
     border-radius: 7px;
+    color: purple;
+    
+
+}
+input::placeholder{
+    color: purple;
+    font-weight: bold;
+}
+
+select,option{
+    color: purple;
+    font-weight: bold;
 }
 .inp4{
     padding: 10px 70px;
@@ -112,6 +132,167 @@ input{
 
 .section{
     width: 100%;
-    height: 1500px;
-     background-color: purple;
+    height: 1400px;
+    background-color: purple;
 }
+.form-row{
+    margin-bottom: 20px;
+
+}
+.flight-form{
+    margin-right: 40px;
+    
+}
+
+  .form-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    background-color: #00b359;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 10px 6px 0 0;
+  }
+ 
+  .form-control::placeholder {
+    color: gray;
+  } 
+  .btn-brown {
+    background-color: #996633;
+  }
+  .form-control {
+    flex: 1;
+    padding: 12px;
+    background: #f2f2f2;
+    border: none;
+    border-radius: 10px;
+    color: #58006c;
+    font-size: 15px;
+  }
+ 
+  .form-row2 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 15px;
+  }
+  .manage-checkin{
+
+    display: none;
+
+  }
+  .form-section-content3{
+    display: none;
+
+  }
+
+
+  .carousel-container {
+    
+    text-align: center;
+    background:rgb(82, 1, 82);
+    color: white;
+    padding:2rem;
+    font-family:sans-serif;
+    height: 150vh;
+
+    }
+    
+    .carousel-container .highlight {
+    color: #ce7ef3;
+    border-bottom: 2px solid #cc5fff;
+    font-size: larger;
+    font-weight: bold;
+    
+    
+    }
+    .carousel-container h2{
+        margin-top: 250px;
+        font-size: 50px;
+    }
+
+    .carousel-container p{
+        margin-top: 0;
+        font-size: 25px;
+        
+    }
+
+    .carousel {
+     margin-top: 60px;    
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    padding: 2rem 0;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    }
+    .carousel::-webkit-scrollbar {
+    display:none;
+    }
+    .card {
+    flex: 0 0 auto;
+    width: 220px;
+    background: #1b0031;
+    border-radius: 12px;
+    overflow: hidden;
+    scroll-snap-align: start;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease;
+    background-position: center;
+    }
+    .card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    }
+    .card .info {
+    padding: 1rem;
+    text-align: left;
+    }
+    .card h3 {
+    margin: 0;
+    color: #cc5fff;
+    }
+    .card p {
+    margin: 0.3rem 0 0;
+    font-size: 0.9rem;
+    }
+
+    .flight-schedule {
+        padding: 2rem;
+        background-color:rgb(82, 1, 82);
+        color: white;
+        font-family: sans-serif;
+        margin: 0;
+        height: 500px;
+        }
+        .flight-schedule h2 {
+        margin-bottom: 1.5rem;
+        color: white;
+        font-size: 2rem;
+        }
+        .flight-schedule table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: white;
+        color: #333;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+        .flight-schedule thead {
+        background-color: #c719fc;
+        color: white;
+        }
+        .flight-schedule th,
+        .flight-schedule td {
+        padding: 1rem;
+        text-align: left;
+        }
+        .flight-schedule tbody tr:nth-child(even) {
+        background-color: #f4f4f4;
+        }
+        
+  
+

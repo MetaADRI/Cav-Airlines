@@ -71,4 +71,3 @@ window.location.href = '/CAV-Zambia-Airlines/frontend/user_dashboard.html';
         }
     });
 });
-

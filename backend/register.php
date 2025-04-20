@@ -1,4 +1,8 @@
 <?php
+// DEBUG: Show PHP errors (disable on production!)
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 /**
  * Registration Page Handler
  * 
@@ -7,7 +11,7 @@
  * 
  * Database: group2_cavair_db
  * 
- * @author [Micheal, David L.] Group 2 - COM322 Web Development Project
+ * @author [David L., Michael] Group 2 - COM322 Web Development Project
  * @version 1.0
  */
 
@@ -64,13 +68,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $response["success"] = true;
             $response["message"] = 'Registration successful';
         } else {
-            $response["success"] = false;
-            $response["message"] = 'This email address is already registered. Please use a different email or login.';
+            // Determine reason for failure
+            if (emailExists($email, $conn)) {
+                $response["success"] = false;
+                $response["message"] = 'This email address is already registered. Please use a different email or login.';
+            } else {
+                // Log DB error for debugging
+                $debug_error = isset($conn) ? $conn->error : 'No $conn';
+                $response["success"] = false;
+                $response["message"] = 'A server error occurred. Please try again later.';
+                $response["debug"] = $debug_error;
+            }
         }
     }
     echo json_encode($response);
     exit();
 }
+
+// Helper function to check if email exists
+function emailExists($email, $conn) {
+    $stmt = $conn->prepare("SELECT user_id FROM users WHERE email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result && $result->num_rows > 0;
+}
+
 
 
 // For GET requests, show the HTML registration form (not AJAX)
