@@ -25,7 +25,7 @@ body {
 /* Right container with background image */
 .image-container {
     flex: 1;
-    background-image: url('../assets/images/side_image_for_register_page.jpg');
+    background-image: url('../assets/images/Login_\ Register_Pages/register_page_image.jpg');
     background-size: cover;
     background-position: center;
 }

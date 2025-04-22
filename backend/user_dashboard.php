@@ -33,13 +33,13 @@ try {
     SELECT 
         b.booking_id, 
         f.flight_number, 
-        f.origin,              // Departure city
-        f.destination,         // Arrival city
-        f.aircraft_type,       // Type of aircraft used
-        fs.departure_time,     // Scheduled departure time
-        fs.arrival_time,       // Scheduled arrival time
-        b.amount,              // Total cost for this booking
-        b.num_passengers       // Number of passengers in this booking
+        f.origin,              
+        f.destination,         
+        f.aircraft_type,       
+        fs.departure_time,     
+        fs.arrival_time,       
+        b.amount,              
+        b.num_passengers       
     FROM bookings b
     JOIN flight_schedules fs ON b.schedule_id = fs.schedule_id
     JOIN flights f ON fs.flight_id = f.flight_id
