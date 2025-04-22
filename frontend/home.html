@@ -1,126 +1,194 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- This is for the global styles shared across all pages -->
-    <link rel="stylesheet" href="css/common.css" />
-
-    <!--This is for the styles specific to the home page -->
-    <link rel="stylesheet" href="css/home.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://kit.fontawesome.com/d7280c9e9b.js" crossorigin="anonymous"></script>
-    <title>CAVAIR - Home</title>
-  </head>
-  <body>
-     <!--This is the Hero Section-->
- <div class="hero-section">
-  <div class="nav-bar"> 
-     <h2>CAVAIR</h2>
-     <ul class="nav-tags"> 
-         <li><a href="#">Booking</a></li>
-         <li><a href="services.html">Services</a></li>
-         <li><a href="#">About Us</a></li>
-         <li><a href="#">Contact</a></li>
-     </ul>
-     
-      <div class="icon-login">
-        
-         <a href="#"><i class="fas fa-globe"></i></a>
-         <div class="line-1">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAV Zambia Airlines - Home</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oxygen:400,700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="cav-header" id="cav-header">
+        <div class="header-container">
+            <a href="home.html" class="header-logo">
+                <img src="assets/images/Cavair_Logo.png" alt="CAV Zambia Airlines Logo" />
+            </a>
+            <nav class="header-nav">
+                <a href="booking.html">Booking</a>
+                <a href="services.html">Services</a>
+                <a href="about_us.html">About Us</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <div class="header-icons">
+                <span class="icon translate-icon">
+                    <img src="assets/icons/translate-icon.svg" alt="Translate" />
+                </span>
+                <span class="icon-divider"></span>
+                <span class="icon search-icon">
+                    <img src="assets/icons/search-icon.svg" alt="Search" />
+                </span>
+            </div>
+            <a href="login.html" class="header-login-btn">Login</a>
         </div>
-         <a href="#"><i class="fas fa-search"></i></a>
-         <button>Login</button>
-        
- 
-     </div>
-   
- </div> 
- 
- 
-         <!--This is the text for fly with us -->
-         <div class="fly">
-             <h1>Fly With Us</h1>
-             <p> Experience our world class Services <br>Onboard our fleet</p>
-         </div>
- 
-         <!--The Flight Card -->
-         <div class="flight-card">
-             <div class="list">
-                 <button class="btn1">✈Book a Flight</button>
-                 <button class="btn1">Manage/Check In</button>
-                 <button class="btn1">Flight Status</button>
-             </div>
-             <section class="form-box">
-                 <div class="overlay">
-                   <div class="booking-box">
-                     <form class="flight-form">
-                       <div class="form-row">
-                         <select class="slt1">
-                           <option>Round Trip</option>
-                           <option>One Way</option>
-                         </select>
-                         <input class="inp3" type="text" placeholder="From (e.g. Lusaka LUN)">
-                         <input class="inp4" type="text" placeholder="To (e.g. London LHR)">
-                       </div>
-               
-                       <div class="form-row">
-                         <select class="slt2">
-                           <option>2 Passengers</option>
-                         </select>
-                         <select>
-                           <option>Economy Class</option>
-                           <option>First Class</option>
-                         </select>
-                         <input class="inp1" type="date" value="2025-04-15">
-                         <input class="inp2" type="date" value="2025-05-23">
-                       </div>
-               
-                       <button class="btn2" type="submit" class="search-btn">Search Flights</button>
-                     </form>
-                   </div>
+    </header>
 
-                   
-                 </div>
-                  <!-- Manage / Check in -->
-               <div class="manage-checkin">
-                   <div class="form-row2">
-                        <input class="form-control" placeholder="Booking Reference or Ticket Number">
-                         <input class="form-control" placeholder="Last Name">
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <video class="hero-bg-video" src="assets/videos/Qatar_Airways_ad.mp4" autoplay muted loop playsinline></video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Fly With Us</h1>
+            <p class="hero-subtitle">Experience our world class services onboard our fleet</p>
+        </div>
+    </section>
+
+    <!-- Booking Card (Overlapping Hero) -->
+    <div class="booking-card-container">
+        <div class="booking-tabs-container">
+            <div class="booking-tabs" id="bookingTabs">
+                <button class="booking-tab active" data-tab="book">
+                    <img src="assets/icons/book_a_flight-icon(active).svg" alt="Book a flight" class="tab-icon" />
+                    Book a flight
+                </button>
+                <button class="booking-tab" data-tab="manage">
+                    <img src="assets/icons/manage-checkin-icon(inactive).svg" alt="Manage/Check in" class="tab-icon" />
+                    Manage / Check in
+                </button>
+                <button class="booking-tab" data-tab="status">
+                    <img src="assets/icons/flight_status-icon(inactive).svg" alt="Flight status" class="tab-icon" />
+                    Flight status
+                </button>
+            </div>
+        </div>
+        <div class="booking-card">
+            <!-- Book a flight panel -->
+            <form class="booking-form booking-tab-panel" id="tab-book" style="display: block;">
+                <div class="booking-row">
+                    <div class="booking-field" style="position:relative;">
+                        <label class="booking-label" for="tripType">Trip type</label>
+                        <select id="tripType" class="trip-type-select" name="tripType">
+                            <option value="round" selected>Round trip</option>
+                            <option value="oneway">One-way</option>
+                        </select>
                     </div>
-                 <button class="form-button">Check In</button>
-                  <button class="form-button btn-brown">Manage Booking</button>
+                    <div class="booking-field from-field" style="position:relative;">
+                        <input type="text" id="from" name="from" class="booking-input" autocomplete="off" placeholder=" " />
+                        <label class="booking-floating-label">From</label>
+                        <div class="booking-suggestions" id="from-suggestions" style="display:none;"></div>
+                    </div>
+                    <div class="arrow-field">
+                        <img src="assets/icons/from_and_to_arrows-icon.svg" class="arrow-icon" alt="to" />
+                    </div>
+                    <div class="booking-field to-field" style="position:relative;">
+                        <input type="text" id="to" name="to" class="booking-input" autocomplete="off" placeholder=" " />
+                        <label class="booking-floating-label">To</label>
+                        <div class="booking-suggestions" id="to-suggestions" style="display:none;"></div>
+                    </div>
                 </div>
-                
-                      <!-- Flight status -->
-                  <div class="form-section-content3">
-                         <div class="form-row2">
-                             <input class="form-control" placeholder="Flight Number">
-                             <input class="form-control" title="Departure date"  value="15 Apr 2025" disabled>
-                          </div>
-                          <button class="form-button">Find</button>
-                   </div>
+                <div class="booking-row">
+                    <div class="booking-field" style="position:relative;">
+                        <label class="booking-label">Passengers</label>
+                        <select class="booking-select" name="passengers" id="passengers">
+                            <option value="1" selected>1 Passenger</option>
+                            <option value="2">2 Passengers</option>
+                            <option value="3">3 Passengers</option>
+                            <option value="4">4 Passengers</option>
+                            <option value="5">5 Passengers</option>
+                            <option value="6">6 Passengers</option>
+                            <option value="7">7 Passengers</option>
+                            <option value="8">8 Passengers</option>
+                            <option value="9">9 Passengers</option>
+                            <option value="10">10 Passengers</option>
+                        </select>
+                    </div>
+                    <div class="booking-field" style="position:relative;">
+                        <label class="booking-label">Class</label>
+                        <select class="booking-select" name="class" id="class">
+                            <option value="economy" selected>Economy Class</option>
+                            <option value="business">Business Class</option>
+                        </select>
+                    </div>
+                    <div class="booking-field booking-field-dates" id="date-fields-container" style="position:relative; display: flex; flex-direction: column; align-items: flex-start; gap: 0; min-width: 390px; width: 430px;">
+                        <label class="booking-label" style="margin-bottom: 8px;">Departing</label>
+                        <div class="date-field-group" style="display: flex; align-items: flex-start; width: 100%; min-width: 340px;">
+                            <div class="date-field" style="display: flex; flex-direction: column; align-items: flex-start; width: 48%; position: relative;">
+                                <input type="date" id="departing-date" name="departing-date" class="booking-date-input" />
+                            </div>
+                            <img src="assets/icons/departing_returning_arrow-icon.svg" class="departing-returning-arrow" alt="to" style="width: 32px; margin: 0 8px; margin-top: 22px;" />
+                            <div class="date-field" style="display: flex; flex-direction: column; align-items: flex-start; width: 48%; position: relative;">
+                                <span class="booking-label" id="returning-label" style="margin-bottom: 8px; margin-left: 2px;">Returning</span>
+                                <input type="date" id="returning-date" name="returning-date" class="booking-date-input" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="booking-row booking-search-row">
+                    <button type="submit" class="booking-search-btn">Search Flights</button>
+                </div>
+            </form>
+            <!-- Manage / Check in panel -->
+            <form class="booking-form booking-tab-panel" id="tab-manage" style="display: none;">
+                <div class="booking-row">
+                    <div class="booking-field booking-field-wide" style="width: 100%; max-width: 350px; min-width: 200px; margin: 0 auto; position:relative;">
+                        <input type="text" id="manage-booking-ref" class="booking-input" autocomplete="off" placeholder=" " />
+<label class="booking-floating-label">Booking Reference or Ticket Number</label>
+                    </div>
+                    <div class="booking-field booking-field-wide" style="width: 100%; max-width: 350px; min-width: 200px; margin: 0 auto; position:relative;">
+                        <input type="text" id="manage-last-name" class="booking-input" autocomplete="off" placeholder=" " />
+<label class="booking-floating-label">Last Name</label>
+                    </div>
+                </div>
+                <div class="booking-row booking-search-row">
+                    <button type="submit" class="booking-search-btn">Check In</button>
+                    <button type="button" class="booking-manage-btn">Manage Booking</button>
+                </div>
+            </form>
+            <!-- Flight status panel -->
+            <form class="booking-form booking-tab-panel" id="tab-status" style="display: none;">
+                <div class="booking-row">
+                    <div class="booking-field booking-field-wide" style="width: 100%; max-width: 350px; min-width: 200px; margin: 0 auto;">
+                        <input type="text" id="flight-status-number" class="booking-input" autocomplete="off" placeholder=" " />
+<label class="booking-floating-label">Flight Number</label>
+                    </div>
+                    <div class="booking-field booking-field-wide" style="width: 100%; max-width: 350px; min-width: 200px; margin: 0 auto;">
+                        <label class="booking-label" style="margin-bottom: 8px;">Departure date*</label>
+                        <input type="date" id="flight-status-date" class="booking-input" />
+                    </div>
+                </div>
+                <div class="booking-row booking-search-row">
+                    <button type="submit" class="booking-search-btn">Find</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
-       
-               </section>
-            
-          </div>
-         
-  </div>
-  
-  <!--slide show section-->
-  <div class="carousel-container">
-    <h2>Deals from <span class="highlight">Lusaka</span></h2>
-    <p>Discover your next unforgettable journey</p>
-    <div class="carousel">
-      
-    <div class="card">
-    <img src="./assets/images/Dubai.png" alt="Dubai">
-    <div class="info">
-    <h3>Dubai</h3>
-    <p>From ZMW 34,900</p>
+    <!-- Deals Section (3D Carousel) -->
+    <section class="deals-section">
+        <!-- Deals Header Title and Subtitle -->
+        <div class="deals-header">
+            <h2 class="deals-title">
+                <span class="deals-title-main">Deals from</span> <span class="deals-highlight deals-title-lusaka">Lusaka</span>
+            </h2>
+            <p class="deals-subtitle">Discover your next unforgettable journey</p>
+        </div>
+
+        <!-- Deals Carousel -->
+        <div class="deals-carousel">
+            <div class="deals-carousel-cards">
+                <div class="deals-carousel-card" data-index="0">
+    <img src="assets/images/Home Page/Dubai.png" alt="Dubai" class="deals-carousel-card-image" />
+    <div class="deals-carousel-card-type deals-carousel-card-type-left">Round Trip - Economy</div>
+    <div class="deals-carousel-card-type deals-carousel-card-type-right">Round Trip - Economy</div>
+    <div class="deals-carousel-card-info">
+        <span class="deals-carousel-card-destination">Dubai</span>
+        <span class="deals-carousel-card-price">From <strong>ZMW 13,700</strong></span>
     </div>
     </div>
     <div class="card">
@@ -219,53 +287,71 @@
       </table>
       </section>
 
+    <div class="section-divider"></div>
 
+    <!-- Experience Cavair Section -->
+    <section class="experience-cavair-section">
+        <div class="experience-cavair-container">
+            <div class="experience-cavair-left">
+                <h2 class="experience-cavair-title">Experience <span class="cavair-highlight">Cavair</span></h2>
+                <p class="experience-cavair-desc">Your journey with us is the start of something truly special. From our hub at Kenneth Kaunda International Airport, we bring you our signature hospitality, making every moment of your travel experience unforgettable.</p>
+            </div>
+            <div class="experience-cavair-right">
+                <div class="experience-cavair-card">
+                    <img src="assets/images/Home Page/kenneth_kaunda_intl_airport.jpg" alt="Kenneth Kaunda Intl Airport" class="experience-cavair-card-img" />
+                    <div class="experience-cavair-card-caption">
+                        <div class="experience-cavair-card-title">Kenneth Kaunda Intl Airport</div>
+                    </div>
+                </div>
+                <div class="experience-cavair-card">
+                    <img src="assets/images/Home Page/lounge.jpg" alt="Tranquil Lounges" class="experience-cavair-card-img" />
+                    <div class="experience-cavair-card-caption">
+                        <div class="experience-cavair-card-title">Tranquil Lounges</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-
-
-
-
-    <!-- Footer Section -->
-    <div class="footer">
-      <footer id="footer">
-          <div class="footer_header">
-              <h2>CAVAIR</h2>
-          </div>
-          <div class="footer_header">
-              <h2>Flights and Travel</h2>
-              <ul>
-                  <li>Travel Requirements</li>
-                  <li>Fly with Cavair</li>
-                  <li>Book Flights</li>
-                  <li>International flight deals</li>
-                  <li>Flight status</li>
-              </ul>
-          </div>
-          <div class="footer_header">
-              <h2>About Us</h2>
-              <ul>
-                  <li>Corporate Prifile</li>
-                  <li>News</li>
-                  <li>Our Partners</li>
-                  <li>Ethics and compliance</li>
-                  <li>Our Responsibility</li>
-              </ul>
-          </div>
-          <div class="footer_header">
-              <h2>Connect with Us</h2>
-              <p>Follow us on social media and <br> keep up with the latest news <br> and updates</p>
-              <a href="#" class="fa fa-facebook"></a>
-              <a href="#" class="fa fa-twitter"></a>
-              <a href="#" class="fa fa-instagram"></a>
-              <a href="#" class="fa fa-youtube"></a>
-          </div>
-
-      </footer>
-      <hr>
-      <p class="copy">&copy; 2025 Cav Zambia Airlines. All right reserved.</p>
-   </div>
-
-    <!-- JavaScript -->
+    <!-- Footer -->
+    <footer class="cav-footer">
+        <div class="footer-container">
+            <a href="home.html" class="footer-logo">
+                <img src="assets/images/Cavair_Logo.png" alt="CAV Zambia Airlines Logo" />
+            </a>
+            <div class="footer-columns">
+                <div class="footer-col">
+                    <h4>Flights and Travel</h4>
+                    <ul>
+                        <li><a href="#">Travel Requirements</a></li>
+                        <li><a href="#">Why Cavair</a></li>
+                        <li><a href="#">International Flights</a></li>
+                        <li><a href="#">Flight Deals</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>About us</h4>
+                    <ul>
+                        <li><a href="#">Corporate Profile</a></li>
+                        <li><a href="#">Our Partners</a></li>
+                        <li><a href="#">Ethics and Compliance</a></li>
+                        <li><a href="#">Our Responsibility</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Connect with us</h4>
+                    <div class="footer-socials">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">© 2025 Cav Zambia Airlines. All rights reserved.</div>
+    </footer>
+    <script src="js/deals-carousel.js"></script>
     <script src="js/home.js"></script>
-  </body>
+</body>
 </html>

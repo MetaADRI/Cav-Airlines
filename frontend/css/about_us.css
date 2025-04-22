@@ -1,1 +1,158 @@
 @import 'common.css';
+body{
+    background: linear-gradient(-15deg, #4C005E 42%, #2f0438 80%, #600075 100%);
+}
+.about-section{
+    background: linear-gradient(-15deg, #4C005E 42%, #2F0039 74%, #600075 100%);
+   
+}
+
+.fade-in-from-below {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.fade-in-from-below.faded-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.Us{
+    margin-top: 120px;
+    display: flex; 
+    flex-direction: column;
+    margin-left: 130px;
+    margin-top: -30;
+}
+.Us h1{
+    font-size: 50px;
+    font-weight: 600;
+    color: rgb(255, 255, 255);
+   
+}
+
+.Us .para-1{
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    font-weight:500 ;
+    margin-top: -30px;
+}
+.section{
+    /*margin-top: 120px;*/
+    width: 100%;
+    height: 350px;
+     background-color: white;
+}
+.section p{
+    font-size: 18px;
+    color: black;
+    font-weight:400 ;
+    margin-top: -30px;
+    margin-left: 130px;
+    float:left;
+}
+.Us-2{
+    font-size: 35px;
+    font-weight: 600;
+    color: black;
+    margin-left: 130px;
+
+   
+}
+.image{
+    width: 250px;
+    height: 300px;
+    border-radius: 25px;
+    background-image: url("../assets/images/About us page/about_us_cabin_crew.jpg");
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: cover;
+    float: right;
+    margin-top: -130px;
+    margin-right: 130px;
+    
+}
+.story-section{
+    width: 100%;
+    height: 450px;
+    background: linear-gradient(-15deg, #4C005E 42%, #2F0039 74%, #600075 100%);
+}
+.story-section p{
+    font-size: 18px;
+    color: white;
+    font-weight:400 ;
+    margin-top: -30px;
+    margin-right: 130px;
+    float:right;
+}
+.Us-3{
+    font-size: 35px;
+    font-weight: 600;
+    color: white;
+    margin-left: 780px;
+
+   
+}
+.image-2{
+    width: 460px;
+    height: 300px;
+    border-radius: 25px;
+    background-image: url("../assets/images/About us page/b787_2.jpg");
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: cover;
+    float: left;
+    margin-top: -140px;
+    margin-left: 110px;
+    
+}
+.image-3{
+    width: 180px;
+    height: 200px;
+    border-radius: 25px;
+    background-image: url("../assets/images/About us page/cabin_crew_image.jpg");
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: cover;
+    float: left;
+    margin-top: 60px;
+    margin-left: -420px;
+
+}
+.mission-section{
+    display: flex;
+    gap: 60px;
+    align-items: center;
+    width: 100%;
+    height: 350px;
+     background-color: white;
+}
+.mission-section p{
+    font-size: 18px;
+    color: black;
+    font-weight:400 ;
+    margin-top: -30px;
+    margin-left: 130px;
+    float:left;
+}
+.Us-4{
+    font-size: 35px;
+    font-weight: 600;
+    color: black;
+    margin-left: 130px;
+
+   
+}
+.image-4{
+    width: 400px;
+    height: 200px;
+    border-radius: 25px;
+    background-image: url("../assets/images/About us page/trevel_5.jpg");
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: cover;
+   
+    
+    
+}

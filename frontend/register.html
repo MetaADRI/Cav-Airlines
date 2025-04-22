@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Page title -->
     <title>CAV-Zambia Airlines - Create Account</title>
     <!-- Google Fonts - Oxygen font family -->
     <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
@@ -12,15 +11,17 @@
 <body>
     <!-- Left container with registration form -->
     <div class="register-container">
-        <!-- Page heading -->
-        <h1>Create Account</h1>
-        
-        <!-- Registration form - submits to backend/register.php -->
-        <form id="register-form">
+        <div class="register-card">
+            <!-- Page heading -->
+            <h1>Create Account</h1>
+            
+            <!-- Registration form - submits to backend/register.php -->
+            <form id="register-form">
             <!-- Full Name input field with floating label -->
             <div class="form-group">
                 <input type="text" name="full_name" id="full_name" required>
                 <label for="full_name" class="floating-label">Full Name</label>
+                <span class="field-error" id="full_name_error"></span>
             </div>
             
             <!-- Email input field with floating label -->
@@ -39,6 +40,7 @@
             <div class="form-group">
                 <input type="password" name="password" id="password" required>
                 <label for="password" class="floating-label">Password</label>
+                <span class="field-error" id="password_error"></span>
             </div>
             
             <!-- Register button -->
@@ -51,6 +53,7 @@
         
         <!-- CAVAIR banner at the bottom of the form section -->
         <div class="cavair-banner">CAVAIR</div>
+        </div>
     </div>
     
     <!-- Right container with background image -->

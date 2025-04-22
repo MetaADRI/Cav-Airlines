@@ -5,38 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- This is for the global styles shared across all pages -->
-    <link rel="stylesheet" href="css/common.css" />
+    
+    <link rel="stylesheet" href="css/services.css">
 
     <!--This is for the styles specific to the home page -->
-    <link rel="stylesheet" href="css/services.css" />
+    
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://kit.fontawesome.com/d7280c9e9b.js" crossorigin="anonymous"></script>
     <title>CAVAIR - Home</title>
   </head>
   <body>
-            <!--This is the Hero Section-->
-        <div class="service-section">
-        <div class="nav-bar"> 
-            <h2>CAVAIR</h2>
-            <ul class="nav-tags"> 
-                <li><a href="home.html">Home</a></li>
-                <li><a href="#">Booking</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-            <div class="icon-login">
-                <a href="https://www.facebook.com/mwenda.mwakoi.1"><i class="fas fa-globe"></i></a>
-                <a href="https://www.facebook.com/mwenda.mwakoi.1"></a>
-                <a href="https://x.com/mwendamwakoi?s=21"><i class="fas fa-search"></i></a>
-                <button>Login</button>
-        
+
+
+
+     <!-- Header -->
+     <header class="cav-header" id="cav-header">
+        <div class="header-container">
+            <a href="home.html" class="header-logo">
+                <img src="assets/images/Cavair_Logo.png" alt="CAV Zambia Airlines Logo" />
+            </a>
+            <nav class="header-nav">
+                <a href="home.html">Home</a>
+                <a href="booking.html">Booking</a>
+                <a href="services.html">Services</a>
+                <a href="about_us.html">About Us</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <div class="header-icons">
+                <span class="icon translate-icon">
+                    <img src="assets/icons/translate-icon.svg" alt="Translate" />
+                </span>
+                <span class="icon-divider"></span>
+                <span class="icon search-icon">
+                    <img src="assets/icons/search-icon.svg" alt="Search" />
+                </span>
             </div>
+            <a href="login.html" class="header-login-btn">Login</a>
+        </div>
+    </header>
+           
         
-        </div> 
- 
- 
+          
          <!--This is the text for fly with us -->
          <div class="fly">
              <h1>Experience Comfort</h1>
@@ -45,11 +55,11 @@
          <div class="plane-img">
 
          </div>    
-        </div>
   
+        <hr>
   
   <!--The Section for the other part-->
-  <div class="section">
+  
     <h1 class="fly-2">Book with us for exclusive perks</h1>
     <p>Experience greater freedom and flexibility by Booking directly with Cavair. Manage your booking<br>
        effortlessly or reach out to us anytime. We're here for you every step of the journey</p>
@@ -79,27 +89,27 @@
     <!-- These are the Codes for the Discover Section-->
     <div class="discover-section">
         <div class="part-1">
-            <h1>Discover</h1>
-        <p class="para-1">No matter your<br>destination, 
-            we'll get you there. Our extensive network covers 
+            <div class="last-last">
+                <h1>Discover</h1>
+            <p class="para-1">No matter your<br>destination, 
+            we'll get you there.<br>Our extensive network covers 
             over 50<br> locations across Africa,<br>Asia, Europe, 
             the Middle<br>East, and North America</p>
+
+            </div>
+
+            <hr>
 
         </div>
         
         <!-- These are the Codes for the Lines-->
-    <div class="part-3"></div>
+    
 
 
         <div class="part-2">
+
             <h1>International</h1>
-
-            <!-- These are the Codes for the Lines-->
-        <div class="part-3b"></div>
-
-            <!-- These are the Codes for the Lines-->
-            <div class="part-3c"> </div>
-            
+            <hr>
             <p class="para-2">From the metropolis of Doha to the aurora of Norway, 
                 our global network connects<br>you to 20+ destinations. 
                 With seamless services to your next destination, we're<br>redefining 
@@ -116,6 +126,7 @@
                     <p>Bali</p>
                 </div>
             </div>
+
 
             <button class="book-btn">Book Now</button>
 
@@ -137,48 +148,47 @@
             </div>
     </div>
 
+   
+
+ <!-- Footer -->
+ <footer class="cav-footer">
+    <div class="footer-container">
+        <a href="home.html" class="footer-logo">
+            <img src="assets/images/Cavair_Logo.png" alt="CAV Zambia Airlines Logo" />
+        </a>
+        <div class="footer-columns">
+            <div class="footer-col">
+                <h4>Flights and Travel</h4>
+                <ul>
+                    <li><a href="#">Travel Requirements</a></li>
+                    <li><a href="#">Why Cavair</a></li>
+                    <li><a href="#">International Flights</a></li>
+                    <li><a href="#">Flight Deals</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>About us</h4>
+                <ul>
+                    <li><a href="#">Corporate Profile</a></li>
+                    <li><a href="#">Our Partners</a></li>
+                    <li><a href="#">Ethics and Compliance</a></li>
+                    <li><a href="#">Our Responsibility</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Connect with us</h4>
+                <div class="footer-socials">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
     </div>
-
-
-         <!-- Footer Section -->
-    <div class="footer">
-      <footer id="footer">
-          <div class="footer_header">
-              <h2>CAVAIR</h2>
-          </div>
-          <div class="footer_header">
-              <h2>Flights and Travel</h2>
-              <ul>
-                  <li>Travel Requirements</li>
-                  <li>Fly with Cavair</li>
-                  <li>Book Flights</li>
-                  <li>International flight deals</li>
-                  <li>Flight status</li>
-              </ul>
-          </div>
-          <div class="footer_header">
-              <h2>About Us</h2>
-              <ul>
-                  <li>Corporate Prifile</li>
-                  <li>News</li>
-                  <li>Our Partners</li>
-                  <li>Ethics and compliance</li>
-                  <li>Our Responsibility</li>
-              </ul>
-          </div>
-          <div class="footer_header">
-              <h2>Connect with Us</h2>
-              <p>Follow us on social media and <br> keep up with the latest news <br> and updates</p>
-              <a href="#" class="fa fa-facebook"></a>
-              <a href="#" class="fa fa-twitter"></a>
-              <a href="#" class="fa fa-instagram"></a>
-              <a href="#" class="fa fa-youtube"></a>
-          </div>
-
-      </footer>
-      <hr>
-      <p class="copy">&copy; 2025 Cav Zambia Airlines. All right reserved.</p>
-   </div>
+    <div class="footer-bottom">© 2025 Cav Zambia Airlines. All rights reserved.</div>
+</footer>
+      
 
     <!-- JavaScript -->
     <script src="js/home.js"></script>
