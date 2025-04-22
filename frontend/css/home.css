@@ -1,298 +1,1515 @@
-/* example on how to import style from another file into your css file */
-@import 'common.css';
-
-.fly{
+html, body {
+    background: linear-gradient(-15deg, #4C005E 42%, #2F0039 74%, #600075 100%);
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    min-height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+    height: 100vh;
     display: flex;
-  
     flex-direction: column;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    /* Enable dynamic movement via JS */
+    background-position: 0 0;
+    transition: background-position 0.2s linear;
+}
+
+/* Hero Section Styles */
+.hero-section {
+    position: relative;
+    width: 100vw;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    min-height: 80vh;
+    height: 80vh;
+    max-width: 100vw;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
     align-items: center;
-    margin-top: 55px;
+    justify-content: center;
+    box-sizing: border-box;
+    z-index: 1;
+    top: 0;
 }
 
-.fly h1{
-    font-size: 70px;
-    font-weight: 600;
-    color: rgb(255, 255, 255);
 
-   
-}
-
-.fly p{
-    font-size: 22px;
-    color: white;
-    font-weight:500 ;
-    margin-top: -50px;
-}
-
-.flight-card{
+.hero-bg-video {
     position: absolute;
-    left: 175px;
-    bottom: -150px;
-    width: 75%;
-    height: 270px;
-    background-color:white;
-    border-radius: 20px;
+    top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;
+    z-index: 1;
+}
+.hero-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(90deg, rgba(24,18,43,0.85) 0%, rgba(24,18,43,0.25) 100%);
     z-index: 2;
 }
-.list{
-    width: 60%;
-    height: 70px;
-    background-color:white;
-    box-shadow: 0 4px 6px rgba(0, 0,0, 0.3);
-    border-radius: 35px;
+.hero-content {
+    position: relative;
+    z-index: 3;
+    text-align: left;
+    max-width: 700px;
+    margin-left: 8vw;
+}
+.hero-title {
+    font-family: 'Oxygen', sans-serif;
+    font-size: 5.5rem;
+    color: #DD62FF;
+    font-weight: 700;
+    margin-bottom: 18px;
+    line-height: 1.08;
+    letter-spacing: -1px;
+}
+.hero-subtitle {
+    font-family: 'Oxygen', sans-serif;
+    font-size: 1.45rem;
+    color: #fff;
+    font-weight: 400;
+    margin-bottom: 0;
+    line-height: 1.28;
+}
+@media (max-width: 900px) {
+    .hero-title { font-size: 2.7rem; }
+    .hero-section { height: 320px; }
+    .hero-content { margin-left: 3vw; }
+}
+
+/* ===== Booking Card Styles ===== */
+.booking-card-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: -75px auto 44px auto;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 0;
+    font-family: 'Oxygen', Montserrat, Arial, sans-serif;
+}
+
+.booking-card, .booking-tabs, .booking-tab, .booking-tab-panel, .booking-form, .booking-field, .arrow-field, .booking-search-btn, .booking-row, .booking-tabs-container {
+    font-family: 'Oxygen', Montserrat, Arial, sans-serif !important;
+}
+
+.booking-tabs-container {
     position: absolute;
-    top: -35px;
-    left: 60px;
-    margin-bottom:7px;
-    
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    z-index: 2;
+    background: transparent;
+    pointer-events: none;
+    max-width: 800px;
 }
-.btn1{
-    color: purple;
+
+.booking-tabs {
+    pointer-events: auto;
+}
+
+.booking-tabs-container {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    left: 0;
+    margin-left: 0;
+    margin-bottom: -32px;
+    z-index: 2;
+    background: transparent;
+    width: 100%;
+    max-width: 900px;
+}
+
+.booking-tabs {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border: 2px solid #eae7df;
+    border-radius: 28px;
+    box-shadow: none;
+    padding: 8px 14px;
+    gap: 0;
+    position: relative;
+    min-width: 0;
+    white-space: nowrap;
+    width: auto;
+    max-width: 100%;
+    margin-left: 0;
+}
+
+.booking-tabs {
+    position: relative;
+    display: flex;
+    align-items: center;
+    left: 0;
+    margin-left: 36px;
+    margin-bottom: -26px;
+    z-index: 2;
+}
+
+.booking-tab {
+    display: flex;
+    align-items: center;
+    padding: 0 28px;
+    height: 44px;
+    border-radius: 22px;
+    border: none;
+    background: transparent;
+    color: #838383;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.08rem;
+    font-weight: 600;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    box-shadow: none;
+    outline: none;
+    cursor: pointer;
+    transition: color 0.18s, background 0.18s;
+    position: relative;
+}
+
+.booking-tab:not(.active):hover {
+    background: #f5eaff;
+    color: #7d24a7;
+}
+
+.booking-tab .tab-icon {
+    width: 22px;
+    height: 22px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.booking-tab.active {
+    background: #7d24a7;
+    color: #fff;
+    z-index: 3;
+    box-shadow: none;
+}
+
+.booking-tab.active .tab-icon {
+    filter: brightness(0) invert(1);
+}
+
+.booking-card {
+    width: 100%;
+    min-width: 0;
+    max-width: 800px;
+    background: #fff;
+    border-radius: 24px;
+    box-shadow: 0 2px 16px 0 rgba(38, 36, 61, 0.13);
+    padding: 52px 32px 28px 32px;
+    z-index: 1;
+    margin-top: 28px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    height: auto;
+    min-height: 0;
+    transition: height 0.35s cubic-bezier(.4,0,.2,1);
+}
+
+.booking-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.booking-form #tab-book .booking-row:first-of-type {
+    margin-bottom: 24px;
+}
+
+.booking-form #tab-book .booking-row:nth-of-type(2) {
+    margin-bottom: 32px;
+}
+
+.booking-form #tab-book .booking-search-row {
+    margin-top: 12px;
+}
+
+.booking-tab-panel {
+    width: 100%;
+    min-height: 140px;
+    margin: 0;
+    padding: 0;
+}
+
+.booking-field-wide {
+    flex: 1 1 0;
+    background: #eceae6;
+    border-radius: 12px;
+    border: 1.5px solid #DDDDDD;
+    padding: 0; /* Remove horizontal padding so input border stays inside */
+    margin: 0 8px 0 0;
+    display: flex;
+    align-items: center;
+    min-width: 200px;
+    max-width: 350px;
+    height: 66px;
+    position: relative;
+    font-family: 'Oxygen', Montserrat, Arial, sans-serif !important;
+    overflow: hidden; /* Prevent border overflow */
+}
+
+@media (max-width: 700px) {
+    .booking-row {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .booking-field-wide {
+        margin: 0 0 10px 0;
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+.booking-form select, .booking-form input {
+    font-size: 1.08rem;
+    font-family: 'Oxygen', Montserrat, Arial, sans-serif !important;
+    font-weight: 500;
+    color: #3c2e4d;
+    background: transparent;
+    border: none;
+    outline: none;
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* Align select dropdown text with floating label */
+#tab-book .booking-field select,
+#tab-book .booking-field-wide select {
+    padding-left: 18px !important;
+    padding-right: 24px;
+}
+
+
+#tab-book .booking-field,
+#tab-book .booking-field-wide,
+#tab-book .booking-label,
+#tab-book input,
+#tab-book select,
+#tab-status .booking-field-wide,
+#tab-status .booking-label,
+#tab-status input[type="date"] {
+
+    font-family: 'Oxygen', Montserrat, Arial, sans-serif !important;
+}
+
+#tab-book .booking-value,
+#tab-book input,
+#tab-book select,
+#tab-book .booking-date-input {
+    padding-top: 29px !important;
+    box-sizing: border-box;
+}
+
+#tab-status #flight-status-date {
+    margin-top: 26px;
+}
+
+/* Floating label styles for booking card (From/To fields) */
+#tab-book .from-field .booking-input:focus + .booking-floating-label,
+#tab-book .from-field .booking-input:not(:placeholder-shown) + .booking-floating-label,
+#tab-book .to-field .booking-input:focus + .booking-floating-label,
+#tab-book .to-field .booking-input:not(:placeholder-shown) + .booking-floating-label {
+    color: #888888;
+}
+#tab-book .from-field {
+    position: relative;
+}
+#tab-book .to-field {
+    position: relative;
+}
+
+#tab-book .from-field input.booking-input,
+#tab-book .to-field input.booking-input,
+#tab-manage .booking-field-wide input.booking-input,
+#tab-status .booking-field-wide input.booking-input {
+    width: 100%;
+    padding: 15px 0 10px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    background-color: transparent;
+    font-size: 16px;
+    font-family: 'Oxygen', Arial, sans-serif;
+    font-weight: 700;
+    transition: border-color 0.2s, border-bottom-width 0.2s;
+    height: 44px;
+}
+
+#tab-status .booking-field-wide input[type="date"] {
+    color: #6E0086;
+    font-weight: 700;
+    font-family: 'Oxygen', Arial, sans-serif;
+    border: none !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
+    height: 44px;
+    padding-top: 0;
+    padding-bottom: 0;
+    display: flex;
+    align-items: center;
+    line-height: 44px;
+    vertical-align: middle;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+#tab-status .booking-field-wide input[type="date"]:focus {
+    border: none !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
+    text-decoration: none !important;
+}
+#tab-status .booking-field-wide .booking-floating-label {
+    color: #888888;
+}
+
+#tab-book .from-field input.booking-input:focus,
+#tab-book .to-field input.booking-input:focus,
+#tab-manage .booking-field-wide input.booking-input:focus,
+#tab-status .booking-field-wide input.booking-input:focus {
+    border-bottom: 2px solid #6a0dad;
+}
+
+#tab-book .from-field .booking-floating-label,
+#tab-book .to-field .booking-floating-label,
+#tab-manage .booking-field-wide .booking-floating-label,
+#tab-status .booking-field-wide .booking-floating-label {
+    position: absolute;
+    left: 0;
+    top: 15px;
+    color: #999;
+    font-size: 16px;
+    transition: 0.2s ease all;
+    pointer-events: none;
+    z-index: 0;
+    font-family: 'Oxygen', Arial, sans-serif;
+    font-weight: 700;
+}
+#tab-book .from-field input.booking-input:focus ~ .booking-floating-label,
+#tab-book .from-field input.booking-input:not(:placeholder-shown) ~ .booking-floating-label,
+#tab-book .to-field input.booking-input:focus ~ .booking-floating-label,
+#tab-book .to-field input.booking-input:not(:placeholder-shown) ~ .booking-floating-label {
+    top: 0;
     font-size: 12px;
-    font-weight: bolder;
-    margin-left: 22px;
-    margin-top: 7.5px;
-    padding: 20px 40px;
-    border-radius: 30px;
-    background-color: white;
-    transition: .5s;
+    color: #b5b5b5 !important;
+}
+#tab-manage .booking-field-wide input.booking-input:focus ~ .booking-floating-label,
+#tab-manage .booking-field-wide input.booking-input:not(:placeholder-shown) ~ .booking-floating-label,
+#tab-status .booking-field-wide input.booking-input:focus ~ .booking-floating-label,
+#tab-status .booking-field-wide input.booking-input:not(:placeholder-shown) ~ .booking-floating-label {
+    top: 0;
+    font-size: 12px;
+    color: #6a0dad;
 }
 
-.btn1:hover{
-    background-color: purple;
-    color: white;
+/* Ensure underline/border is always inside field container */
+#tab-manage .booking-field-wide input.booking-input,
+#tab-status .booking-field-wide input.booking-input {
+    width: 100%;
+    padding: 15px 0 10px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    background-color: transparent;
+    font-size: 16px;
+    font-family: 'Oxygen', Arial, sans-serif;
+    font-weight: 700;
+    transition: border-color 0.2s, border-bottom-width 0.2s;
+    height: 44px;
+    box-sizing: border-box;
+    margin: 0;
+}
+#tab-manage .booking-field-wide input.booking-input:focus,
+#tab-status .booking-field-wide input.booking-input:focus {
+    border-bottom: 2px solid #6a0dad;
+    outline: none;
 }
 
-.form-box{
-  
+/* Floating label for all tabs */
+#tab-manage .booking-field-wide .booking-floating-label,
+#tab-status .booking-field-wide .booking-floating-label {
+    position: absolute;
+    left: 0;
+    top: 15px;
+    color: #999;
+    font-size: 16px;
+    transition: 0.2s ease all;
+    pointer-events: none;
+    z-index: 0;
+}
+#tab-manage .booking-field-wide input.booking-input:focus ~ .booking-floating-label,
+#tab-manage .booking-field-wide input.booking-input:not(:placeholder-shown) ~ .booking-floating-label,
+#tab-status .booking-field-wide input.booking-input:focus ~ .booking-floating-label,
+#tab-status .booking-field-wide input.booking-input:not(:placeholder-shown) ~ .booking-floating-label {
+    top: 0;
+    font-size: 12px;
+    color: #b5b5b5 !important;
+}
+
+
+/* Remove any default margin that could push border outside */
+#tab-manage .booking-field-wide,
+#tab-status .booking-field-wide {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+
+#tab-book .from-field .booking-floating-label,
+#tab-book .to-field .booking-floating-label,
+#tab-manage .booking-field-wide .booking-floating-label,
+#tab-status .booking-field-wide .booking-floating-label {
+    position: absolute;
+    left: 0;
+    top: 15px;
+    font-size: 16px;
+    color: #999;
+    font-weight: 700;
+    pointer-events: none;
+    transition: 0.2s cubic-bezier(.4,0,.2,1);
+    z-index: 3;
+    background: transparent;
+    padding-left: 0;
+    height: auto;
+    display: block;
+}
+
+#tab-book .from-field .booking-floating-label.active,
+#tab-book .to-field .booking-floating-label.active {
+    top: 0;
+    font-size: 12px;
+    color: #999;
+}
+
+
+#tab-book .from-field .booking-floating-label,
+#tab-book .to-field .booking-floating-label,
+#tab-manage .booking-field-wide .booking-floating-label,
+#tab-status .booking-field-wide .booking-floating-label {
+    position: absolute;
+    left: 18px;
+    top: 14px;
+    font-size: 1.08rem;
+    color: #b3b3b3;
+    font-weight: 700;
+    pointer-events: none;
+    transition: all 0.18s cubic-bezier(.4,0,.2,1);
+    z-index: 3;
+    background: transparent;
+}
+#tab-book .from-field input.booking-input:focus + .booking-floating-label,
+#tab-book .from-field input.booking-input:not(:placeholder-shown):not([value=""]) + .booking-floating-label,
+#tab-book .to-field input.booking-input:focus + .booking-floating-label,
+#tab-book .to-field input.booking-input:not(:placeholder-shown):not([value=""]) + .booking-floating-label {
+    top: -8px;
+    left: 16px;
+    font-size: 0.88rem;
+    color: #6E0086;
+    background: #f5f5f5;
+    padding: 0 4px;
+    border-radius: 4px;
+}
+
+#tab-book .from-field input.booking-input:focus + .booking-floating-label,
+#tab-book .from-field input.booking-input:not(:placeholder-shown):not([value=""]) + .booking-floating-label,
+#tab-book .to-field input.booking-input:focus + .booking-floating-label,
+#tab-book .to-field input.booking-input:not(:placeholder-shown):not([value=""]) + .booking-floating-label {
+    top: 7px;
+    left: 16px;
+    font-size: 0.88rem;
+    color: #6E0086;
+    background: #f5f5f5;
+    padding: 0 4px;
+    border-radius: 4px;
+}
+
+.booking-floating-label {
+    position: absolute;
+    left: 18px;
+    top: 29px;
+    font-size: 1.08rem;
+    color: #b3b3b3;
+    font-weight: 700;
+    pointer-events: none;
+    transition: all 0.18s cubic-bezier(.4,0,.2,1);
+    z-index: 3;
+    background: transparent;
+}
+.booking-field input.booking-input:focus + .booking-floating-label,
+.booking-field input.booking-input:not(:placeholder-shown):not([value=""]) + .booking-floating-label {
+    top: 7px;
+    left: 16px;
+    font-size: 0.88rem;
+    color: #6E0086;
+    background: #f5f5f5;
+    padding: 0 4px;
+    border-radius: 4px;
+}
+.booking-suggestions {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    width: 100%;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 4px 16px rgba(24,18,43,0.06);
+    max-height: 180px;
+    overflow-y: auto;
+    z-index: 10;
+    font-size: 1.01rem;
+    color: #3c2e4d;
+    display: none;
+}
+.booking-suggestions.active {
+    display: block;
+}
+.booking-suggestions .no-results {
+    padding: 11px 18px;
+    color: #b3b3b3;
+    font-style: italic;
+}
+
+#tab-book .trip-type-select {
+    padding-top: 16px !important;
+}
+
+/* Style trip type select dropdown options */
+.booking-form select.trip-type-select,
+.booking-form select.trip-type-select option,
+.booking-form select,
+.booking-form select option,
+.booking-select,
+.booking-select option {
+    color: #6E0086 !important;
+    font-weight: 700 !important;
+}
+
+.booking-date-input {
+    color: #6E0086 !important;
+    font-weight: 700 !important;
+    font-family: 'Oxygen', Montserrat, Arial, sans-serif !important;
+}
+
+.booking-form select.trip-type-select {
+    height: 40px;
+    min-height: 40px;
+    padding-top: 0;
+    padding-bottom: 0;
+    display: flex;
+    align-items: center;
+}
+
+
+.booking-field-wide input::placeholder {
+    color: #b1afa8;
+    opacity: 1;
+}
+.booking-manage-btn {
+    background: #99753d;
+    color: #fff;
+    border: none;
+    border-radius: 9px;
+    padding: 13px 32px;
+    font-family: 'Oxygen', Montserrat, Arial, sans-serif !important;
+    font-size: 1.18rem;
+    font-weight: 700;
+    cursor: pointer;
+    margin-left: 18px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    transition: background 0.16s;
+}
+.booking-manage-btn:hover {
+    background: #765627;
+}
+.calendar-icon {
+    width: 24px;
+    height: 24px;
+    margin-left: 8px;
+    opacity: 0.7;
+}
+
+.booking-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    margin-bottom: 0;
+}
+
+/* Book a flight spacing for main card */
+#tab-book .booking-row {
+    margin-bottom: 0;
+}
+#tab-book .booking-row:first-of-type {
+    margin-bottom: 24px;
+}
+#tab-book .booking-row:nth-of-type(2) {
+    margin-bottom: 32px;
+}
+#tab-book .booking-search-row {
+    margin-top: 12px;
+}
+
+.booking-field {
+    background: #f5f5f5;
+    border-radius: 10px;
+    border: 1.5px solid #DDDDDD;
+    padding: 0 18px;
+    font-size: 1.08rem;
+    font-weight: 500;
+    color: #3c2e4d;
+    min-width: 120px;
+    height: 66px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    transition: box-shadow 0.18s;
+    outline: none;
+    box-shadow: none;
+    font-family: 'Oxygen', Montserrat, Arial, sans-serif !important;
+}
+
+
+/* Trip type field: more compact width */
+.booking-row .booking-field:first-child {
+    min-width: 120px;
+    width: 140px;
+    max-width: 180px;
+}
+
+
+.booking-label {
+    font-family: 'Oxygen', Montserrat, Arial, sans-serif !important;
+    font-size: 0.82rem;
+    color: #b3b3b3;
+    font-weight: 600;
+    position: absolute;
+    top: 6px;
+    left: 12px;
+    right: auto;
+    margin-bottom: 0;
+    letter-spacing: 0.2px;
+    transition: color 0.18s;
+    text-align: left;
+    pointer-events: none;
+}
+
+
+.booking-value {
+    font-family: 'Oxygen', Montserrat, Arial, sans-serif !important;
+    font-size: 1.15rem;
+    color: #7d24a7;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.field-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 3px;
+    vertical-align: middle;
+}
+.arrow-field {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 44px;
+    min-width: 40px;
+    background: transparent;
+    padding: 0;
+    border: none !important;
+    box-shadow: none !important;
+    flex: 0 0 40px;
+}
+
+
+.arrow-icon {
+    display: block;
+    margin: 0 auto;
+    height: 36px;
+    width: auto;
+}
+
+.arrow-icon.small {
+    width: 28px;
+    height: 28px;
+}
+.booking-search-row {
     display: flex;
     justify-content: center;
-    margin-top: 70px;
+    margin-top: 18px;
 }
-select{
-    padding: 10px 40px;
-   background-color: lightgray;
-    border-radius: 7px;
-    margin-right: 7px;
-}
-.slt1{
-    padding: 10px 25px;
-}
-.slt2{
-    padding: 10px 25px;
-}
-input{
-    background-color: lightgray;
-    margin-left: 10px;
+.booking-search-btn {
+    background: #00a862;
+    color: #fff;
     border: none;
-    color: purple;
-    font-weight: bold;
-}
-.inp1{
-    padding: 10px 35px;
-    border-radius: 7px;
-}
-.inp2{
-    padding: 10px 35px;
-    border-radius: 7px;
-}
-
-.inp3{
-    padding: 10px 70px;
-    border-radius: 7px;
-    color: purple;
-    
-
-}
-input::placeholder{
-    color: purple;
-    font-weight: bold;
-}
-
-select,option{
-    color: purple;
-    font-weight: bold;
-}
-.inp4{
-    padding: 10px 70px;
-    border-radius: 7px;
-}
-.btn2{
-    padding: 20px 60px;
-    background-color: green;
-    color: white;
-    margin-left: 35%;
-    margin-top: 15px;
-}
-
-.btn2:hover{
-    background-color: darkgreen;
-    color: white;
-}
-
-.section{
-    width: 100%;
-    height: 1400px;
-    background-color: purple;
-}
-.form-row{
-    margin-bottom: 20px;
-
-}
-.flight-form{
-    margin-right: 40px;
-    
-}
-
-  .form-button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 8px;
-    color: white;
-    background-color: #00b359;
-    font-size: 16px;
+    border-radius: 9px;
+    padding: 13px 44px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.18rem;
+    font-weight: 700;
     cursor: pointer;
-    margin: 10px 6px 0 0;
-  }
- 
-  .form-control::placeholder {
-    color: gray;
-  } 
-  .btn-brown {
-    background-color: #996633;
-  }
-  .form-control {
-    flex: 1;
-    padding: 12px;
-    background: #f2f2f2;
-    border: none;
-    border-radius: 10px;
-    color: #58006c;
-    font-size: 15px;
-  }
- 
-  .form-row2 {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-bottom: 15px;
-  }
-  .manage-checkin{
-
-    display: none;
-
-  }
-  .form-section-content3{
-    display: none;
-
-  }
-
-
-  .carousel-container {
-    
-    text-align: center;
-    background:rgb(82, 1, 82);
-    color: white;
-    padding:2rem;
-    font-family:sans-serif;
-    height: 150vh;
-
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    transition: background 0.16s;
+}
+.booking-search-btn:hover {
+    background: #00864e;
+}
+@media (max-width: 1200px) {
+    .booking-card-container {
+        max-width: 98vw;
+        margin: -48px auto 12px auto;
+        padding-left: 0;
     }
-    
-    .carousel-container .highlight {
-    color: #ce7ef3;
-    border-bottom: 2px solid #cc5fff;
-    font-size: larger;
-    font-weight: bold;
-    
-    
-    }
-    .carousel-container h2{
-        margin-top: 250px;
-        font-size: 50px;
-    }
-
-    .carousel-container p{
-        margin-top: 0;
-        font-size: 25px;
-        
-    }
-
-    .carousel {
-     margin-top: 60px;    
-    display: flex;
-    gap: 1rem;
-    overflow-x: auto;
-    padding: 2rem 0;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-    }
-    .carousel::-webkit-scrollbar {
-    display:none;
-    }
-    .card {
-    flex: 0 0 auto;
-    width: 220px;
-    background: #1b0031;
-    border-radius: 12px;
-    overflow: hidden;
-    scroll-snap-align: start;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-    transition: transform 0.3s ease;
-    background-position: center;
-    }
-    .card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    }
-    .card .info {
-    padding: 1rem;
-    text-align: left;
-    }
-    .card h3 {
-    margin: 0;
-    color: #cc5fff;
-    }
-    .card p {
-    margin: 0.3rem 0 0;
-    font-size: 0.9rem;
-    }
-
-    .flight-schedule {
-        padding: 2rem;
-        background-color:rgb(82, 1, 82);
-        color: white;
-        font-family: sans-serif;
-        margin: 0;
-        height: 500px;
-        }
-        .flight-schedule h2 {
-        margin-bottom: 1.5rem;
-        color: white;
-        font-size: 2rem;
-        }
-        .flight-schedule table {
+    .booking-tabs-container {
+        position: static;
+        margin-left: 0;
+        max-width: 98vw;
         width: 100%;
-        border-collapse: collapse;
-        background-color: white;
-        color: #333;
-        border-radius: 12px;
-        overflow: hidden;
-        box-shadow: 0 0 10px rgba(0,0,0,0.2);
-        }
-        .flight-schedule thead {
-        background-color: #c719fc;
-        color: white;
-        }
-        .flight-schedule th,
-        .flight-schedule td {
-        padding: 1rem;
-        text-align: left;
-        }
-        .flight-schedule tbody tr:nth-child(even) {
-        background-color: #f4f4f4;
-        }
-        
-  
+    }
+    .booking-tabs {
+        min-width: 0;
+        width: 100%;
+        padding: 2px 0;
+    }
+    .booking-card {
+        min-width: 0;
+        max-width: 100vw;
+        padding: 18px 1vw 8px 1vw;
+        border-radius: 17px;
+        margin-top: 8px;
+    }
+}
+
+@media (max-width: 700px) {
+    .booking-card-container {
+        max-width: 100vw;
+        margin: -15px auto 4px auto;
+        padding-left: 0;
+    }
+    .booking-tabs-container {
+        position: static;
+        margin-bottom: -8px;
+        width: 100%;
+    }
+    .booking-tabs {
+        min-width: 0;
+        width: 100%;
+        padding: 1px 0;
+    }
+    .booking-card {
+        min-width: 0;
+        max-width: 100vw;
+        padding: 10px 1vw 4px 1vw;
+        border-radius: 10px;
+        margin-top: 4px;
+    }
+}
+
+@media (max-width: 700px) {
+    .booking-card-container {
+        max-width: 100vw;
+        margin: -40px auto 18px auto;
+        padding-left: 0;
+    }
+    .booking-tabs-container {
+        margin-bottom: -22px;
+    }
+    .booking-tabs {
+        min-width: 0;
+        width: 100%;
+        padding: 2px 0;
+    }
+    .booking-card {
+        min-width: 0;
+        max-width: 100vw;
+        padding: 10px 2vw 10px 2vw;
+        border-radius: 18px;
+    }
+}
+
+/* ===== End Booking Card Styles ===== */
+
+
+/* ===== Deals Section (No Carousel) ===== */
+.deals-section {
+    width: 100%;
+    background: transparent;
+    padding-bottom: 18px;
+    margin: 0 auto 0 auto;
+    padding: 0 0 60px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+.deals-header {
+    text-align: left;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto 18px auto;
+    padding-left: 32px;
+}
+.deals-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.3rem;
+    letter-spacing: -1px;
+    line-height: 1.1;
+}
+.deals-title-main {
+    font-family: 'Oxygen', Arial, sans-serif;
+    color: #fff;
+}
+.deals-title-lusaka {
+    font-family: 'Oxygen', Arial, sans-serif;
+    color: #DA55FF;
+    border-bottom: 4px solid #DA55FF;
+    padding-bottom: 2px;
+}
+
+.deals-subtitle {
+    font-family: 'Oxygen', Arial, sans-serif;
+    font-size: 1.1rem;
+    color: #ffffff;
+    margin-bottom: 24px;
+}
+
+
+/* Carousel */
+.deals-carousel {
+    max-width: 1200px;
+    margin: 0 auto -30px auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 350px;
+    width: 100%;
+    z-index: 2;
+}
+.deals-carousel-cards {
+    width: 100%;
+    height: 340px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.deals-carousel-card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 320px;
+    height: 340px;
+    background: none;
+    border-radius: 0;
+    box-shadow: none;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-end;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.7);
+    z-index: 1;
+    transition: transform 0.6s cubic-bezier(.4,0,.2,1), opacity 0.4s, z-index 0s;
+    pointer-events: none;
+}
+.deals-carousel-card.active {
+    opacity: 1;
+    z-index: 5;
+    transform: translate(-50%, -50%) scale(1);
+    pointer-events: auto;
+}
+.deals-carousel-card.left, .deals-carousel-card.right {
+    opacity: 0.93;
+    z-index: 4;
+    transform: translate(-110%, -50%) scale(0.85);
+    pointer-events: auto;
+}
+.deals-carousel-card.right {
+    transform: translate(10%, -50%) scale(0.85);
+}
+.deals-carousel-card.far-left, .deals-carousel-card.far-right {
+    opacity: 0.5;
+    z-index: 2;
+    transform: translate(-180%, -50%) scale(0.7);
+}
+.deals-carousel-card.far-right {
+    transform: translate(80%, -50%) scale(0.7);
+}
+
+.deals-carousel-card.left, .deals-carousel-card.right {
+    opacity: 0.93;
+    z-index: 4;
+    transform: translate(-110%, -50%) scale(0.85);
+    pointer-events: auto;
+}
+.deals-carousel-card.right {
+    transform: translate(10%, -50%) scale(0.85);
+}
+.deals-carousel-card.far-left, .deals-carousel-card.far-right {
+    opacity: 0.5;
+    z-index: 2;
+    transform: translate(-180%, -50%) scale(0.7);
+}
+.deals-carousel-card.far-right {
+    transform: translate(80%, -50%) scale(0.7);
+}
+.deals-carousel-card-image {
+    width: 100%;
+    height: 310px;
+    object-fit: cover;
+    display: block;
+    border-radius: 22px 22px 22px 22px;
+    position: relative;
+    z-index: 1;
+}
+.deals-carousel-card-type {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    right: 0;
+    margin-left: 18px;
+    margin-right: 18px;
+    width: fit-content;
+    background: #025A7D;
+    color: #fff;
+    font-family: 'Oxygen', Arial, sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 6px 18px;
+    border-radius: 9px;
+    box-shadow: 0 2px 8px rgba(44,0,60,0.16);
+    z-index: 4;
+    letter-spacing: 0.01em;
+    pointer-events: none;
+    display: none;
+    overflow: hidden;
+}
+.deals-carousel-card-type-left {
+    left: 18px;
+    right: auto;
+    margin-left: 0;
+}
+.deals-carousel-card-type-right {
+    right: 18px;
+    left: auto;
+    margin-right: 0;
+}
+
+
+.deals-carousel-card-type-left {
+    left: 18px;
+    right: auto;
+}
+.deals-carousel-card-type-right {
+    right: 18px;
+    left: auto;
+}
+
+
+
+.deals-carousel-card-info {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    width: 100%;
+    background: linear-gradient(0deg, rgba(0,0,0,0.82) 80%, rgba(255,255,255,0) 100%);
+    color: #fff;
+    padding: 24px 0 18px 24px;
+    border-radius: 0 0 22px 22px;
+    z-index: 3;
+    font-family: 'Oxygen', Arial, sans-serif;
+    font-size: 1.15rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+    box-sizing: border-box;
+}
+
+
+.deals-carousel-card-info.info-left {
+    align-items: flex-start;
+    text-align: left;
+    padding-left: 24px;
+    padding-right: 0;
+}
+.deals-carousel-card-info.info-right {
+    align-items: flex-end;
+    text-align: right;
+    padding-right: 24px;
+    padding-left: 0;
+}
+
+.deals-carousel-card-destination {
+    font-family: 'Oxygen', Arial, sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 3px;
+    color: #DA55FF;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.18);
+    letter-spacing: 0.01em;
+    line-height: 1.1;
+}
+
+.deals-carousel-card-price {
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: #fff;
+    margin-top: 2px;
+    letter-spacing: 0.01em;
+}
+.deals-carousel-card-price strong {
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-weight: 700;
+    color: #fff;
+}
+
+.deals-carousel-card-price {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #fff;
+    margin-top: 2px;
+    letter-spacing: 0.01em;
+}
+.deals-carousel-controls {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 18px;
+    gap: 24px;
+}
+.deals-carousel-arrow {
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    z-index: 10;
+    padding: 0;
+    transition: opacity 0.2s;
+    opacity: 0.85;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.deals-carousel-arrow:hover { opacity: 1; }
+.deals-carousel-slider-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+}
+.deals-carousel-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #fff;
+    opacity: 0.33;
+    transition: opacity 0.2s, background 0.2s;
+    cursor: pointer;
+}
+.deals-carousel-dot.active {
+    background: #DA55FF;
+    opacity: 0.95;
+}
+@media (max-width: 700px) {
+    .deals-carousel-cards { height: 180px; }
+    .deals-carousel-card { width: 92vw; min-width: 60vw; height: 170px; }
+    .deals-carousel-card-image { height: 110px; }
+    .deals-carousel-card-info { font-size: 0.95rem; padding: 12px 0 10px 12px; }
+    .deals-carousel-arrow { display: none; }
+    .deals-carousel-controls { gap: 10px; }
+    .deals-carousel-slider-dots { margin-top: 10px; }
+}
+
+/* ===== End Deals Section ===== */
+
+
+/* ===== Info Banner Section ===== */
+.deals-banner-section {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(44,0,60,0.10);
+    padding: 0 18px 0 0;
+    margin-bottom: 24px;
+    margin-top: 36px;
+    min-height: 60px;
+    max-width: 900px;
+    width: 96%;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    gap: 0;
+}
+.deals-banner-img {
+    height: 100px;
+    width: auto;
+    border-radius: 10px 0 0 10px;
+    margin-right: 18px;
+    flex-shrink: 0;
+    object-fit: cover;
+    display: block;
+}
+.deals-banner-text {
+    font-family: 'Oxygen', Arial, sans-serif;
+    color: #444;
+    font-size: 1.03rem;
+    font-weight: 400;
+    line-height: 1.4;
+    display: block;
+}
+
+@media (max-width: 600px) {
+    .deals-banner-section {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 10px 10px 10px;
+        min-height: unset;
+    }
+    .deals-banner-img {
+        margin: 0 0 12px 0;
+        border-radius: 10px 10px 0 0;
+        height: 48px;
+    }
+    .deals-banner-text {
+        font-size: 1rem;
+        text-align: center;
+    }
+}
+
+/* ===== End of Info Banner Section ===== */
+
+
+/* ===== Flight Schedules Section ===== */
+
+/* Fade animations for table rows */
+.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.7s, transform 0.7s;
+}
+.fade-out {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s, transform 0.7s;
+    pointer-events: none;
+}
+
+.flight-schedules-section {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto 36px auto;
+    background: transparent;
+    border-radius: 18px;
+    box-shadow: 0 2px 24px 0 rgba(44,0,60,0.14);
+    padding: 32px 24px 26px 24px;
+    color: #222;
+}
+
+.flight-schedules-header {
+    text-align: left;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto 18px auto;
+    padding-left: 32px;
+    /* width: 100%;
+    max-width: 1100px;
+    padding-left: 32px; */
+    /* box-sizing: border-box; */
+}
+.flight-schedules-title {
+    font-family: 'Oxygen', Arial, sans-serif;
+    font-size: 2.1rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 18px;
+    margin-left: -25px;
+    letter-spacing: -0.5px;
+    border: none;
+    text-align: left;
+}
+@media (max-width: 900px) {
+    .flight-schedules-header {
+        padding-left: 10px;
+    }
+    .flight-schedules-title {
+        font-size: 1.4rem;
+    }
+}
+
+.flight-schedules-table-container {
+    width: 100%;
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 4px 32px 0 rgba(44,0,60,0.10);
+    overflow-x: auto;
+    padding: 0;
+    margin-bottom: 10px;
+}
+
+.flight-schedules-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: #fff;
+    border-radius: 18px;
+    overflow: hidden;
+    margin-bottom: 0;
+    table-layout: auto;
+}
+
+.flight-schedules-table th {
+    background: #8A0CBF;
+    color: #fff;
+    font-family: 'Oxygen', Arial, sans-serif;
+    font-size: 1.01rem;
+    font-weight: 700;
+    padding: 14px 16px;
+    border: none;
+    text-align: left;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.flight-schedules-table td {
+    font-family: 'Oxygen', Arial, sans-serif;
+    color: #444;
+    font-size: 1.08rem;
+    padding: 15px 16px;
+    border: none;
+    background: #fff;
+    text-align: left;
+    word-break: break-word;
+    height: 48px;
+    transition: background 0.2s;
+}
+
+.flight-schedules-table tbody tr {
+    border-bottom: 1.5px solid #ede7f6;
+}
+.flight-schedules-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+/* Fade animation classes for JS */
+.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.7s, transform 0.7s;
+}
+.fade-out {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s, transform 0.7s;
+    pointer-events: none;
+}
+
+@media (max-width: 900px) {
+    .flight-schedules-section {
+        padding: 12px 4px 18px 4px;
+    }
+    .flight-schedules-title {
+        font-size: 1.4rem;
+    }
+    .flight-schedules-table th, .flight-schedules-table td {
+        padding: 10px 6px;
+        font-size: 0.98rem;
+    }
+}
+
+.flight-schedules-note {
+    display: block;
+    margin: 8px auto 0 auto;
+    text-align: center;
+    color: #fff !important;
+    font-family: 'Oxygen', Arial, sans-serif;
+    font-size: 1.08rem;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    max-width: 90%;
+    background: none;
+    z-index: 5;
+    position: relative;
+}
+.flight-schedules-note i {
+    color: #fff !important;
+    margin-right: 6px;
+    vertical-align: middle;
+}
+
+@media (max-width: 900px) {
+    .flight-schedules-note {
+        font-size: 0.97rem;
+        max-width: 100%;
+        padding: 0 8px;
+    }
+}
+
+.arrow, .flight-route-arrow {
+    color: #A01CB6 !important;
+    fill: #A01CB6 !important;
+    font-weight: 700;
+    font-size: 1.1em;
+    vertical-align: middle;
+}
+
+/* ===== End of Flight Schedules Section ===== */
+
+/* ===== Experience Cavair Section ===== */
+.experience-cavair-section {
+    background: linear-gradient(90deg, #2f0039 80%, #4c005e 100%);
+    border-radius: 24px;
+    margin: 48px auto 0 auto;
+    max-width: 1200px;
+    padding: 36px 32px 36px 32px;
+    box-shadow: 0 4px 32px 0 rgba(44,0,60,0.14);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+.experience-cavair-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 32px;
+}
+.experience-cavair-left {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+}
+.experience-cavair-title {
+    font-family: 'Oxygen', Arial, sans-serif;
+    font-size: 2.7rem;
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 18px;
+    letter-spacing: -1px;
+    line-height: 1.12;
+}
+.cavair-highlight {
+    color: #DA55FF;
+}
+.experience-cavair-desc {
+    font-family: 'Oxygen', Arial, sans-serif;
+    font-size: 1.18rem;
+    color: #fff;
+    font-weight: 400;
+    margin-bottom: 0;
+    margin-top: 0;
+    line-height: 1.38;
+}
+.experience-cavair-right {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+    justify-content: flex-end;
+    align-items: stretch;
+}
+.experience-cavair-card {
+    background: none;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 2px 16px rgba(44,0,60,0.19);
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    width: 100%;
+    max-width: 310px;
+    position: relative;
+}
+.experience-cavair-card-img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+    border-radius: 18px 18px 0 0;
+}
+.experience-cavair-card-caption {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    background: linear-gradient(0deg, rgba(0,0,0,0.77) 80%, rgba(255,255,255,0) 100%);
+    color: #fff;
+    padding: 24px 18px 18px 18px;
+    border-radius: 0 0 18px 18px;
+    z-index: 2;
+    font-family: 'Oxygen', Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    box-sizing: border-box;
+}
+.experience-cavair-card-title {
+    font-size: 1.18rem;
+    font-weight: 700;
+    margin-bottom: 3px;
+    color: #fff;
+    letter-spacing: 0.01em;
+    line-height: 1.12;
+}
+
+@media (max-width: 900px) {
+    .experience-cavair-section {
+        padding: 18px 4px;
+        margin: 28px 0 0 0;
+    }
+    .experience-cavair-container {
+        flex-direction: column;
+        gap: 18px;
+    }
+    .experience-cavair-title {
+        font-size: 1.6rem;
+    }
+    .experience-cavair-right {
+        flex-direction: column;
+        gap: 16px;
+    }
+    .experience-cavair-card-img {
+        height: 120px;
+    }
+    .experience-cavair-card {
+        max-width: 100%;
+    }
+}
+
+.section-divider {
+    width: 90px;
+    height: 3px;
+    background: #999;
+    border-radius: 32px;
+    margin: -10px auto -10px auto;
+    opacity: 1;
+    box-shadow: 0 1px 8px 0 rgba(0,0,0,0.10);
+}
+/* ===== End Experience Cavair Section ===== */
 
