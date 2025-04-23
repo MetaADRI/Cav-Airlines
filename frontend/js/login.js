@@ -35,9 +35,13 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(response => response.json()) // Parse JSON response
             .then(data => {
                 if (data.success) {
-                    // On successful login, redirect to user dashboard (HTML)
-                    // Redirect to the dashboard in the frontend directory
-window.location.href = '/CAV-Zambia-Airlines/frontend/user_dashboard.html';
+                    // Store user_id for booking compatibility
+                    if (data.user_id) {
+                        sessionStorage.setItem('user_id', data.user_id);
+                        localStorage.setItem('user_id', data.user_id);
+                    }
+                    sessionStorage.setItem('cavair_isLoggedIn', '1');
+                    window.location.href = '/CAV-Zambia-Airlines/frontend/home.html';
                 } else {
                     // On failed login, show error message in red below the button
                     messageDiv.textContent = data.message || 'Invalid email or password';

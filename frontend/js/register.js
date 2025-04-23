@@ -66,7 +66,9 @@ window.location.href = 'login.html';
                     messageDiv.textContent = data.message || 'Registration successful';
                     messageDiv.classList.add('success');
                     setTimeout(() => {
-                        window.location.href = '/CAV-Zambia-Airlines/frontend/user_dashboard.html';
+                        // Set sessionStorage to indicate user is logged in
+sessionStorage.setItem('cavair_isLoggedIn', '1');
+window.location.href = '/CAV-Zambia-Airlines/frontend/home.html';
                     }, 2000);
                 } else {
                     // Try to match backend error to a field

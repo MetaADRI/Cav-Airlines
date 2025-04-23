@@ -16,16 +16,17 @@ body {
 /* Left container with registration form */
 .register-container {
     flex: 1;
-    padding: 40px;
+    padding: 24px 40px 40px 40px; /* Reduce top padding to move content up */
     display: flex;
     flex-direction: column;
     background-color: #f9f9f9;
+    justify-content: flex-start;
 }
 
 /* Right container with background image */
 .image-container {
     flex: 1;
-    background-image: url('../assets/images/Login_\ Register_Pages/register_page_image.jpg');
+    background-image: url('../assets/images/Login and Register Pages/register_page_image.jpg');
     background-size: cover;
     background-position: center;
 }
@@ -43,6 +44,14 @@ form {
     background-color: #f2f2f2;
     padding: 30px;
     border-radius: 5px;
+}
+
+.register-card {
+    margin-top: 16px; /* Move card down slightly from the top */
+    display: flex;
+    flex-direction: column;
+    min-height: 80vh;
+    justify-content: flex-start;
 }
 
 /* Container for each form field with relative positioning for floating labels */
@@ -138,15 +147,17 @@ input::placeholder {
 
 /* CAVAIR banner at the bottom of the form section */
 .cavair-banner {
-    background-color: #6a0dad;
+    background: linear-gradient(90deg, #4b0980 0%, #9b2eea 100%);
     color: white;
+    font-family: 'Eras Bold ITC', 'Arial Black', Arial, sans-serif;
     text-align: center;
     padding: 20px;
     font-size: 24px;
     font-weight: bold;
     border-radius: 5px;
-    margin-top: auto; /* Pushes the banner to the bottom of the container */
+    margin-top: auto;
 }
+
 
 /* Error message below form fields */
 .field-error {

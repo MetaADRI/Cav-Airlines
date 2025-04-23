@@ -27,15 +27,27 @@
                 <a href="contact.html">Contact</a>
             </nav>
             <div class="header-icons">
-                <span class="icon translate-icon">
-                    <img src="assets/icons/translate-icon.svg" alt="Translate" />
+                <span style="position:relative; display:inline-block;">
+                    <span class="icon translate-icon" id="translate-trigger">
+                        <img src="assets/icons/translate-icon.svg" alt="Translate" />
+                    </span>
+                    <select id="language-select" class="header-language-select language-dropdown" aria-label="Translate site" style="display:none; min-width:140px; position:absolute; left:50%; transform:translateX(-50%); top:36px; z-index:3000;">
+                        <option value="en" selected>English</option>
+                        <option value="fr">Français</option>
+                        <option value="pt">Português</option>
+                        <option value="es">Español</option>
+                        <option value="ar">العربية</option>
+                        <option value="de">Deutsch</option>
+                        <option value="it">Italiano</option>
+                    </select>
                 </span>
-                <span class="icon-divider"></span>
+                <span class="header-divider" aria-hidden="true"></span>
                 <span class="icon search-icon">
                     <img src="assets/icons/search-icon.svg" alt="Search" />
                 </span>
+                <span style="display:inline-block; width:18px;"></span>
+                <span id="header-auth-slot"></span>
             </div>
-            <a href="login.html" class="header-login-btn">Login</a>
         </div>
     </header>
 
@@ -304,7 +316,7 @@
         </div>
     </section>
 
-    <div class="section-divider"></div>
+    <div class="section-divider"><hr></div>
 
     <!-- Experience Cavair Section -->
     <section class="experience-cavair-section">
@@ -332,6 +344,9 @@
 
     <!-- Footer -->
     <footer class="cav-footer">
+
+    <!-- Language translation functionality -->
+    <script src="js/translate.js"></script>
         <div class="footer-container">
             <a href="home.html" class="footer-logo">
                 <img src="assets/images/Cavair_Logo.png" alt="CAV Zambia Airlines Logo" />
@@ -368,7 +383,7 @@
         </div>
         <div class="footer-bottom">© 2025 Cav Zambia Airlines. All rights reserved.</div>
     </footer>
-    <script src="js/deals-carousel.js"></script>
     <script src="js/home.js"></script>
+    <script src="js/header-auth.js"></script>
 </body>
 </html>

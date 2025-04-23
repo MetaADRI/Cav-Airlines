@@ -48,7 +48,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         createUserSession($user);
         echo json_encode([
             'success' => true,
-            'message' => 'Login successful.'
+            'message' => 'Login successful.',
+            'user_id' => $user['user_id']
         ]);
         exit();
     } else {
