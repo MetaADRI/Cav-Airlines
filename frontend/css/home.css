@@ -291,8 +291,14 @@ html, body {
 /* Align select dropdown text with floating label */
 #tab-book .booking-field select,
 #tab-book .booking-field-wide select {
-    padding-left: 18px !important;
-    padding-right: 24px;
+    padding-left: -10px !important;
+    padding-right: -10px !important;
+    padding-top: 15px !important;
+    padding-bottom: 10px !important;
+    height: 44px !important;
+    line-height: 1.2;
+    vertical-align: middle;
+    box-sizing: border-box;
 }
 
 
