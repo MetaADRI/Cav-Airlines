@@ -1,4 +1,83 @@
 /* Header Styles */
+
+/* User Dropdown Styles */
+
+.header-divider {
+    display: inline-block;
+    width: 1.5px;
+    height: 24px;
+    background: #e3e3e3;
+    margin: 0 18px;
+    border-radius: 2px;
+    vertical-align: middle;
+    opacity: 0.65;
+    position: relative;
+    top: 5px;
+}
+
+.header-user-dropdown {
+    position: relative;
+    display: inline-block;
+}
+.header-user-icon {
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    border-radius: 50%;
+    transition: box-shadow 0.2s;
+    outline: none;
+}
+.header-user-icon:focus {
+    box-shadow: 0 0 0 2px #b400ff33;
+}
+.header-user-icon img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #fff3;
+    box-shadow: 0 1px 4px #0002;
+}
+.header-user-menu {
+    display: none;
+}
+.header-user-menu.show-menu {
+    display: block;
+
+    position: absolute;
+    right: 0;
+    top: 38px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 18px #0002;
+    min-width: 150px;
+    z-index: 10000;
+    overflow: hidden;
+    animation: dropdown-fadein 0.16s;
+}
+.header-user-menu a {
+    display: block;
+    padding: 12px 18px;
+    color: #222;
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 1px solid #eee;
+    transition: background 0.15s, color 0.15s;
+}
+.header-user-menu a:last-child {
+    border-bottom: none;
+}
+.header-user-menu a:hover {
+    background: #f5e6ff;
+    color: #b400ff;
+}
+.header-user-menu a#header-logout-btn {
+    color: #c00;
+}
+@keyframes dropdown-fadein {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
 .cav-header {
     position: fixed;
     top: 0;
@@ -16,6 +95,20 @@
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px); /* Safari support */
     box-shadow: 0 2px 12px 0 rgba(24,18,43,0.08);
+}
+
+/* Ensure nav area also gets blur and fallback color */
+.cav-header.scrolled .header-container {
+    background: rgba(0,0,0,0.01); /* Transparent so blur is visible, fallback for old browsers */
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+/* Fallback for browsers that do not support backdrop-filter */
+@supports not ((backdrop-filter: blur(12px)) or (-webkit-backdrop-filter: blur(12px))) {
+    .cav-header.scrolled {
+        background: #111 !important;
+    }
 }
 .header-container {
     display: flex;
@@ -70,16 +163,30 @@
 .header-icons {
     display: flex;
     align-items: center;
-    margin-left: 40px;
-    margin-right: 18px;
-    gap: 10px;
+    gap: 18px;
 }
 
 .icon {
     display: flex;
     align-items: center;
     padding: 0 4px;
-    margin-right: 16px;
+}
+
+.translate-icon {
+    border-radius: 50%;
+    transition: background 0.18s;
+}
+.translate-icon:hover {
+    background: #e369ff;
+}
+.translate-icon:hover img {
+    filter: brightness(10) invert(1);
+}
+
+.icon img {
+    width: 22px;
+    height: 22px;
+    filter: brightness(0) invert(1);
 }
 
 .icon img {
