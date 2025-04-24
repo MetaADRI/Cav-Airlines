@@ -1,196 +1,263 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- Global styles -->
+  <link rel="stylesheet" href="css/services.css">
+  
+  <!-- Fonts and icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://kit.fontawesome.com/d7280c9e9b.js" crossorigin="anonymous"></script>
+  
+  <title>CAVAIR - Services</title>
 
-    <!-- This is for the global styles shared across all pages -->
-    
-    <link rel="stylesheet" href="css/services.css">
+  <!-- Hamburger Menu Styles -->
+  <style>
+    .hamburger {
+      display: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #333;
+      margin-left: auto;
+      padding: 0 1rem;
+      transition: transform 0.3s ease;
+    }
 
-    <!--This is for the styles specific to the home page -->
-    
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://kit.fontawesome.com/d7280c9e9b.js" crossorigin="anonymous"></script>
-    <title>CAVAIR - Home</title>
-  </head>
-  <body>
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      background-color: #f4f4f4;
+      position: absolute;
+      width: 100%;
+      top: 80px;
+      left: 0;
+      z-index: 1000;
+      padding: 1rem 0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
 
+    .mobile-nav a {
+      padding: 1rem;
+      text-decoration: none;
+      color: #333;
+      transition: background-color 0.3s ease;
+    }
 
+    .mobile-nav a:hover {
+      background-color: #ddd;
+    }
 
-     <!-- Header -->
-     <header class="cav-header" id="cav-header">
-        <div class="header-container">
-            <a href="home.html" class="header-logo">
-                <img src="assets/images/Cavair_Logo.png" alt="CAV Zambia Airlines Logo" />
-            </a>
-            <nav class="header-nav">
-                <a href="home.html">Home</a>
-                <a href="booking.html">Booking</a>
-                <a href="services.html">Services</a>
-                <a href="about_us.html">About Us</a>
-                <a href="contact.html">Contact</a>
-            </nav>
-            <div class="header-icons">
-                <span class="icon translate-icon">
-                    <img src="assets/icons/translate-icon.svg" alt="Translate" />
-                </span>
-                <span class="icon-divider"></span>
-                <span class="icon search-icon">
-                    <img src="assets/icons/search-icon.svg" alt="Search" />
-                </span>
-            </div>
-            <a href="login.html" class="header-login-btn">Login</a>
+    .mobile-nav.show {
+      display: flex;
+    }
+
+    .hamburger.active i {
+      transform: rotate(90deg);
+    }
+
+    /* Hide navbar when scrolled down */
+    .scrolled {
+      transform: translateY(-100%);
+      transition: transform 0.3s ease;
+    }
+
+    /* Ensure navbar stays visible when scrolling up */
+    .header-container {
+      position: relative;
+      z-index: 1001;
+    }
+
+    @media (max-width: 768px) {
+      .header-nav,
+      .header-login-btn {
+        display: none;
+      }
+
+      .hamburger {
+        display: block;
+      }
+    }
+
+    .no-scroll {
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="cav-header" id="cav-header">
+    <div class="header-container">
+      <a href="home.html" class="header-logo">
+        <img src="assets/images/Cavair_Logo.png" alt="CAV Zambia Airlines Logo" />
+      </a>
+      <nav class="header-nav">
+        <a href="home.html">Home</a>
+        <a href="booking.html">Booking</a>
+        <a href="services.html">Services</a>
+        <a href="about_us.html">About Us</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="header-icons">
+        <span class="icon translate-icon">
+          <img src="assets/icons/translate-icon.svg" alt="Translate" />
+        </span>
+        <span class="icon-divider"></span>
+        <span class="icon search-icon">
+          <img src="assets/icons/search-icon.svg" alt="Search" />
+        </span>
+        <div class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <i class="fas fa-bars"></i>
         </div>
-    </header>
-           
-        
-          
-         <!--This is the text for fly with us -->
-         <div class="fly">
-             <h1>Experience Comfort</h1>
-             <p class="first-para"> With Our Top of Line Service and Hospitality</p>
-         </div>
-         <div class="plane-img">
+      </div>
+      <a href="login.html" class="header-login-btn">Login</a>
+    </div>
+  </header>
 
-         </div>    
-  
-        <hr>
-  
-  <!--The Section for the other part-->
-  
-    <h1 class="fly-2">Book with us for exclusive perks</h1>
-    <p>Experience greater freedom and flexibility by Booking directly with Cavair. Manage your booking<br>
-       effortlessly or reach out to us anytime. We're here for you every step of the journey</p>
-       <div class="div-box">
-        <div class="box-1">
-            <i class="fas fa-gifts"></i>
-            <h2>Make every mile count</h2>
-            <p>Earn and spend Cavair Guest Miles on<br>your next adventure.</p>
-        </div>
+  <!-- Mobile Navigation -->
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="home.html">Home</a>
+    <a href="booking.html">Booking</a>
+    <a href="services.html">Services</a>
+    <a href="about_us.html">About Us</a>
+    <a href="contact.html">Contact</a>
+    <a href="login.html">Login</a>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="fly">
+      <h1>Experience Comfort</h1>
+      <p class="first-para">With Our Top of Line Service and Hospitality</p>
+    </div>
+    <div class="plane-img"></div>
+    <hr>
+
+    <section class="booking-perks">
+      <h1 class="fly-2">Book with us for exclusive perks</h1>
+      <p>Experience greater freedom and flexibility by Booking directly with Cavair...</p>
+      <div class="div-box">
+        <div class="box-1"><i class="fas fa-gifts"></i><h2>Make every mile count</h2><p>Earn and spend...</p></div>
         <div class="box-2"></div>
-        <div class="box-3">
-            <i class="far fa-credit-card"></i>
-            <h2>Pay your way</h2>
-            <p>Pick the option that suits you best.</p>
-        </div>
+        <div class="box-3"><i class="far fa-credit-card"></i><h2>Pay your way</h2><p>Pick the option...</p></div>
         <div class="box-4"></div>
-        <div class="box-5">
-            <i class="fas fa-tags"></i>
-            <h2>Get the best deals around</h2>
-            <p>exclusive discounts you won't see<br>anywhere else.</p>
-        </div>
+        <div class="box-5"><i class="fas fa-tags"></i><h2>Get the best deals around</h2><p>Exclusive discounts...</p></div>
         <div class="box-6"></div>
-    </div>
+      </div>
+    </section>
 
-    
-
-    <!-- These are the Codes for the Discover Section-->
-    <div class="discover-section">
-        <div class="part-1">
-            <div class="last-last">
-                <h1>Discover</h1>
-            <p class="para-1">No matter your<br>destination, 
-            we'll get you there.<br>Our extensive network covers 
-            over 50<br> locations across Africa,<br>Asia, Europe, 
-            the Middle<br>East, and North America</p>
-
-            </div>
-
-            <hr>
-
+    <section class="discover-section">
+      <div class="part-1">
+        <div class="last-last">
+          <h1>Discover</h1>
+          <p class="para-1">No matter your destination, we'll get you there...</p>
         </div>
-        
-        <!-- These are the Codes for the Lines-->
-    
-
-
-        <div class="part-2">
-
-            <h1>International</h1>
-            <hr>
-            <p class="para-2">From the metropolis of Doha to the aurora of Norway, 
-                our global network connects<br>you to 20+ destinations. 
-                With seamless services to your next destination, we're<br>redefining 
-                what it means to fly.</p>
-
-            <div class="new-div-box">
-                <div class="new-box-1">
-                    <p>Doha</p>
-                </div>
-                <div class="new-box-2">
-                    <p>Oslo</p>
-                </div>
-                <div class="new-box-3">
-                    <p>Bali</p>
-                </div>
-            </div>
-
-
-            <button class="book-btn">Book Now</button>
-
+        <hr>
+      </div>
+      <div class="part-2">
+        <h1>International</h1><hr>
+        <p class="para-2">From the metropolis of Doha to the aurora of Norway...</p>
+        <div class="new-div-box">
+          <div class="new-box-1"><p>Doha</p></div>
+          <div class="new-box-2"><p>Oslo</p></div>
+          <div class="new-box-3"><p>Bali</p></div>
         </div>
+        <button class="book-btn">Book Now</button>
+      </div>
+    </section>
 
-    </div>
+    <section class="livingstone-section">
+      <div class="last-part">
+        <div class="sec-1">
+          <h2>Livingstone</h2>
+          <p>Elevate your journey with an adventurous stop...</p>
+          <a href="#">Explore</a>
+        </div>
+        <div class="sec-2"></div>
+      </div>
+    </section>
+  </main>
 
-        <!-- These are the Codes for the Livingstone  Section-->
-
-    <div class="last-part">
-            <div class="sec-1">
-                <h2>Livingstone</h2>
-                <p>Elevate your journey with an adventurous stop in Livingstone to experience<br>
-                    the mighty Victoria Falls. Enjoy a complimentary two-night stay in one of<br>
-                    the city's finest hotels</p>
-                    <a href="#">Explore</a>
-            </div>
-            <div class="sec-2">        
-            </div>
-    </div>
-
-   
-
- <!-- Footer -->
- <footer class="cav-footer">
+  <!-- Footer -->
+  <footer class="cav-footer">
     <div class="footer-container">
-        <a href="home.html" class="footer-logo">
-            <img src="assets/images/Cavair_Logo.png" alt="CAV Zambia Airlines Logo" />
-        </a>
-        <div class="footer-columns">
-            <div class="footer-col">
-                <h4>Flights and Travel</h4>
-                <ul>
-                    <li><a href="#">Travel Requirements</a></li>
-                    <li><a href="#">Why Cavair</a></li>
-                    <li><a href="#">International Flights</a></li>
-                    <li><a href="#">Flight Deals</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>About us</h4>
-                <ul>
-                    <li><a href="#">Corporate Profile</a></li>
-                    <li><a href="#">Our Partners</a></li>
-                    <li><a href="#">Ethics and Compliance</a></li>
-                    <li><a href="#">Our Responsibility</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Connect with us</h4>
-                <div class="footer-socials">
-                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
-                </div>
-            </div>
+      <a href="home.html" class="footer-logo">
+        <img src="assets/images/Cavair_Logo.png" alt="CAV Zambia Airlines Logo" />
+      </a>
+      <div class="footer-columns">
+        <div class="footer-col">
+          <h4>Flights and Travel</h4>
+          <ul>
+            <li><a href="#">Travel Requirements</a></li>
+            <li><a href="#">Why Cavair</a></li>
+            <li><a href="#">International Flights</a></li>
+            <li><a href="#">Flight Deals</a></li>
+          </ul>
         </div>
+        <div class="footer-col">
+          <h4>About us</h4>
+          <ul>
+            <li><a href="#">Corporate Profile</a></li>
+            <li><a href="#">Our Partners</a></li>
+            <li><a href="#">Ethics and Compliance</a></li>
+            <li><a href="#">Our Responsibility</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Connect with us</h4>
+          <div class="footer-socials">
+            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="footer-bottom">© 2025 Cav Zambia Airlines. All rights reserved.</div>
-</footer>
-      
+  </footer>
 
-    <!-- JavaScript -->
-    <script src="js/home.js"></script>
-  </body>
+  <!-- JS -->
+  <script>
+    // Add toggle for hamburger icon animation
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+
+    hamburger.addEventListener('click', function() {
+      this.classList.toggle('active');
+      mobileNav.classList.toggle('show');
+    
+      // Prevent body scroll when menu is open
+      document.body.classList.toggle('no-scroll');
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!hamburger.contains(e.target) && !mobileNav.contains(e.target)) {
+        hamburger.classList.remove('active');
+        mobileNav.classList.remove('show');
+        document.body.classList.remove('no-scroll');
+      }
+    });
+
+    // Hide navbar when scrolling down, show when scrolling up
+    let lastScrollTop = 0;
+    const navbar = document.querySelector('.cav-header');
+    window.addEventListener('scroll', function() {
+      let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+      if (currentScroll > lastScrollTop) {
+        navbar.classList.add('scrolled'); // Hide navbar on scroll down
+      } else {
+        navbar.classList.remove('scrolled'); // Show navbar on scroll up
+      }
+
+      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // Reset scroll position
+    });
+  </script>
+
+</body>
 </html>
