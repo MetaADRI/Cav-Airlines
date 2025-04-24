@@ -1,0 +1,26 @@
++---------------------------------------------------------------+
+| Accessing the website through XAMPP's Localhost: Instructions |
++---------------------------------------------------------------+
+
+These are instructions for you to access the website and experience the backend functionality
+
+DO THIS ONLY ONCE, THE FIRST TIME!
+----------------------------------
+1. Make a copy of the repo's root folder (CAV-Zambia-Airlines in this case) on your PC and place it in your `C:\xampp\htdocs`
+2. Start XAMPP by running the `xampp-control.exe` file (Windows) and open the Shell on the right side XAMPP's control panel.
+3. If you installed XAMPP without customizing credentials, enter this command into the open shell terminal:
+    `-> [ mysql -u root -p ] and press enter. If you see an 'Enter Password: ', just press enter again.
+
+    # Note: If you've setup your XAMPP with credentials different from the ones the default installation gives, 
+    you'll need to replace the 'root' with your user name instead, and on the 'Enter password: ' you must enter your password.
+4. After gaining access to the DBMS, you must copy all the contents of the 'group2_cavair_db_setup.sql' in the backend folder
+    and paste them into the shell terminal. If you receive no errors, then you've successfully setup the database.
+
+
+DO THIS EVERY TIME YOU WANT TO ACCESS THE WEBSITE WITH BACKEND FUNCTIONALITY!
+-----------------------------------------------------------------------------
+5. Start the `Apache` and `MySQL` services in XAMPP. Make sure these services are installed. You can easily install them by 
+    just checking the box besides them under 'Module Services' and clicking 'Yes'. The boxes will have a green checkmark when installed
+6. Open a web browser and navigate to `http://localhost/CAV-Zambia-Airlines/frontend/home.html`
+
+The website should be accessible through your browser with backend functionality with all instructions followed.
