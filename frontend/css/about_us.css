@@ -39,8 +39,8 @@ html, body {
     right: 50%;
     margin-left: -50vw;
     margin-right: -50vw;
-    min-height: 560px;
-    height: 560px;
+    min-height: 140px;
+    height: 420px;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -148,36 +148,6 @@ html, body {
     display: block;
     margin: 0 auto;
 }
-
-
-/* Hero section full width and booking style */
-.about-hero-section {
-    width: 100vw;
-    min-height: 330px;
-    height: 330px;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
-    background: linear-gradient(-59deg, #6E0086 0%, #B400FF 100%);
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    z-index: 1;
-}
-.about-hero-content h1 {
-    font-size: 3rem;
-    font-weight: 700;
-    margin-bottom: 10px;
-    letter-spacing: -1px;
-}
-.about-hero-content p {
-    font-size: 1.15rem;
-    max-width: 700px;
-    color: #f4e0ff;
-    margin: 0;
-}
-
 
 .about-row {
     display: flex;
