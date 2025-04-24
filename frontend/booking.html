@@ -9,8 +9,99 @@
     <link href="https://fonts.googleapis.com/css?family=Oxygen:400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/booking.css">
-</head>
-<body>
+    <style>
+        /* Default Header Nav */
+        .header-nav {
+          display: flex;
+          gap: 1rem;
+          align-items: center;
+        }
+      
+        /* Hamburger Styles */
+        .hamburger {
+          display: none;
+          cursor: pointer;
+          flex-direction: column;
+          gap: 4px;
+          background: none;
+          border: none;
+          padding: 0.5rem;
+        }
+      
+        .hamburger div {
+          width: 25px;
+          height: 3px;
+          background-color: white;
+          transition: all 0.3s ease;
+        }
+      
+        /* Active state for hamburger */
+        .hamburger.active div:nth-child(1) {
+          transform: rotate(45deg) translate(5px, 5px);
+        }
+        .hamburger.active div:nth-child(2) {
+          opacity: 0;
+        }
+        .hamburger.active div:nth-child(3) {
+          transform: rotate(-45deg) translate(5px, -5px);
+        }
+      
+        /* Responsive for Mobile */
+        @media (max-width: 768px) {
+          .header-nav {
+            display: none;
+            flex-direction: column;
+            position: fixed;
+            top: 70px;
+            right: 0;
+            background-color: #1b103f;
+            padding: 1rem;
+            width: 200px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            z-index: 999;
+          }
+      
+          .header-nav.show {
+            display: flex;
+          }
+      
+          .hamburger {
+            display: flex;
+          }
+        }
+      
+        /* Navbar Hide on Scroll */
+        .cav-header {
+          position: sticky;
+          top: 0;
+          background-color: #261447;
+          z-index: 1000;
+          transition: top 0.3s;
+        }
+        /* Mobile-specific styles */
+@media (max-width: 768px) {
+  .header-nav {
+    display: none !important; /* always hide by default */
+    flex-direction: column;
+    position: fixed;
+    top: 70px;
+    right: 0;
+    background-color: #1b103f;
+    padding: 1rem;
+    width: 200px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    z-index: 999;
+  }
+
+  .header-nav.show {
+    display: flex !important;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
+      </style>
     <!-- Header  -->
     <header class="cav-header" id="cav-header">
         <div class="header-container">
@@ -46,8 +137,16 @@
                 <span id="header-auth-slot"></span>
             </div>
             
+            <!-- Hamburger Button -->
+            <button class="hamburger" aria-label="Toggle navigation">
+                <div></div>
+                <div></div>
+                <div></div>
+            </button>
         </div>
     </header>
+<body>
+
     <!-- Hero Section -->
     <section class="booking-hero">
         <div class="booking-hero-content">
@@ -227,5 +326,54 @@
     <script src="js/booking.js"></script>
     <script src="js/booking-ajax.js"></script>
     <script src="js/header-auth.js"></script>
+    <script>
+        // Hamburger Menu Functionality
+        const hamburger = document.querySelector('.hamburger');
+        const nav = document.querySelector('.header-nav');
+
+        hamburger.addEventListener('click', () => {
+            // Toggle hamburger animation
+            hamburger.classList.toggle('active');
+            // Toggle navigation visibility
+            nav.classList.toggle('show');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !nav.contains(e.target)) {
+                hamburger.classList.remove('active');
+                nav.classList.remove('show');
+            }
+        });
+
+        // Hide navbar on scroll down
+        let lastScrollTop = 0;
+        const header = document.getElementById('cav-header');
+
+        window.addEventListener('scroll', function () {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            if (scrollTop > lastScrollTop) {
+                // Scroll down
+                header.style.top = "-100px";
+                // Close menu if open
+                hamburger.classList.remove('active');
+                nav.classList.remove('show');
+            } else {
+                // Scroll up
+                header.style.top = "0";
+            }
+            lastScrollTop = scrollTop;
+        });
+
+        // Close menu on resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                hamburger.classList.remove('active');
+                nav.classList.remove('show');
+            }
+        });
+      </script>
+      
 </body>
 </html>
