@@ -1,47 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- This is for the global styles shared across all pages -->
     <link rel="stylesheet" href="css/common.css" />
-
-    <!--This is for the styles specific to the home page -->
-   <link rel="stylesheet" href="css/about_us.css" />
+    <link rel="stylesheet" href="css/about_us.css" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://kit.fontawesome.com/d7280c9e9b.js" crossorigin="anonymous"></script>
-    <title>CAVAIR - Home</title>
-  </head>
+    <title>CAVAIR - About Us</title>
+    <style>
+        /* Header Styles */
+        .cav-header {
+            background: #261447;
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: top 0.3s;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .header-nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 4px 0;
+            transition: all 0.3s ease;
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .header-nav {
+                display: none;
+                position: fixed;
+                top: 70px;
+                right: 0;
+                background: #1b103f;
+                flex-direction: column;
+                width: 200px;
+                padding: 1rem;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            }
+
+            .header-nav.show {
+                display: flex;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .hamburger.active div:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+            .hamburger.active div:nth-child(2) {
+                opacity: 0;
+            }
+            .hamburger.active div:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -5px);
+            }
+        }
+
+        /* Content Section */
+        .about-section {
+            margin-top: 100px;
+            padding: 2rem;
+        }
+
+        /* Responsive Content */
+        @media (max-width: 768px) {
+            .Us, .section, .story-section, .mission-section {
+                padding: 1rem;
+                text-align: center;
+            }
+            
+            p {
+                font-size: 1rem;
+                line-height: 1.5;
+            }
+            
+            .image, .image-2, .image-3, .image-4 {
+                width: 100%;
+                margin: 1rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Single Navigation Bar -->
+    <header class="cav-header" id="cav-header">
+        <div class="header-container">
+            <a href="home.html" class="header-logo">
+                <img src="assets/images/Cavair_Logo.png" alt="CAV Zambia Airlines Logo" />
+            </a>
+            <nav class="header-nav">
+                <a href="home.html">Home</a>
+                <a href="booking.html">Booking</a>
+                <a href="services.html">Services</a>
+                <a href="about_us.html" class="active">About Us</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <button class="hamburger" aria-label="Toggle navigation">
+                <div></div>
+                <div></div>
+                <div></div>
+            </button>
+        </div>
+    </header>
+
   <body>
      <!--This is the Hero Section-->
  <div class="about-section">
-   <!-- Header -->
-   <header class="cav-header" id="cav-header">
-    <div class="header-container">
-        <a href="home.html" class="header-logo">
-            <img src="assets/images/Cavair_Logo.png" alt="CAV Zambia Airlines Logo" />
-        </a>
-        <nav class="header-nav">
-            <a href="home.html">Home</a>
-            <a href="booking.html">Booking</a>
-            <a href="services.html">Services</a>
-            <a href="about_us.html">About Us</a>
-            <a href="contact.html">Contact</a>
-        </nav>
-        <div class="header-icons">
-            <span class="icon translate-icon">
-                <img src="assets/icons/translate-icon.svg" alt="Translate" />
-            </span>
-            <span class="icon-divider"></span>
-            <span class="icon search-icon">
-                <img src="assets/icons/search-icon.svg" alt="Search" />
-            </span>
-        </div>
-        <a href="login.html" class="header-login-btn">Login</a>
-    </div>
-</header>
+
    
  </div> 
           <!--This is the text for About Us -->
@@ -105,8 +204,6 @@
 
              <div class="image-4" class="fade-in-from-below"></div>
              </div>
-
-             <div></div>
                  
    <!-- Footer -->
    <footer class="cav-footer">
@@ -146,6 +243,31 @@
     </div>
     <div class="footer-bottom">© 2025 Cav Zambia Airlines. All rights reserved.</div>
 </footer>
+<script>
+  const hamburger = document.querySelector('.hamburger');
+  const nav = document.querySelector('.header-nav');
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    nav.classList.toggle('show');
+  });
+
+  // Optional: Hide menu when scrolling
+  let lastScrollTop = 0;
+  const header = document.querySelector('.cav-header');
+  window.addEventListener('scroll', () => {
+    let scrollTop = window.scrollY || document.documentElement.scrollTop;
+    if (scrollTop > lastScrollTop) {
+      header.style.top = "-100px"; // hide on scroll down
+      nav.classList.remove('show'); // hide nav when scrolling
+      hamburger.classList.remove('active');
+    } else {
+      header.style.top = "0";
+    }
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+  });
+</script>
+
 
 </body>
 </html>       
