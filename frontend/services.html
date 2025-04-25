@@ -13,77 +13,119 @@
   <script src="https://kit.fontawesome.com/d7280c9e9b.js" crossorigin="anonymous"></script>
   
   <title>CAVAIR - Services</title>
+<style>
+  /* --- Header Styles --- */
+.cav-header {
+  background: #261447;
+  padding: 1rem 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  transition: top 0.3s;
+}
 
-  <!-- Hamburger Menu Styles -->
-  <style>
-    .hamburger {
-      display: none;
-      font-size: 1.5rem;
-      cursor: pointer;
-      color: #333;
-      margin-left: auto;
-      padding: 0 1rem;
-      transition: transform 0.3s ease;
-    }
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
 
-    .mobile-nav {
-      display: none;
-      flex-direction: column;
-      background-color: #f4f4f4;
-      position: absolute;
-      width: 100%;
-      top: 80px;
-      left: 0;
-      z-index: 1000;
-      padding: 1rem 0;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
+/* Navigation Links */
+.header-nav {
+  display: flex;
+  gap: 2rem;
+}
 
-    .mobile-nav a {
-      padding: 1rem;
-      text-decoration: none;
-      color: #333;
-      transition: background-color 0.3s ease;
-    }
+.header-nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
 
-    .mobile-nav a:hover {
-      background-color: #ddd;
-    }
+/* --- Hamburger Icon --- */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
 
-    .mobile-nav.show {
-      display: flex;
-    }
+.hamburger div {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  margin: 4px 0;
+  transition: all 0.3s ease;
+}
 
-    .hamburger.active i {
-      transform: rotate(90deg);
-    }
+/* --- Mobile Navigation --- */
+@media (max-width: 768px) {
+  .header-nav {
+    display: none;
+    position: fixed;
+    top: 70px;
+    right: 0;
+    background: #1b103f;
+    flex-direction: column;
+    width: 200px;
+    padding: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
 
-    /* Hide navbar when scrolled down */
-    .scrolled {
-      transform: translateY(-100%);
-      transition: transform 0.3s ease;
-    }
+  .header-nav.show {
+    display: flex;
+  }
 
-    /* Ensure navbar stays visible when scrolling up */
-    .header-container {
-      position: relative;
-      z-index: 1001;
-    }
+  .hamburger {
+    display: block;
+  }
 
-    @media (max-width: 768px) {
-      .header-nav,
-      .header-login-btn {
-        display: none;
-      }
+  .hamburger.active div:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
 
-      .hamburger {
-        display: block;
-      }
-    }
+  .hamburger.active div:nth-child(2) {
+    opacity: 0;
+  }
 
-    .no-scroll {
-      overflow: hidden;
-    }
+  .hamburger.active div:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+}
+
+/* --- No Scroll When Menu Open --- */
+.no-scroll {
+  overflow: hidden;
+}
+
+/* --- Page-Specific Section Styling --- */
+.services-section {
+  margin-top: 100px;
+  padding: 2rem;
+}
+
+@media (max-width: 768px) {
+  .services-section {
+    padding: 1rem;
+    text-align: center;
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .service-image {
+    width: 100%;
+    margin: 1rem 0;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -222,42 +264,18 @@
 
   <!-- JS -->
   <script>
-    // Add toggle for hamburger icon animation
-    const hamburger = document.getElementById('hamburger');
-    const mobileNav = document.getElementById('mobileNav');
+  document.addEventListener("DOMContentLoaded", function () {
+    const hamburger = document.querySelector(".hamburger");
+    const nav = document.querySelector(".header-nav");
+    const body = document.body;
 
-    hamburger.addEventListener('click', function() {
-      this.classList.toggle('active');
-      mobileNav.classList.toggle('show');
-    
-      // Prevent body scroll when menu is open
-      document.body.classList.toggle('no-scroll');
+    hamburger.addEventListener("click", () => {
+      hamburger.classList.toggle("active");
+      nav.classList.toggle("show");
+      body.classList.toggle("no-scroll");
     });
-
-    // Close menu when clicking outside
-    document.addEventListener('click', function(e) {
-      if (!hamburger.contains(e.target) && !mobileNav.contains(e.target)) {
-        hamburger.classList.remove('active');
-        mobileNav.classList.remove('show');
-        document.body.classList.remove('no-scroll');
-      }
-    });
-
-    // Hide navbar when scrolling down, show when scrolling up
-    let lastScrollTop = 0;
-    const navbar = document.querySelector('.cav-header');
-    window.addEventListener('scroll', function() {
-      let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-
-      if (currentScroll > lastScrollTop) {
-        navbar.classList.add('scrolled'); // Hide navbar on scroll down
-      } else {
-        navbar.classList.remove('scrolled'); // Show navbar on scroll up
-      }
-
-      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // Reset scroll position
-    });
-  </script>
+  });
+</script>
 
 </body>
 </html>
