@@ -12,6 +12,111 @@
     <!-- CSS -->
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/about_us.css">
+    <style>
+        /* Header Styles */
+        .cav-header {
+            background: #261447;
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: top 0.3s;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .header-nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 4px 0;
+            transition: all 0.3s ease;
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .header-nav {
+                display: none;
+                position: fixed;
+                top: 70px;
+                right: 0;
+                background: #1b103f;
+                flex-direction: column;
+                width: 200px;
+                padding: 1rem;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            }
+
+            .header-nav.show {
+                display: flex;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .hamburger.active div:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+            .hamburger.active div:nth-child(2) {
+                opacity: 0;
+            }
+            .hamburger.active div:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -5px);
+            }
+        }
+
+        /* Content Section */
+        .about-section {
+            margin-top: 100px;
+            padding: 2rem;
+        }
+
+        /* Responsive Content */
+        @media (max-width: 768px) {
+            .Us, .section, .story-section, .mission-section {
+                padding: 1rem;
+                text-align: center;
+            }
+            
+            p {
+                font-size: 1rem;
+                line-height: 1.5;
+            }
+            
+            .image, .image-2, .image-3, .image-4 {
+                width: 100%;
+                margin: 1rem 0;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -26,6 +131,11 @@
                 <a href="about_us.html" class="active" style="font-weight: bold; color: white; text-decoration: underline #DD62FF;">About Us</a>
                 <a href="contact.html">Contact</a>
             </nav>
+            <button class="hamburger" aria-label="Toggle navigation">
+                <div></div>
+                <div></div>
+                <div></div>
+            </button>
             <div class="header-icons">
                 <span style="position:relative; display:inline-block;">
                     <span class="icon translate-icon" id="translate-trigger">
@@ -183,5 +293,13 @@
     <script src="js/translate.js"></script>
     <script src="js/header-auth.js"></script>
     <script src="js/about_us.js"></script>
+    <script>
+  const hamburger = document.querySelector('.hamburger');
+  const nav = document.querySelector('.header-nav');
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    nav.classList.toggle('show');
+  });</script>
 </body>
 </html>
