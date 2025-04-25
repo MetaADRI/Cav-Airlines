@@ -1,281 +1,235 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <!-- Global styles -->
-  <link rel="stylesheet" href="css/services.css">
-  
-  <!-- Fonts and icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script src="https://kit.fontawesome.com/d7280c9e9b.js" crossorigin="anonymous"></script>
-  
-  <title>CAVAIR - Services</title>
-<style>
-  /* --- Header Styles --- */
-.cav-header {
-  background: #261447;
-  padding: 1rem 0;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-  transition: top 0.3s;
-}
-
-.header-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
-}
-
-/* Navigation Links */
-.header-nav {
-  display: flex;
-  gap: 2rem;
-}
-
-.header-nav a {
-  color: white;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-/* --- Hamburger Icon --- */
-.hamburger {
-  display: none;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0.5rem;
-}
-
-.hamburger div {
-  width: 25px;
-  height: 3px;
-  background-color: white;
-  margin: 4px 0;
-  transition: all 0.3s ease;
-}
-
-/* --- Mobile Navigation --- */
-@media (max-width: 768px) {
-  .header-nav {
-    display: none;
-    position: fixed;
-    top: 70px;
-    right: 0;
-    background: #1b103f;
-    flex-direction: column;
-    width: 200px;
-    padding: 1rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-
-  .header-nav.show {
-    display: flex;
-  }
-
-  .hamburger {
-    display: block;
-  }
-
-  .hamburger.active div:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-  }
-
-  .hamburger.active div:nth-child(2) {
-    opacity: 0;
-  }
-
-  .hamburger.active div:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
-  }
-}
-
-/* --- No Scroll When Menu Open --- */
-.no-scroll {
-  overflow: hidden;
-}
-
-/* --- Page-Specific Section Styling --- */
-.services-section {
-  margin-top: 100px;
-  padding: 2rem;
-}
-
-@media (max-width: 768px) {
-  .services-section {
-    padding: 1rem;
-    text-align: center;
-  }
-
-  p {
-    font-size: 1rem;
-    line-height: 1.5;
-  }
-
-  .service-image {
-    width: 100%;
-    margin: 1rem 0;
-  }
-}
-
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | CAVAIR</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oxygen:400,700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/services.css">
 </head>
 <body>
-
-  <!-- Header -->
-  <header class="cav-header" id="cav-header">
-    <div class="header-container">
-      <a href="home.html" class="header-logo">
-        <img src="assets/images/Cavair_Logo.png" alt="CAV Zambia Airlines Logo" />
-      </a>
-      <nav class="header-nav">
-        <a href="home.html">Home</a>
-        <a href="booking.html">Booking</a>
-        <a href="services.html">Services</a>
-        <a href="about_us.html">About Us</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-      <div class="header-icons">
-        <span class="icon translate-icon">
-          <img src="assets/icons/translate-icon.svg" alt="Translate" />
-        </span>
-        <span class="icon-divider"></span>
-        <span class="icon search-icon">
-          <img src="assets/icons/search-icon.svg" alt="Search" />
-        </span>
-        <div class="hamburger" id="hamburger" aria-label="Toggle menu">
-          <i class="fas fa-bars"></i>
+    <!-- Header -->
+    <header class="cav-header" id="cav-header">
+        <div class="header-container">
+            <a href="home.html" class="header-logo">
+                <img src="assets/images/Cavair_Logo.png" alt="CAV Zambia Airlines Logo" />
+            </a>
+            <nav class="header-nav">
+                <a href="booking.html">Booking</a>
+                <a href="services.html" class="active">Services</a>
+                <a href="about_us.html">About Us</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <div class="header-icons">
+                <span style="position:relative; display:inline-block;">
+                    <span class="icon translate-icon" id="translate-trigger">
+                        <img src="assets/icons/translate-icon.svg" alt="Translate" />
+                    </span>
+                    <select id="language-select" class="header-language-select language-dropdown" aria-label="Translate site" style="display:none; min-width:140px; position:absolute; left:50%; transform:translateX(-50%); top:36px; z-index:3000;">
+                        <option value="en" selected>English</option>
+                        <option value="fr">Français</option>
+                        <option value="pt">Português</option>
+                        <option value="es">Español</option>
+                        <option value="ar">العربية</option>
+                        <option value="de">Deutsch</option>
+                        <option value="it">Italiano</option>
+                    </select>
+                </span>
+                <span class="header-divider" aria-hidden="true"></span>
+                <span class="icon search-icon">
+                    <img src="assets/icons/search-icon.svg" alt="Search" />
+                </span>
+                <span style="display:inline-block; width:18px;"></span>
+                <span id="header-auth-slot"></span>
+            </div>
         </div>
-      </div>
-      <a href="login.html" class="header-login-btn">Login</a>
-    </div>
-  </header>
-
-  <!-- Mobile Navigation -->
-  <nav class="mobile-nav" id="mobileNav">
-    <a href="home.html">Home</a>
-    <a href="booking.html">Booking</a>
-    <a href="services.html">Services</a>
-    <a href="about_us.html">About Us</a>
-    <a href="contact.html">Contact</a>
-    <a href="login.html">Login</a>
-  </nav>
-
-  <!-- Main Content -->
-  <main class="main-content">
-    <div class="fly">
-      <h1>Experience Comfort</h1>
-      <p class="first-para">With Our Top of Line Service and Hospitality</p>
-    </div>
-    <div class="plane-img"></div>
-    <hr>
-
-    <section class="booking-perks">
-      <h1 class="fly-2">Book with us for exclusive perks</h1>
-      <p>Experience greater freedom and flexibility by Booking directly with Cavair...</p>
-      <div class="div-box">
-        <div class="box-1"><i class="fas fa-gifts"></i><h2>Make every mile count</h2><p>Earn and spend...</p></div>
-        <div class="box-2"></div>
-        <div class="box-3"><i class="far fa-credit-card"></i><h2>Pay your way</h2><p>Pick the option...</p></div>
-        <div class="box-4"></div>
-        <div class="box-5"><i class="fas fa-tags"></i><h2>Get the best deals around</h2><p>Exclusive discounts...</p></div>
-        <div class="box-6"></div>
-      </div>
+    </header>
+    <!-- Hero Section -->
+    <section class="services-hero-section">
+        <div class="services-hero-content">
+            <h1 class="services-hero-title">Experience comfort</h1>
+            <p class="services-hero-subtitle">With our top of the line service and hospitality</p>
+            <div class="services-hero-video-frame">
+                <video id="services-hero-video" class="services-hero-video" autoplay muted loop playsinline poster="assets/images/Services-Page/hero-video-poster.jpg">
+                    <source src="assets/videos/Emirates_ad.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+        <div class="services-hero-overlay"></div>
     </section>
-
-    <section class="discover-section">
-      <div class="part-1">
-        <div class="last-last">
-          <h1>Discover</h1>
-          <p class="para-1">No matter your destination, we'll get you there...</p>
+    <div class="section-divider-grey"></div>
+    <!-- Perks Section -->
+    <section class="services-perks-section fade-in-up">
+        <div class="perks-intro">
+            <h2 class="perks-title">Book with us for <span class="perks-title-highlight">exclusive perks</span></h2>
+            <p class="perks-desc">Experience greater freedom and flexibility by booking directly with Cavair. Manage your booking<br>
+            effortlessly online or reach out to us anytime. We're here for you every step of the journey.</p>
         </div>
-        <hr>
-      </div>
-      <div class="part-2">
-        <h1>International</h1><hr>
-        <p class="para-2">From the metropolis of Doha to the aurora of Norway...</p>
-        <div class="new-div-box">
-          <div class="new-box-1"><p>Doha</p></div>
-          <div class="new-box-2"><p>Oslo</p></div>
-          <div class="new-box-3"><p>Bali</p></div>
+        <div class="perks-cards">
+            <!-- Card 1 -->
+            <div class="perk-card">
+                <div class="perk-card-icon">
+                    <img src="assets/icons/card-1-icon.svg" alt="Miles Count Icon">
+                </div>
+                <h3>Make every mile count</h3>
+                <p>Earn and spend Cavair Guest Miles on exclusive benefits.</p>
+            </div>
+            <!-- Card 2 -->
+            <div class="perk-card">
+                <div class="perk-card-img">
+                    <img src="assets/images/Services-Page/card-2-image.jpg" alt="Get the best deals">
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="perk-card">
+                <div class="perk-card-icon">
+                    <img src="assets/icons/card-3-icon.svg" alt="Pay Your Way Icon">
+                </div>
+                <h3>Pay your way</h3>
+                <p>Pick the option that suits you best.</p>
+            </div>
+            <!-- Card 4 -->
+            <div class="perk-card">
+                <div class="perk-card-img">
+                    <img src="assets/images/Services-Page/card-4-image.png" alt="Make every mile count">
+                </div>
+            </div>
+            <!-- Card 5 -->
+            <div class="perk-card">
+                <div class="perk-card-icon">
+                    <img src="assets/icons/card-5-icon.svg" alt="Best Deals Icon">
+                </div>
+                <h3>Get the best deals around</h3>
+                <p>Leave doubting so you won't face anywhere else.</p>
+            </div>
+            <!-- Card 6 -->
+            <div class="perk-card">
+                <div class="perk-card-img">
+                    <img src="assets/images/Services-Page/card-6-image.jpg" alt="Pay your way">
+                </div>
+            </div>
         </div>
-        <button class="book-btn">Book Now</button>
-      </div>
     </section>
-
-    <section class="livingstone-section">
-      <div class="last-part">
-        <div class="sec-1">
-          <h2>Livingstone</h2>
-          <p>Elevate your journey with an adventurous stop...</p>
-          <a href="#">Explore</a>
+    <!-- Discover Section -->
+    <section class="services-discover-section fade-in-up">
+        <div class="discover-container">
+            <div class="discover-left">
+                <h2>Discover</h2>
+                <p>No matter your destination, we'll get you there. Our extensive network covers over 50 locations across Africa, Asia, Europe, the Middle East, and North America.</p>
+            </div>
+            <div class="discover-divider"></div>
+            <div class="discover-right">
+                <div class="discover-dropdown-container">
+                    <select id="discover-dropdown" class="discover-dropdown" aria-label="Select destination type">
+                        <option value="international" selected>International</option>
+                        <option value="domestic">Domestic</option>
+                    </select>
+                    <span class="discover-dropdown-underline"></span>
+                </div>
+                <div class="discover-content" id="discover-international">
+                    <div class="discover-desc">From the metropolis of Doha to the aurora of Norway, our global network connects you to 20 destinations across 5 continents. With seamless service to your next destination, we’re redefining what it means to fly.</div>
+                    <div class="discover-images">
+                        <div class="discover-img-card">
+                            <img src="assets/images/Services-Page/Doha.png" alt="Doha">
+                            <div class="discover-img-gradient"></div>
+                            <div class="discover-img-title">Doha</div>
+                        </div>
+                        <div class="discover-img-card">
+                            <img src="assets/images/Services-Page/Oslo.png" alt="Oslo">
+                            <div class="discover-img-gradient"></div>
+                            <div class="discover-img-title">Oslo</div>
+                        </div>
+                        <div class="discover-img-card">
+                            <img src="assets/images/Services-Page/Bali.jpg" alt="Bali">
+                            <div class="discover-img-gradient"></div>
+                            <div class="discover-img-title">Bali</div>
+                        </div>
+                    </div>
+                    <a href="booking.html" class="discover-btn">Book Now</a>
+                </div>
+                <div class="discover-content" id="discover-domestic" style="display:none;">
+                    <div class="discover-desc">From Lusaka to Livingstone — fly Zambia the Cavair way. Smooth, stylish, and reliable service across the country, powered by a world-class global network.</div>
+                    <div class="discover-images">
+                        <div class="discover-img-card">
+                            <img src="assets/images/Services-Page/Lusaka.png" alt="Lusaka">
+                            <div class="discover-img-gradient"></div>
+                            <div class="discover-img-title">Lusaka</div>
+                        </div>
+                        <div class="discover-img-card">
+                            <img src="assets/images/Services-Page/Livingstone.jpg" alt="Livingstone">
+                            <div class="discover-img-gradient"></div>
+                            <div class="discover-img-title">Livingstone</div>
+                        </div>
+                        <div class="discover-img-card">
+                            <img src="assets/images/Services-Page/Mfuwe.jpg" alt="Mfuwe">
+                            <div class="discover-img-gradient"></div>
+                            <div class="discover-img-title">Mfuwe</div>
+                        </div>
+                    </div>
+                    <a href="booking.html" class="discover-btn">Book Now</a>
+                </div>
+            </div>
         </div>
-        <div class="sec-2"></div>
-      </div>
     </section>
-  </main>
-
-  <!-- Footer -->
-  <footer class="cav-footer">
-    <div class="footer-container">
-      <a href="home.html" class="footer-logo">
-        <img src="assets/images/Cavair_Logo.png" alt="CAV Zambia Airlines Logo" />
-      </a>
-      <div class="footer-columns">
-        <div class="footer-col">
-          <h4>Flights and Travel</h4>
-          <ul>
-            <li><a href="#">Travel Requirements</a></li>
-            <li><a href="#">Why Cavair</a></li>
-            <li><a href="#">International Flights</a></li>
-            <li><a href="#">Flight Deals</a></li>
-          </ul>
+    <!-- Offers Banner Section -->
+    <section class="services-offers-section">
+        <div class="offers-banner">
+            <div class="offers-banner-content">
+                <h3 class="offers-banner-title">Livingstone</h3>
+                <p class="offers-banner-text">Elevate your journey with an adventurous stop in Livingstone to experience the mighty Victoria Falls. Enjoy a complimentary two-night stay in one of the city's finest hotels.</p>
+                <a href="#" class="offers-banner-link">Explore</a>
+            </div>
+            <div class="offers-banner-img-container">
+                <img src="assets/images/Services-Page/banner_image.jpeg" alt="Livingstone Adventure" class="offers-banner-img">
+                <div class="offers-banner-img-angle"></div>
+            </div>
         </div>
-        <div class="footer-col">
-          <h4>About us</h4>
-          <ul>
-            <li><a href="#">Corporate Profile</a></li>
-            <li><a href="#">Our Partners</a></li>
-            <li><a href="#">Ethics and Compliance</a></li>
-            <li><a href="#">Our Responsibility</a></li>
-          </ul>
+    </section>
+    <!-- Footer -->
+    <footer class="cav-footer">
+        <div class="footer-container">
+            <a href="home.html" class="footer-logo">
+                <img src="assets/images/Cavair_Logo.png" alt="CAV Zambia Airlines Logo" />
+            </a>
+            <div class="footer-columns">
+                <div class="footer-col">
+                    <h4>Flights and Travel</h4>
+                    <ul>
+                        <li><a href="#">Travel Requirements</a></li>
+                        <li><a href="#">Why Cavair</a></li>
+                        <li><a href="#">International Flights</a></li>
+                        <li><a href="#">Flight Deals</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>About us</h4>
+                    <ul>
+                        <li><a href="#">Corporate Profile</a></li>
+                        <li><a href="#">Our Partners</a></li>
+                        <li><a href="#">Ethics and Compliance</a></li>
+                        <li><a href="#">Our Responsibility</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Connect with us</h4>
+                    <div class="footer-socials">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="footer-col">
-          <h4>Connect with us</h4>
-          <div class="footer-socials">
-            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom">© 2025 Cav Zambia Airlines. All rights reserved.</div>
-  </footer>
-
-  <!-- JS -->
-  <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const hamburger = document.querySelector(".hamburger");
-    const nav = document.querySelector(".header-nav");
-    const body = document.body;
-
-    hamburger.addEventListener("click", () => {
-      hamburger.classList.toggle("active");
-      nav.classList.toggle("show");
-      body.classList.toggle("no-scroll");
-    });
-  });
-</script>
-
+        <div class="footer-bottom">© 2025 Cav Zambia Airlines. All rights reserved.</div>
+    </footer>
+    <script src="js/translate.js"></script>
+    <script src="js/header-auth.js"></script>
+    <script src="js/services.js"></script>
 </body>
 </html>
