@@ -5,6 +5,19 @@ html, body {
     overflow-x: hidden;
 }
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
 /* --- About Us Hero Section --- */
 
 .fade-in-up {
