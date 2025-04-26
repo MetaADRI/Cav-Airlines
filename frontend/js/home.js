@@ -30,6 +30,61 @@ window.addEventListener('scroll', function () {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Hamburger menu toggle for mobile nav
+    const hamburger = document.getElementById('hamburgerMenu');
+    const overlay = document.getElementById('mobileNavOverlay');
+    const navLinks = overlay ? overlay.querySelectorAll('a') : [];
+    function openMenu() {
+        overlay.style.display = 'flex';
+        hamburger.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeMenu() {
+        overlay.style.display = 'none';
+        hamburger.classList.remove('open');
+        document.body.style.overflow = '';
+    }
+    // Sync auth slot to mobile overlay
+    function syncAuthSlot() {
+        const desktopAuth = document.getElementById('header-auth-slot');
+        const mobileAuth = document.getElementById('mobile-auth-slot');
+        if (desktopAuth && mobileAuth) {
+            mobileAuth.innerHTML = desktopAuth.innerHTML;
+        }
+    }
+    syncAuthSlot();
+    const observer = new MutationObserver(syncAuthSlot);
+    const desktopAuth = document.getElementById('header-auth-slot');
+    if (desktopAuth) {
+        observer.observe(desktopAuth, { childList: true, subtree: true });
+    }
+
+    if (hamburger && overlay) {
+        hamburger.style.display = 'flex';
+        hamburger.addEventListener('click', function(e) {
+            e.stopPropagation();
+            if (overlay.style.display === 'flex') {
+                closeMenu();
+            } else {
+                openMenu();
+                syncAuthSlot();
+            }
+        });
+        navLinks.forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+        overlay.addEventListener('click', function(e) {
+            if (e.target === overlay) closeMenu();
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeMenu();
+        });
+        // Close flyout on X click
+        const closeBtn = document.getElementById('mobileNavClose');
+        if (closeBtn) {
+            closeBtn.addEventListener('click', closeMenu);
+        }
+    }
     // Set default value for Flight Status date field to today
     var dateInput = document.getElementById('flight-status-date');
     if (dateInput) {

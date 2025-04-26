@@ -12,122 +12,120 @@
     <!-- CSS -->
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/home.css">
-   <style>
-  /* --- Header Styles --- */
-  .cav-header {
-    background: transparent; /* fully see-through */
-    padding: 1rem 0;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    transition: top 0.3s;
-    box-shadow: none;
-    border-bottom: none;
-  }
-
-  .header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-  }
-
-  /* Navigation Links */
-  .header-nav {
-    display: flex;
-    gap: 2rem;
-  }
-
-  .header-nav a {
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
-  }
-
-  /* --- Hamburger Icon --- */
-  .hamburger {
-    display: none;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0.5rem;
-  }
-
-  .hamburger div {
-    width: 25px;
-    height: 3px;
-    background-color: white;
-    margin: 4px 0;
-    transition: all 0.3s ease;
-  }
-
-  /* --- Mobile Navigation --- */
-  @media (max-width: 768px) {
-    .header-nav {
-      display: none;
-      position: fixed;
-      top: 70px;
-      right: 0;
-      background: rgba(27, 16, 63, 0.95); /* slight transparency for mobile nav */
-      flex-direction: column;
-      width: 200px;
-      padding: 1rem;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-
-    .header-nav.show {
-      display: flex;
-    }
-
-    .hamburger {
-      display: block;
-    }
-
-    .hamburger.active div:nth-child(1) {
-      transform: rotate(45deg) translate(5px, 5px);
-    }
-
-    .hamburger.active div:nth-child(2) {
-      opacity: 0;
-    }
-
-    .hamburger.active div:nth-child(3) {
-      transform: rotate(-45deg) translate(5px, -5px);
-    }
-  }
-
-  /* --- No Scroll When Menu Open --- */
-  .no-scroll {
-    overflow: hidden;
-  }
-
-  /* --- Page-Specific Section Styling --- */
-  .services-section {
-    margin-top: 100px;
-    padding: 2rem;
-  }
-
-  @media (max-width: 768px) {
-    .services-section {
-      padding: 1rem;
-      text-align: center;
-    }
-
-    p {
-      font-size: 1rem;
-      line-height: 1.5;
-    }
-
-    .service-image {
-      width: 100%;
-      margin: 1rem 0;
-    }
-  }
-</style>
-
+    <style>
+        /* --- Header Styles --- */
+        .cav-header {
+        /* background: #261447; Removed solid background, only scroll blur remains */
+        padding: 1rem 0;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        transition: top 0.3s;
+        }
+        
+        .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        }
+        
+      /* Navigation Links */
+        .header-nav {
+        display: flex;
+        gap: 2rem;
+        }
+        
+        .header-nav a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        }
+        
+      /* --- Hamburger Icon --- */
+        .hamburger {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0.5rem;
+        }
+        
+        .hamburger div {
+        width: 25px;
+        height: 3px;
+        background-color: white;
+        margin: 4px 0;
+        transition: all 0.3s ease;
+        }
+        
+      /* --- Mobile Navigation --- */
+        @media (max-width: 768px) {
+        .header-nav {
+            display: none;
+            position: fixed;
+            top: 70px;
+            right: 0;
+            background: #480171;
+            flex-direction: column;
+            width: 200px;
+            padding: 1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .header-nav.show {
+            display: flex;
+        }
+        
+        .hamburger {
+            display: block;
+        }
+        
+        .hamburger.active div:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        
+        .hamburger.active div:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger.active div:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+        }
+        
+      /* --- No Scroll When Menu Open --- */
+        .no-scroll {
+            overflow: hidden;
+        }
+        
+      /* --- Page-Specific Section Styling --- */
+        .services-section {
+            margin-top: 100px;
+            padding: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+        .services-section {
+            padding: 1rem;
+            text-align: center;
+        }
+        
+        p {
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        
+        .service-image {
+            width: 100%;
+            margin: 1rem 0;
+        }
+        }
+        
+        </style>
 </head>
 <body>
     <!-- Header -->
@@ -169,17 +167,17 @@
         </div>
         <div class="hamburger" id="hamburger" aria-label="Toggle menu">
             <i class="fas fa-bars"></i>
-          </div>
+        </div>
     </header>
-    <!-- Mobile Navigation -->
-  <nav class="mobile-nav" id="mobileNav">
-    <a href="home.html">Home</a>
-    <a href="booking.html">Booking</a>
-    <a href="services.html">Services</a>
-    <a href="about_us.html">About Us</a>
-    <a href="contact.html">Contact</a>
+    <!-- Mobile Navigation
+    <nav class="mobile-nav" id="mobileNav">
+        <a href="home.html">Home</a>
+        <a href="booking.html">Booking</a>
+        <a href="services.html">Services</a>
+        <a href="about_us.html">About Us</a>
+        <a href="contact.html">Contact</a>
     <a href="login.html">Login</a>
-  </nav>
+    </nav> -->
 
     <!-- Hero Section -->
     <section class="hero-section">
@@ -325,7 +323,7 @@
         <div class="deals-carousel">
             <div class="deals-carousel-cards">
                 <div class="deals-carousel-card" data-index="0">
-    <img src="assets/images/Home Page/Dubai.png" alt="Dubai" class="deals-carousel-card-image" />
+    <img src="assets/images/Home-Page/Dubai.png" alt="Dubai" class="deals-carousel-card-image" />
     <div class="deals-carousel-card-type deals-carousel-card-type-left">Round Trip - Economy</div>
     <div class="deals-carousel-card-type deals-carousel-card-type-right">Round Trip - Economy</div>
     <div class="deals-carousel-card-info">
@@ -334,7 +332,7 @@
     </div>
 </div>
                 <div class="deals-carousel-card" data-index="1">
-                    <img src="assets/images/Home Page/New-York.png" alt="New York" class="deals-carousel-card-image" />
+                    <img src="assets/images/Home-Page/New-York.png" alt="New York" class="deals-carousel-card-image" />
                     <div class="deals-carousel-card-type deals-carousel-card-type-left">Round Trip - Economy</div>
                     <div class="deals-carousel-card-type deals-carousel-card-type-right">Round Trip - Economy</div>
                     <div class="deals-carousel-card-info">
@@ -343,7 +341,7 @@
                     </div>
                 </div>
                 <div class="deals-carousel-card" data-index="2">
-                    <img src="assets/images/Home Page/Capetown.png" alt="Cape Town" class="deals-carousel-card-image" />
+                    <img src="assets/images/Home-Page/Capetown.png" alt="Cape Town" class="deals-carousel-card-image" />
                     <div class="deals-carousel-card-type deals-carousel-card-type-left">Round Trip - Economy</div>
                     <div class="deals-carousel-card-type deals-carousel-card-type-right">Round Trip - Economy</div>
                     <div class="deals-carousel-card-info">
@@ -352,7 +350,7 @@
                     </div>
                 </div>
                 <div class="deals-carousel-card" data-index="3">
-                    <img src="assets/images/Home Page/Oslo.png" alt="Oslo" class="deals-carousel-card-image" />
+                    <img src="assets/images/Home-Page/Oslo.png" alt="Oslo" class="deals-carousel-card-image" />
                     <div class="deals-carousel-card-type deals-carousel-card-type-left">Round Trip - Economy</div>
                     <div class="deals-carousel-card-type deals-carousel-card-type-right">Round Trip - Economy</div>
                     <div class="deals-carousel-card-info">
@@ -361,7 +359,7 @@
                     </div>
                 </div>
                 <div class="deals-carousel-card" data-index="4">
-                    <img src="assets/images/Home Page/London.png" alt="London" class="deals-carousel-card-image" />
+                    <img src="assets/images/Home-Page/London.png" alt="London" class="deals-carousel-card-image" />
                     <div class="deals-carousel-card-type deals-carousel-card-type-left">Round Trip - Economy</div>
                     <div class="deals-carousel-card-type deals-carousel-card-type-right">Round Trip - Economy</div>
                     <div class="deals-carousel-card-info">
@@ -390,7 +388,7 @@
 
     <!-- Deals Banner Section -->
     <div class="deals-banner-section">
-        <img src="assets/images/Home Page/banner_section_image.jpg" alt="Wi-Fi onboard" class="deals-banner-img" />
+        <img src="assets/images/Home-Page/banner_section_image.jpg" alt="Wi-Fi onboard" class="deals-banner-img" />
         <span class="deals-banner-text">Did you know that Cavair Guest members can enjoy complimentary Wi-Fi onboard for messaging apps? Staying in touch with family and friends during your flight has never been easier!</span>
     </div>
 
@@ -457,13 +455,13 @@
             </div>
             <div class="experience-cavair-right">
                 <div class="experience-cavair-card">
-                    <img src="assets/images/Home Page/kenneth_kaunda_intl_airport.jpg" alt="Kenneth Kaunda Intl Airport" class="experience-cavair-card-img" />
+                    <img src="assets/images/Home-Page/kenneth_kaunda_intl_airport.jpg" alt="Kenneth Kaunda Intl Airport" class="experience-cavair-card-img" />
                     <div class="experience-cavair-card-caption">
                         <div class="experience-cavair-card-title">Kenneth Kaunda Intl Airport</div>
                     </div>
                 </div>
                 <div class="experience-cavair-card">
-                    <img src="assets/images/Home Page/lounge.jpg" alt="Tranquil Lounges" class="experience-cavair-card-img" />
+                    <img src="assets/images/Home-Page/lounge.jpg" alt="Tranquil Lounges" class="experience-cavair-card-img" />
                     <div class="experience-cavair-card-caption">
                         <div class="experience-cavair-card-title">Tranquil Lounges</div>
                     </div>

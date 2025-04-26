@@ -31,7 +31,7 @@
                     <select id="language-select" class="header-language-select language-dropdown" aria-label="Translate site" style="display:none; min-width:140px; position:absolute; left:50%; transform:translateX(-50%); top:36px; z-index:3000;">
                         <option value="en" selected>English</option>
                         <option value="fr">Français</option>
-                        <option value="pt">Português</option>
+                        <option value="pt">Português</option>   
                         <option value="es">Español</option>
                         <option value="ar">العربية</option>
                         <option value="de">Deutsch</option>
@@ -115,19 +115,20 @@
             
             </div>
             
-            <div class="booking-fields-row">
+            <div class="booking-fields-row from-to-row" style="display: flex; align-items: center; gap: 18px;">
                 <div class="booking-field-container from-to-autocomplete">
                     <label for="from-location">From</label>
                     <input type="text" id="from-location" name="from_location" autocomplete="off" placeholder="City or Airport">
                     <ul class="autocomplete-list" id="from-autocomplete-list"></ul>
                 </div>
-            
+                <span class="from-to-arrows-icon" style="display: flex; align-items: center; height: 38px;">
+                    <img src="assets/icons/from_and_to_arrows-icon.svg" alt="From and To Arrows" style="height: 32px; width: auto; display: block; margin: 0 6px;" />
+                </span>
                 <div class="booking-field-container from-to-autocomplete">
                     <label for="to-location">To</label>
                     <input type="text" id="to-location" name="to_location" autocomplete="off" placeholder="City or Airport">
                     <ul class="autocomplete-list" id="to-autocomplete-list"></ul>
                 </div>
-            
                 <div class="error-message" id="from-location-error"></div>
                 <div class="error-message" id="to-location-error"></div>
             </div>
@@ -147,8 +148,8 @@
                 </div>
             
                 
-<div class="upload-field-group">
-    <label for="id-passport-upload">Upload ID or Passport</label>
+                <div class="upload-field-group">
+                    <label for="id-passport-upload">Upload ID or Passport</label>
                     <button type="button" class="upload-btn" id="upload-btn">
                         <img src="assets/icons/upload-icon.svg" alt="Upload" class="upload-icon"> Upload
                     </button>
@@ -173,7 +174,7 @@
                 </div>
             
                 <button type="submit" class="booking-submit-btn" id="book-now-btn">Book Now</button>
-<div id="booking-server-error" class="server-error-message" style="display:none;"></div>
+                <div id="booking-server-error" class="server-error-message" style="display:none;"></div>
             </div>
             
         </form>

@@ -1,300 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CAVAIR - Contact Us</title>
-  <link rel="stylesheet" href="css/common.css" />
-  <link rel="stylesheet" href="css/contact.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-  <script src="https://kit.fontawesome.com/d7280c9e9b.js" crossorigin="anonymous"></script>
-
-  <!-- Hamburger Menu Styles -->
-  <style>
-    .hamburger {
-      display: none;
-      font-size: 1.5rem;
-      cursor: pointer;
-      color: #333;
-      margin-left: auto;
-      padding: 0 1rem;
-      transition: transform 0.3s ease;
-    }
-
-    .mobile-nav {
-      display: none;
-      flex-direction: column;
-      background-color: #f4f4f4;
-      position: absolute;
-      width: 100%;
-      top: 80px;
-      left: 0;
-      z-index: 1000;
-      padding: 1rem 0;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-
-    .mobile-nav a {
-      padding: 1rem;
-      text-decoration: none;
-      color: #333;
-      transition: background-color 0.3s ease;
-    }
-
-    .mobile-nav a:hover {
-      background-color: #ddd;
-    }
-
-    .mobile-nav.show {
-      display: flex;
-    }
-
-    .hamburger.active i {
-      transform: rotate(90deg);
-    }
-
-    @media (max-width: 768px) {
-      .nav-tags,
-      .icon-login button {
-        display: none;
-      }
-
-      .hamburger {
-        display: block;
-      }
-    }
-
-    .no-scroll {
-      overflow: hidden;
-    }
-
-    /* Header hide-on-scroll behavior */
-    .cav-header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 999;
-      background-color: #fff;
-      transition: transform 0.3s ease-in-out;
-    }
-
-    .cav-header.hide-on-scroll {
-      transform: translateY(-100%);
-    }
-
-    body {
-      padding-top: 80px; /* Prevent content hiding behind header */
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | CAVAIR</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oxygen:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/contact.css">
 </head>
 <body>
-  <!-- Header -->
-<header class="cav-header">
-    <div class="header-container">
-        <h2 class="header-logo">CAVAIR</h2>
-        
-        <!-- Desktop Navigation -->
-        <nav class="desktop-nav">
-            <a href="booking.html">Booking</a>
-            <a href="services.html">Services</a>
-            <a href="about_us.html">About Us</a>
-            <a href="contact.html">Contact</a>
-        </nav>
-
-        <div class="header-controls">
+    <!-- Header -->
+    <header class="cav-header" id="cav-header">
+        <div class="header-container">
+            <a href="home.html" class="header-logo">
+                <img src="assets/images/Cavair_Logo.png" alt="CAV Zambia Airlines Logo" />
+            </a>
+            <nav class="header-nav">
+                <a href="booking.html">Booking</a>
+                <a href="services.html">Services</a>
+                <a href="about_us.html">About Us</a>
+                <a href="contact.html" class="active" style="font-weight: bold; color: white; text-decoration: underline #DD62FF;">Contact</a>
+            </nav>
             <div class="header-icons">
-                <a href="#" aria-label="Language selection"><i class="fas fa-globe"></i></a>
-                <div class="icon-divider"></div>
-                <a href="#" aria-label="Search"><i class="fas fa-search"></i></a>
-            </div>
-            <button class="login-btn">Login</button>
-            <div class="hamburger" id="hamburger" aria-label="Toggle menu">
-                <i class="fas fa-bars"></i>
-            </div>
-        </div>
-    </div>
-</header>
-
-<!-- Mobile Navigation -->
-<nav class="mobile-nav" id="mobileNav">
-    <a href="booking.html">Booking</a>
-    <a href="services.html">Services</a>
-    <a href="about_us.html">About Us</a>
-    <a href="contact.html">Contact</a>
-    <a href="login.html">Login</a>
-</nav>
-  <!-- Hero Section -->
-  <section class="hero-section">
-    <div class="hero-contact">
-      <h1>Contact Us</h1>
-      <p>We're here to help you with any questions you may have</p>
-      <form class="search-form">
-        <input type="search" name="search" placeholder="Search for any queries" />
-        <button type="submit"><i class="fa fa-search"></i></button>
-      </form>
-    </div>
-  </section>
-
-   <!-- main section -->
-
-    <div class="main-contact">
-        <h2 style="color: black;" >Explore by category</h2>
-        <p>Get quick answers to our most common questions with just one click.</p>
-        <div class="category">
-            
-            <div>
-                <i class="fa fa-gear" style="font-size:48px;color:black"></i>
-                <h3>Special Assistance</h3>
-                <p>Comprehensive information about the <br>
-                  help available throught your entire <br>
-                  experience with us.</p>
-            </div>
-            <div>
-                <i  class="fa fa-plane" style="font-size:48px;color:black"></i>
-                <h3>Manage Booking</h3>
-                <p>Your go-to guide for updating <br>
-                 bookings, picking seats, and submitting <br>
-                 any additional requests.</p>
-            </div>
-            <div>
-                <i class="fa fa-money" style="font-size:48px;color:black"></i>
-                <h3>Flight Delayed or Cancelled</h3>
-                <p>Find all the information you need about <br>
-                 delays and cancellation to help keep <br>
-                 your trip on schedule.</p>
+                <span style="position:relative; display:inline-block;">
+                    <span class="icon translate-icon" id="translate-trigger">
+                        <img src="assets/icons/translate-icon.svg" alt="Translate" />
+                    </span>
+                    <select id="language-select" class="header-language-select language-dropdown" aria-label="Translate site" style="display:none; min-width:140px; position:absolute; left:50%; transform:translateX(-50%); top:36px; z-index:3000;">
+                        <option value="en" selected>English</option>
+                        <option value="fr">Français</option>
+                        <option value="pt">Português</option>
+                        <option value="es">Español</option>
+                        <option value="ar">العربية</option>
+                        <option value="de">Deutsch</option>
+                        <option value="it">Italiano</option>
+                    </select>
+                </span>
+                <span class="header-divider" aria-hidden="true"></span>
+                <span class="icon search-icon">
+                    <img src="assets/icons/search-icon.svg" alt="Search" />
+                </span>
+                <span style="display:inline-block; width:18px;"></span>
+                <span id="header-auth-slot"></span>
             </div>
         </div>
+    </header>
 
-        <div class="get-in-touch">
-            <h2 style="color: black;">Get in touch</h2>
-        <div id="get-in-touch">
-            <div>
-                <i class='fas fa-map-marker-alt' style='font-size:48px;color:purple'></i>
-                <h3>Our Address</h3>
-                <address>123 Airport Road, Lusaka <br> Zambia</address>
-            </div>
-            <div>
-                <i class="fa fa-phone" style="font-size:48px;color:purple"></i>
-                <h3>Phone</h3>
-                <p>+260123456789</p>
-                <p>+260989373746</p>
-            </div>
-            <div>
-                <i class="fa fa-envelope" style="font-size:48px;color:purple"></i>
-                <h3>Email Address</h3>
-                <p  ><i style="color: black;" >info@Cavair.com</i></p>
-                <p  ><i style="color: black;" >support@Cavair.com</i></p>
-            </div>
-            <div>
-                <i class="fa fa-clock-o" style="font-size:48px;color:purple"></i>
-                <h3>Working Hours</h3>
-                <p>Monday-Friday:8am-8pm</p>
-                <p>Weekends:9am-6pm</p>
+    <!-- Hero Section -->
+    <section class="contact-hero">
+        <div class="contact-hero-content">
+            <h1>Contact Us</h1>
+            <p>We're here to help with any questions you may have</p>
+            <div class="contact-search-bar">
+                <span class="search-icon">
+                    <img src="assets/icons/search-icon.svg" alt="Search" />
+                </span>
+                <input type="text" id="contact-search-input" placeholder="Search for any queries" autocomplete="off" />
             </div>
         </div>
+    </section>
+
+    <!-- Category Section -->
+    <section class="contact-category-section">
+        <div class="category-title">Explore by category</div>
+        <div class="category-subtitle">Get quick answers to our most common questions with just one click.</div>
+        <div class="category-cards">
+            <div class="category-card">
+                <img src="assets/icons/special_assistance-icon.svg" alt="Special Assistance" class="category-icon">
+                <div class="category-card-title">Special Assistance</div>
+                <div class="category-card-desc">Comprehensive information about the help available throughout your entire experience with us.</div>
+            </div>
+            <div class="category-card">
+                <img src="assets/icons/manage_booking-icon.svg" alt="Manage Booking" class="category-icon">
+                <div class="category-card-title">Manage Booking</div>
+                <div class="category-card-desc">Your go-to guide for updating bookings, picking seats, and submitting any additional requests.</div>
+            </div>
+            <div class="category-card">
+                <img src="assets/icons/cancelled_flight-icon.svg" alt="Flight Delayed or Cancelled" class="category-icon">
+                <div class="category-card-title">Flight Delayed or Cancelled</div>
+                <div class="category-card-desc">Find all the information you need about delays and cancellations to help keep your trip on schedule.</div>
+            </div>
         </div>
-    </div>
-    <hr>
-    <div class="location">
-        <h2>Find Us</h2>
-        <div class="map">
-            <iframe src="https://www.google.com/maps/embed?..." frameborder="0" style="border:0" allowfullscreen></iframe>
-        </div>
-    </div>
+    </section>
 
-    <!-- search bar -->
-     <form class="Search" action="">
-        <input type="search" name="search" id="search" placeholder="Search for a location">
-        <i class=' fa icon fa-search' style='font-size:30px; color:white; background-color: purple;'></i>
-     </form>
-  <!-- Footer Section -->
-    <div class="footer">
-        <footer id="footer">
-            <div class="footer_header">
-                <h2>CAVAIR</h2>
+    <!-- Get in Touch Section -->
+    <section class="get-in-touch-section">
+        <div class="get-in-touch-title">Get in touch</div>
+        <div class="get-in-touch-cards">
+            <div class="info-card">
+                <img src="assets/icons/our_address-icon.svg" alt="Our Address" class="info-icon">
+                <div class="info-card-title">Our Address</div>
+                <div class="info-card-desc">123 Airport Road, Lusaka, Zambia</div>
             </div>
-            <div class="footer_header">
-                <h2>Flights and Travel</h2>
-                <ul>
-                    <li>Travel Requirements</li>
-                    <li>Fly with Cavair</li>
-                    <li>Book Flights</li>
-                    <li>International flight deals</li>
-                    <li>Flight status</li>
-                </ul>
+            <div class="info-card">
+                <img src="assets/icons/phone-icon.svg" alt="Phone" class="info-icon">
+                <div class="info-card-title">Phone</div>
+                <div class="info-card-desc">+260 123 456 789<br>+260 987 654 321</div>
             </div>
-            <div class="footer_header">
-                <h2>About Us</h2>
-                <ul>
-                    <li>Corporate Prifile</li>
-                    <li>News</li>
-                    <li>Our Partners</li>
-                    <li>Ethics and compliance</li>
-                    <li>Our Responsibility</li>
-                </ul>
+            <div class="info-card">
+                <img src="assets/icons/email-icon.svg" alt="Email Address" class="info-icon">
+                <div class="info-card-title">Email Address</div>
+                <div class="info-card-desc">info@cavair.com<br>support@cavair.com</div>
             </div>
-            <div class="footer_header">
-                <h2>Connect with Us</h2>
-                <p>Follow us on social media and <br> keep up with the latest news <br> and updates</p>
-                <a href="#" class="fa fa-facebook"></a>
-                <a href="#" class="fa fa-twitter"></a>
-                <a href="#" class="fa fa-instagram"></a>
-                <a href="#" class="fa fa-youtube"></a>
+            <div class="info-card">
+                <img src="assets/icons/hours-icon.svg" alt="Working Hours" class="info-icon">
+                <div class="info-card-title">Working Hours</div>
+                <div class="info-card-desc">Monday-Friday: 8am - 8pm<br>Weekends: 9am - 6pm</div>
             </div>
-  
-        </footer>
-        <hr>
-        <p class="copy">&copy; 2025 Cav Zambia Airlines. All right reserved.</p>
-     </div>
-     <!-- Add this JavaScript right before closing </body> -->
-<script>
-  // Hamburger Menu Functionality
-  const hamburger = document.getElementById('hamburger');
-  const mobileNav = document.getElementById('mobileNav');
-  const header = document.querySelector('.cav-header');
+        </div>
+    </section>
 
-  hamburger.addEventListener('click', function(e) {
-    e.stopPropagation();
-    this.classList.toggle('active');
-    mobileNav.classList.toggle('show');
-    document.body.classList.toggle('no-scroll');
-  });
+    <!-- Divider -->
+    <div class="section-divider"></div>
 
-  // Close menu when clicking outside
-  document.addEventListener('click', function(e) {
-    if (!hamburger.contains(e.target) && !mobileNav.contains(e.target)) {
-      hamburger.classList.remove('active');
-      mobileNav.classList.remove('show');
-      document.body.classList.remove('no-scroll');
-    }
-  });
+    <!-- Find Us Section -->
+    <section class="find-us-section">
+        <div class="find-us-title">Find Us</div>
+        <div class="find-us-map-frame">
+            <!-- Google Maps Embed -->
+            <iframe id="google-map-frame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.073627847097!2d28.32281631489241!3d-15.41669078925473!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19408d3e5c7f0e4b%3A0x2e6d6cbe8c0c6b97!2sLusaka!5e0!3m2!1sen!2szm!4v1682678399999!5m2!1sen!2szm" width="100%" height="320" style="border:0; border-radius:18px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div class="find-us-search-bar-wrapper">
+            <div class="find-us-search-bar">
+                <input type="text" id="find-us-location-input" placeholder="Search for a location" autocomplete="off" />
+                <span class="find-us-search-icon">
+                    <img src="assets/icons/search-icon.svg" alt="Search" />
+                </span>
+            </div>
+            <div id="find-us-no-results" class="find-us-no-results"></div>
+        </div>
+    </section>
 
-  // Scroll-based Header Transparency
-  let lastScroll = 0;
-  window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-    
-    if (currentScroll > 100) {
-      header.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
-      header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
-    } else {
-      header.style.backgroundColor = '#fff';
-      header.style.boxShadow = 'none';
-    }
-    
-    lastScroll = currentScroll;
-  });
-
-  // Handle window resize
-  window.addEventListener('resize', function() {
-    if (window.innerWidth > 768) {
-      hamburger.classList.remove('active');
-      mobileNav.classList.remove('show');
-      document.body.classList.remove('no-scroll');
-    }
-  });
-</script>
+    <!-- Footer -->
+    <footer class="cav-footer">
+        <div class="footer-container">
+            <a href="home.html" class="footer-logo">
+                <img src="assets/images/Cavair_Logo.png" alt="CAV Zambia Airlines Logo" />
+            </a>
+            <div class="footer-columns">
+                <div class="footer-col">
+                    <h4>Flights and Travel</h4>
+                    <ul>
+                        <li><a href="#">Travel Requirements</a></li>
+                        <li><a href="#">Why Cavair</a></li>
+                        <li><a href="#">International Flights</a></li>
+                        <li><a href="#">Flight Deals</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>About us</h4>
+                    <ul>
+                        <li><a href="#">Corporate Profile</a></li>
+                        <li><a href="#">Our Partners</a></li>
+                        <li><a href="#">Ethics and Compliance</a></li>
+                        <li><a href="#">Our Responsibility</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Connect with us</h4>
+                    <div class="footer-socials">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">© 2025 Cav Zambia Airlines. All rights reserved.</div>
+    </footer>
+    <script src="js/translate.js"></script>
+    <script src="js/header-auth.js"></script>
+    <script src="js/contact.js"></script>
 </body>
 </html>

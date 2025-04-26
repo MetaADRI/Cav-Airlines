@@ -24,8 +24,8 @@ html, body {
     right: 50%;
     margin-left: -50vw;
     margin-right: -50vw;
-    min-height: 80vh;
-    height: 80vh;
+    min-height: 50vh;
+    height: 60vh;
     max-width: 100vw;
     margin-top: 0;
     margin-bottom: 0;
@@ -852,6 +852,16 @@ html, body {
 
 /* ===== End Booking Card Styles ===== */
 
+
+.mobile-nav {
+    display: none;
+}
+@media (max-width: 768px) {
+    .mobile-nav {
+        display: flex;
+        flex-direction: column;
+    }
+}
 
 /* ===== Deals Section (No Carousel) ===== */
 .deals-section {

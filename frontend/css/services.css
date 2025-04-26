@@ -36,7 +36,7 @@ body {
 .cav-header .header-nav a.active {
   font-weight: 700;
   color: #fff;
-  text-decoration: underline #DD62FF 3px;
+  text-decoration: underline #DD62FF 2px;
   text-underline-offset: 7px;
 }
 
@@ -79,9 +79,9 @@ body {
 }
 
 .services-hero-subtitle {
-    font-family: Arial, sans-serif;
+    font-family: 'Oxygen', Arial, sans-serif;
     font-size: 1.15rem;
-    color: #e7d8f5;
+    color: #ffffff;
     margin-bottom: 30px;
     text-align: left;
     max-width: 600px;
@@ -202,9 +202,9 @@ body {
     text-fill-color: transparent;
 }
 .perks-desc {
-    font-family: Arial, sans-serif;
+    font-family: 'Oxygen', Arial, sans-serif;
     font-size: 1.12rem;
-    color: #e7d8f5;
+    color: #ffffff;
     margin: 0;
     font-weight: 400;
     line-height: 1.5;
