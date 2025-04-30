@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAVAIR Admin Dashboard</title>
+    <link href="https://fonts.googleapis.com/css?family=Oxygen:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+    <div class="admin-layout">
+        <aside class="admin-sidebar">
+            <div class="admin-logo">CAVAIR Admin</div>
+            <nav class="admin-nav">
+                <ul>
+                    <li class="nav-item active" data-section="users"><span>Users</span></li>
+                    <li class="nav-item" data-section="flights"><span>Flights</span></li>
+                    <li class="nav-item" data-section="schedules"><span>Schedules</span></li>
+                    <li class="nav-item" data-section="bookings"><span>Bookings</span></li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="admin-main">
+            <header class="admin-topbar">
+                <div class="admin-title">Admin Dashboard</div>
+                <div class="admin-avatar">
+                    <img src="assets/icons/admin-avatar.svg" alt="Admin Avatar">
+                </div>
+            </header>
+            <section id="admin-section-users" class="admin-section active">
+                <h2>Manage Users</h2>
+                <div id="users-management"></div>
+            </section>
+            <section id="admin-section-flights" class="admin-section">
+                <h2>Manage Flights</h2>
+                <div id="flights-management"></div>
+            </section>
+            <section id="admin-section-schedules" class="admin-section">
+                <h2>Manage Schedules</h2>
+                <div id="schedules-management"></div>
+            </section>
+            <section id="admin-section-bookings" class="admin-section">
+                <h2>Manage Bookings</h2>
+                <div id="bookings-management"></div>
+            </section>
+        </main>
+    </div>
+    <script src="js/admin.js"></script>
+</body>
+</html>

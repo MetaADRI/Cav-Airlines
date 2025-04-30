@@ -1,0 +1,48 @@
+Web Design Project – CAVAIR Requirements
+
+1. Home Page
+   - 3 Pictures (Supports GIF, JPEG, PNG, etc.)
+   - Auto-load Video
+   - Social Media Links (Facebook, Twitter, etc.)
+   - Flight Schedules
+   - Text content
+
+2. Our Service
+   - Dropdown Menu for Service Selection
+   - Service Types: Domestic, International
+   - 3 Pictures
+   - Video
+   - Social Media Links (Facebook, Twitter, etc.)
+
+3. Booking
+   - Your Name
+   - ID/Passport Number
+   - Upload/Attach ID or Passport
+   - Email Address
+   - Phone Number
+   - Type of Service: Domestic, International
+   - Number of Passengers
+   - Amount
+   - Submit/Book Button
+
+4. Contacts
+   - Address
+   - Google Map Location
+   - Search Button
+
+5. User Requirements
+   - Login/Registration system
+   - User dashboard to make and track bookings
+   - File upload capability (PDF or JPG only) for ID and passport
+
+6. Admin Requirements
+   - Separate login and dashboard
+   - User management
+   - Admin management (add/delete admins)
+   - Flight management (add/remove flights, assign domestic/international)
+   - Booking status management (confirm/cancel bookings)
+
+Technical Stack:
+- Frontend: HTML, CSS, JavaScript
+- Backend: PHP
+- Database: MySQL

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | CAVAIR</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oxygen:400,700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/about_us.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="cav-header" id="cav-header">
+        <div class="header-container">
+            <a href="home.html" class="header-logo">
+                <img src="assets/images/Cavair_Logo.png" alt="CAV Zambia Airlines Logo" />
+            </a>
+            <nav class="header-nav">
+                <a href="booking.html">Booking</a>
+                <a href="services.html">Services</a>
+                <a href="about_us.html" class="active" style="font-weight: bold; color: white; text-decoration: underline #DD62FF;">About Us</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <div class="header-icons">
+                <span style="position:relative; display:inline-block;">
+                    <span class="icon translate-icon" id="translate-trigger">
+                        <img src="assets/icons/translate-icon.svg" alt="Translate" />
+                    </span>
+                    <select id="language-select" class="header-language-select language-dropdown" aria-label="Translate site" style="display:none; min-width:140px; position:absolute; left:50%; transform:translateX(-50%); top:36px; z-index:3000;">
+                        <option value="en" selected>English</option>
+                        <option value="fr">Français</option>
+                        <option value="pt">Português</option>
+                        <option value="es">Español</option>
+                        <option value="ar">العربية</option>
+                        <option value="de">Deutsch</option>
+                        <option value="it">Italiano</option>
+                    </select>
+                </span>
+                <span class="header-divider" aria-hidden="true"></span>
+                <span class="icon search-icon">
+                    <img src="assets/icons/search-icon.svg" alt="Search" />
+                </span>
+                <span style="display:inline-block; width:18px;"></span>
+                <span id="header-auth-slot"></span>
+            </div>
+        </div>
+    </header>
+    <!-- Hero Section -->
+    <section class="about-hero-section">
+    <div class="about-hero-content">
+        <h1>About Us</h1>
+        <p>Soaring above expectations, rooted in tradition, and connected through a shared love for exceptional journeys.</p>
+    </div>
+</section>
+    <main class="about-main">
+        <!-- Who We Are Section -->
+        <section class="about-section who-we-are">
+            <div class="about-row">
+                <div class="about-col about-col-text">
+                    <h2>Who we are</h2>
+                    <p>CAVAIR is Zambia's flagship airline with a global reach. Headquartered in Lusaka, we proudly connect Zambia to the world and the world to Zambia — offering seamless travel experiences across Africa, Europe, Asia, and beyond. As a symbol of national pride, we combine world-class aviation standards with the authentic warmth of Zambian hospitality.</p>
+                </div>
+                <div class="about-col about-col-img">
+                    <img src="assets/images/About-Us-Page/who_we_are.jpg" alt="CAVAIR Cabin Crew" />
+                </div>
+            </div>
+        </section>
+        <!-- Our Story Section -->
+        <div class="our-story-bg">
+            <section class="about-section our-story fade-in-up">
+                <div class="about-row">
+                    <div class="about-col about-col-img our-story-img-stack">
+                        <div class="our-story-img-wrapper">
+                            <div class="our-story-main-img-bg"></div>
+                            <div class="our-story-overlay-img-bg"></div>
+                        </div>
+                    </div>
+                    <div class="about-col about-col-text">
+                        <h2>Our Story</h2>
+                        <p>Established to transform the aviation landscape in Zambia, CAVAIR was founded with a bold vision—to bridge distances, create opportunities, and elevate the standard of travel for Zambians and visitors alike. From humble beginnings as a domestic carrier, we’ve grown into an international airline trusted by travelers across borders.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <!-- Our Mission Section -->
+        <section class="about-section our-mission fade-in-up">
+            <div class="about-row">
+                <div class="about-col about-col-text">
+                    <h2>Our Mission</h2>
+                    <p>Our mission is to deliver world-class, safe, and customer-focused air travel that connects Zambia to the global stage while redefining excellence in African aviation. At CAVAIR, we are committed to creating seamless travel experiences that reflect the highest international standards — from the ground to the skies.</p>
+                </div>
+                <div class="about-col about-col-img">
+                    <img src="assets/images/About-Us-Page/our_mission.jpg" alt="Our Mission" />
+                </div>
+            </div>
+        </section>
+        <!-- Banner Section -->
+        <section class="about-banner-section fade-in-up">
+            <div class="about-banner-flex">
+                <div class="about-banner-img-container">
+                    <img src="assets/images/About-Us-Page/banner_image.jpg" alt="Banner" />
+                </div>
+                <div class="about-banner-text">
+                    Our drive has always propelled us past the ordinary, allowing us to create truly exceptional travel experiences.
+                </div>
+            </div>
+        </section>
+        <!-- What Sets Us Apart Section -->
+        <section class="about-section sets-apart fade-in-up">
+            <h2>What sets us apart?</h2>
+            <div class="apart-cards">
+                <div class="apart-card">
+                    <div class="apart-card-img-wrapper img-fleet">
+                        <div class="apart-card-overlay">
+                            <h3>Modern Fleet</h3>
+                        </div>
+                    </div>
+                    <p>Our state-of-the-art aircraft are maintained to the highest international safety standards for a comfortable, reliable journey.</p>
+                </div>
+                <div class="apart-card">
+                    <div class="apart-card-img-wrapper img-reach">
+                        <div class="apart-card-overlay">
+                            <h3>Global Reach</h3>
+                        </div>
+                    </div>
+                    <p>We operate an expanding network of international routes, linking Zambia to the world. CAVAIR serves multiple continents.</p>
+                </div>
+                <div class="apart-card">
+                    <div class="apart-card-img-wrapper img-value">
+                        <div class="apart-card-overlay">
+                            <h3>Competitive Value</h3>
+                        </div>
+                    </div>
+                    <p>From economy to business class, enjoy the perfect combination of comfort and service at competitive global fares.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer class="cav-footer">
+        <div class="footer-container">
+            <a href="home.html" class="footer-logo">
+                <img src="assets/images/Cavair_Logo.png" alt="CAV Zambia Airlines Logo" />
+            </a>
+            <div class="footer-columns">
+                <div class="footer-col">
+                    <h4>Flights and Travel</h4>
+                    <ul>
+                        <li><a href="#">Travel Requirements</a></li>
+                        <li><a href="#">Why Cavair</a></li>
+                        <li><a href="#">International Flights</a></li>
+                        <li><a href="#">Flight Deals</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>About us</h4>
+                    <ul>
+                        <li><a href="#">Corporate Profile</a></li>
+                        <li><a href="#">Our Partners</a></li>
+                        <li><a href="#">Ethics and Compliance</a></li>
+                        <li><a href="#">Our Responsibility</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Connect with us</h4>
+                    <div class="footer-socials">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">© 2025 Cav Zambia Airlines. All rights reserved.</div>
+    </footer>
+    <script src="js/translate.js"></script>
+    <script src="js/header-auth.js"></script>
+    <script src="js/about_us.js"></script>
+</body>
+</html>

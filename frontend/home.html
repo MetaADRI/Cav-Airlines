@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAV Zambia Airlines - Home</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oxygen:400,700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/home.css">
+    <style>
+        /* --- Header Styles --- */
+        .cav-header {
+        /* background: #261447; Removed solid background, only scroll blur remains */
+        padding: 1rem 0;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        transition: top 0.3s;
+        }
+        
+        .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        }
+        
+      /* Navigation Links */
+        .header-nav {
+        display: flex;
+        gap: 2rem;
+        }
+        
+        .header-nav a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        }
+        
+      /* --- Hamburger Icon --- */
+        .hamburger {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0.5rem;
+        }
+        
+        .hamburger div {
+        width: 25px;
+        height: 3px;
+        background-color: white;
+        margin: 4px 0;
+        transition: all 0.3s ease;
+        }
+        
+      /* --- Mobile Navigation --- */
+        @media (max-width: 768px) {
+        .header-nav {
+            display: none;
+            position: fixed;
+            top: 70px;
+            right: 0;
+            background: #480171;
+            flex-direction: column;
+            width: 200px;
+            padding: 1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .header-nav.show {
+            display: flex;
+        }
+        
+        .hamburger {
+            display: block;
+        }
+        
+        .hamburger.active div:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        
+        .hamburger.active div:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger.active div:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+        }
+        
+      /* --- No Scroll When Menu Open --- */
+        .no-scroll {
+            overflow: hidden;
+        }
+        
+      /* --- Page-Specific Section Styling --- */
+        .services-section {
+            margin-top: 100px;
+            padding: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+        .services-section {
+            padding: 1rem;
+            text-align: center;
+        }
+        
+        p {
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        
+        .service-image {
+            width: 100%;
+            margin: 1rem 0;
+        }
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="cav-header" id="cav-header">
+        <div class="header-container">
+            <a href="home.html" class="header-logo">
+                <img src="assets/images/Cavair_Logo.png" alt="CAV Zambia Airlines Logo" />
+            </a>
+            
+            <nav class="header-nav">
+                <a href="booking.html">Booking</a>
+                <a href="services.html">Services</a>
+                <a href="about_us.html">About Us</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            
+            <div class="header-icons">
+                <span style="position:relative; display:inline-block;">
+                    <span class="icon translate-icon" id="translate-trigger">
+                        <img src="assets/icons/translate-icon.svg" alt="Translate" />
+                    </span>
+                    <select id="language-select" class="header-language-select language-dropdown" aria-label="Translate site" style="display:none; min-width:140px; position:absolute; left:50%; transform:translateX(-50%); top:36px; z-index:3000;">
+                        <option value="en" selected>English</option>
+                        <option value="fr">Français</option>
+                        <option value="pt">Português</option>
+                        <option value="es">Español</option>
+                        <option value="ar">العربية</option>
+                        <option value="de">Deutsch</option>
+                        <option value="it">Italiano</option>
+                    </select>
+                </span>
+                <span class="header-divider" aria-hidden="true"></span>
+                <span class="icon search-icon">
+                    <img src="assets/icons/search-icon.svg" alt="Search" />
+                </span>
+                <span style="display:inline-block; width:18px;"></span>
+                <span id="header-auth-slot"></span>
+            </div>
+        </div>
+        <div class="hamburger" id="hamburger" aria-label="Toggle menu">
+            <i class="fas fa-bars"></i>
+        </div>
+    </header>
+    <!-- Mobile Navigation
+    <nav class="mobile-nav" id="mobileNav">
+        <a href="home.html">Home</a>
+        <a href="booking.html">Booking</a>
+        <a href="services.html">Services</a>
+        <a href="about_us.html">About Us</a>
+        <a href="contact.html">Contact</a>
+    <a href="login.html">Login</a>
+    </nav> -->
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <video class="hero-bg-video" src="assets/videos/Qatar_Airways_ad.mp4" autoplay muted loop playsinline></video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Fly With Us</h1>
+            <p class="hero-subtitle">Experience our world class services onboard our fleet</p>
+        </div>
+    </section>
+
+    <!-- Booking Card (Overlapping Hero) -->
+    <div class="booking-card-container">
+        <div class="booking-tabs-container">
+            <div class="booking-tabs" id="bookingTabs">
+                <button class="booking-tab active" data-tab="book">
+                    <img src="assets/icons/book_a_flight-icon(active).svg" alt="Book a flight" class="tab-icon" />
+                    Book a flight
+                </button>
+                <button class="booking-tab" data-tab="manage">
+                    <img src="assets/icons/manage-checkin-icon(inactive).svg" alt="Manage/Check in" class="tab-icon" />
+                    Manage / Check in
+                </button>
+                <button class="booking-tab" data-tab="status">
+                    <img src="assets/icons/flight_status-icon(inactive).svg" alt="Flight status" class="tab-icon" />
+                    Flight status
+                </button>
+            </div>
+        </div>
+        <div class="booking-card">
+            <!-- Book a flight panel -->
+            <form class="booking-form booking-tab-panel" id="tab-book" style="display: block;">
+                <div class="booking-row">
+                    <div class="booking-field" style="position:relative;">
+                        <label class="booking-label" for="tripType">Trip type</label>
+                        <select id="tripType" class="trip-type-select" name="tripType">
+                            <option value="round" selected>Round trip</option>
+                            <option value="oneway">One-way</option>
+                        </select>
+                    </div>
+                    <div class="booking-field from-field" style="position:relative;">
+                        <input type="text" id="from" name="from" class="booking-input" autocomplete="off" placeholder=" " />
+                        <label class="booking-floating-label">From</label>
+                        <div class="booking-suggestions" id="from-suggestions" style="display:none;"></div>
+                    </div>
+                    <div class="arrow-field">
+                        <img src="assets/icons/from_and_to_arrows-icon.svg" class="arrow-icon" alt="to" />
+                    </div>
+                    <div class="booking-field to-field" style="position:relative;">
+                        <input type="text" id="to" name="to" class="booking-input" autocomplete="off" placeholder=" " />
+                        <label class="booking-floating-label">To</label>
+                        <div class="booking-suggestions" id="to-suggestions" style="display:none;"></div>
+                    </div>
+                </div>
+                <div class="booking-row">
+                    <div class="booking-field" style="position:relative;">
+                        <label class="booking-label">Passengers</label>
+                        <select class="booking-select" name="passengers" id="passengers">
+                            <option value="1" selected>1 Passenger</option>
+                            <option value="2">2 Passengers</option>
+                            <option value="3">3 Passengers</option>
+                            <option value="4">4 Passengers</option>
+                            <option value="5">5 Passengers</option>
+                            <option value="6">6 Passengers</option>
+                            <option value="7">7 Passengers</option>
+                            <option value="8">8 Passengers</option>
+                            <option value="9">9 Passengers</option>
+                            <option value="10">10 Passengers</option>
+                        </select>
+                    </div>
+                    <div class="booking-field" style="position:relative;">
+                        <label class="booking-label">Class</label>
+                        <select class="booking-select" name="class" id="class">
+                            <option value="economy" selected>Economy Class</option>
+                            <option value="business">Business Class</option>
+                        </select>
+                    </div>
+                    <div class="booking-field booking-field-dates" id="date-fields-container" style="position:relative; display: flex; flex-direction: column; align-items: flex-start; gap: 0; min-width: 390px; width: 430px;">
+                        <label class="booking-label" style="margin-bottom: 8px;">Departing</label>
+                        <div class="date-field-group" style="display: flex; align-items: flex-start; width: 100%; min-width: 340px;">
+                            <div class="date-field" style="display: flex; flex-direction: column; align-items: flex-start; width: 48%; position: relative;">
+                                <input type="date" id="departing-date" name="departing-date" class="booking-date-input" />
+                            </div>
+                            <img src="assets/icons/departing_returning_arrow-icon.svg" class="departing-returning-arrow" alt="to" style="width: 32px; margin: 0 8px; margin-top: 22px;" />
+                            <div class="date-field" style="display: flex; flex-direction: column; align-items: flex-start; width: 48%; position: relative;">
+                                <span class="booking-label" id="returning-label" style="margin-bottom: 8px; margin-left: 2px;">Returning</span>
+                                <input type="date" id="returning-date" name="returning-date" class="booking-date-input" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="booking-row booking-search-row">
+                    <button type="submit" class="booking-search-btn">Search Flights</button>
+                </div>
+            </form>
+            <!-- Manage / Check in panel -->
+            <form class="booking-form booking-tab-panel" id="tab-manage" style="display: none;">
+                <div class="booking-row">
+                    <div class="booking-field booking-field-wide" style="width: 100%; max-width: 350px; min-width: 200px; margin: 0 auto; position:relative;">
+                        <input type="text" id="manage-booking-ref" class="booking-input" autocomplete="off" placeholder=" " />
+                        <label class="booking-floating-label">Booking Reference or Ticket Number</label>
+                    </div>
+                    <div class="booking-field booking-field-wide" style="width: 100%; max-width: 350px; min-width: 200px; margin: 0 auto; position:relative;">
+                        <input type="text" id="manage-last-name" class="booking-input" autocomplete="off" placeholder=" " />
+                        <label class="booking-floating-label">Last Name</label>
+                    </div>
+                </div>
+                <div class="booking-row booking-search-row">
+                    <button type="submit" class="booking-search-btn">Check In</button>
+                    <button type="button" class="booking-manage-btn">Manage Booking</button>
+                </div>
+            </form>
+            <!-- Flight status panel -->
+            <form class="booking-form booking-tab-panel" id="tab-status" style="display: none;">
+                <div class="booking-row">
+                    <div class="booking-field booking-field-wide" style="width: 100%; max-width: 350px; min-width: 200px; margin: 0 auto;">
+                        <input type="text" id="flight-status-number" class="booking-input" autocomplete="off" placeholder=" " />
+                        <label class="booking-floating-label">Flight Number</label>
+                    </div>
+                    <div class="booking-field booking-field-wide" style="width: 100%; max-width: 350px; min-width: 200px; margin: 0 auto;">
+                        <label class="booking-label" style="margin-bottom: 8px;">Departure date*</label>
+                        <input type="date" id="flight-status-date" class="booking-input" />
+                    </div>
+                </div>
+                <div class="booking-row booking-search-row">
+                    <button type="submit" class="booking-search-btn">Find</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Deals Section (3D Carousel) -->
+    <section class="deals-section">
+        <!-- Deals Header Title and Subtitle -->
+        <div class="deals-header">
+            <h2 class="deals-title">
+                <span class="deals-title-main">Deals from</span> <span class="deals-highlight deals-title-lusaka">Lusaka</span>
+            </h2>
+            <p class="deals-subtitle">Discover your next unforgettable journey</p>
+        </div>
+
+        <!-- Deals Carousel -->
+        <div class="deals-carousel">
+            <div class="deals-carousel-cards">
+                <div class="deals-carousel-card" data-index="0">
+                    <img src="assets/images/Home-Page/Dubai.png" alt="Dubai" class="deals-carousel-card-image" />
+                    <div class="deals-carousel-card-type deals-carousel-card-type-left">Round Trip - Economy</div>
+                    <div class="deals-carousel-card-type deals-carousel-card-type-right">Round Trip - Economy</div>
+                    <div class="deals-carousel-card-info">
+                        <span class="deals-carousel-card-destination">Dubai</span>
+                        <span class="deals-carousel-card-price">From <strong>ZMW 13,700</strong></span>
+                    </div>
+                </div>
+                <div class="deals-carousel-card" data-index="1">
+                    <img src="assets/images/Home-Page/New-York.png" alt="New York" class="deals-carousel-card-image" />
+                    <div class="deals-carousel-card-type deals-carousel-card-type-left">Round Trip - Economy</div>
+                    <div class="deals-carousel-card-type deals-carousel-card-type-right">Round Trip - Economy</div>
+                    <div class="deals-carousel-card-info">
+                        <span class="deals-carousel-card-destination">New York</span>
+                        <span class="deals-carousel-card-price">From <strong>ZMW 38,800</strong></span>
+                    </div>
+                </div>
+                <div class="deals-carousel-card" data-index="2">
+                    <img src="assets/images/Home-Page/Capetown.png" alt="Cape Town" class="deals-carousel-card-image" />
+                    <div class="deals-carousel-card-type deals-carousel-card-type-left">Round Trip - Economy</div>
+                    <div class="deals-carousel-card-type deals-carousel-card-type-right">Round Trip - Economy</div>
+                    <div class="deals-carousel-card-info">
+                        <span class="deals-carousel-card-destination">Cape Town</span>
+                        <span class="deals-carousel-card-price">From <strong>ZMW 6,200</strong></span>
+                    </div>
+                </div>
+                <div class="deals-carousel-card" data-index="3">
+                    <img src="assets/images/Home-Page/Oslo.png" alt="Oslo" class="deals-carousel-card-image" />
+                    <div class="deals-carousel-card-type deals-carousel-card-type-left">Round Trip - Economy</div>
+                    <div class="deals-carousel-card-type deals-carousel-card-type-right">Round Trip - Economy</div>
+                    <div class="deals-carousel-card-info">
+                        <span class="deals-carousel-card-destination">Oslo</span>
+                        <span class="deals-carousel-card-price">From <strong>ZMW 34,900</strong></span>
+                    </div>
+                </div>
+                <div class="deals-carousel-card" data-index="4">
+                    <img src="assets/images/Home-Page/London.png" alt="London" class="deals-carousel-card-image" />
+                    <div class="deals-carousel-card-type deals-carousel-card-type-left">Round Trip - Economy</div>
+                    <div class="deals-carousel-card-type deals-carousel-card-type-right">Round Trip - Economy</div>
+                    <div class="deals-carousel-card-info">
+                        <span class="deals-carousel-card-destination">London</span>
+                        <span class="deals-carousel-card-price">From <strong>ZMW 23,450</strong></span>
+                    </div>
+                </div>
+            </div>
+            <div class="deals-carousel-controls">
+                <button class="deals-carousel-arrow deals-carousel-arrow-left" aria-label="Previous deal">
+                    <svg width="32" height="32" viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#fff" opacity="0.18"/><path d="M19.5 24l-6.5-8 6.5-8" stroke="#DA55FF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+                </button>
+                <div class="deals-carousel-slider-dots">
+            <span class="deals-carousel-dot" data-index="0"></span>
+            <span class="deals-carousel-dot" data-index="1"></span>
+            <span class="deals-carousel-dot" data-index="2"></span>
+            <span class="deals-carousel-dot" data-index="3"></span>
+            <span class="deals-carousel-dot" data-index="4"></span>
+        </div>
+        <button class="deals-carousel-arrow deals-carousel-arrow-right" aria-label="Next deal">
+            <svg width="32" height="32" viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#fff" opacity="0.18"/><path d="M12.5 8l6.5 8-6.5 8" stroke="#DA55FF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+        </button>
+    </div>
+    
+    </section>
+
+    <!-- Deals Banner Section -->
+    <div class="deals-banner-section">
+        <img src="assets/images/Home-Page/banner_section_image.jpg" alt="Wi-Fi onboard" class="deals-banner-img" />
+        <span class="deals-banner-text">Did you know that Cavair Guest members can enjoy complimentary Wi-Fi onboard for messaging apps? Staying in touch with family and friends during your flight has never been easier!</span>
+    </div>
+
+    <!-- Flight Schedules Section -->
+    <section class="flight-schedules-section">
+        <div class="flight-schedules-header">
+            <h2 class="flight-schedules-title">Flight Schedules</h2>
+        </div>
+        <div class="flight-schedules-table-container">
+            <div class="flight-schedules-header-row">
+                <table class="flight-schedules-table">
+                    <thead>
+                        <tr>
+                            <th>ROUTE</th>
+                            <th>FLIGHT NO.</th>
+                            <th>DEPARTURE TIME</th>
+                            <th>ARRIVAL TIME</th>
+                            <th>DAYS</th>
+                            <th>AIRCRAFT</th>
+                        </tr>
+                    </thead>
+                    <tbody id="flight-schedules-tbody">
+                        <tr class="flight-row fade-in" data-row="0">
+                            <td>Lusaka (LUN) <span class="arrow">&#8594;</span> Madrid (MAD)</td>
+                            <td>CZ 487</td>
+                            <td>08:00</td>
+                            <td>17:15</td>
+                            <td>Mon</td>
+                            <td>B787</td>
+                        </tr>
+                        <tr class="flight-row fade-in" data-row="1">
+                            <td>Brussels (BRU) <span class="arrow">&#8594;</span> Lusaka (LUN)</td>
+                            <td>CZ 119</td>
+                            <td>14:00</td>
+                            <td>01:55 +1</td>
+                            <td>Sun</td>
+                            <td>B787</td>
+                        </tr>
+                        <tr class="flight-row fade-in" data-row="2">
+                            <td>Johannesburg (JNB) <span class="arrow">&#8594;</span> Lusaka (LUN)</td>
+                            <td>CZ 920</td>
+                            <td>16:00</td>
+                            <td>17:45</td>
+                            <td>Daily</td>
+                            <td>A220</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="flight-schedules-note">
+            <i class="fa fa-info-circle"></i> All times are local. +1 indicates arrival on the following day.
+        </div>
+    </section>
+
+    <div class="section-divider"><hr></div>
+
+    <!-- Experience Cavair Section -->
+    <section class="experience-cavair-section">
+        <div class="experience-cavair-container">
+            <div class="experience-cavair-left">
+                <h2 class="experience-cavair-title">Experience <span class="cavair-highlight">Cavair</span></h2>
+                <p class="experience-cavair-desc">Your journey with us is the start of something truly special. From our hub at Kenneth Kaunda International Airport, we bring you our signature hospitality, making every moment of your travel experience unforgettable.</p>
+            </div>
+            <div class="experience-cavair-right">
+                <div class="experience-cavair-card">
+                    <img src="assets/images/Home-Page/kenneth_kaunda_intl_airport.jpg" alt="Kenneth Kaunda Intl Airport" class="experience-cavair-card-img" />
+                    <div class="experience-cavair-card-caption">
+                        <div class="experience-cavair-card-title">Kenneth Kaunda Intl Airport</div>
+                    </div>
+                </div>
+                <div class="experience-cavair-card">
+                    <img src="assets/images/Home-Page/lounge.jpg" alt="Tranquil Lounges" class="experience-cavair-card-img" />
+                    <div class="experience-cavair-card-caption">
+                        <div class="experience-cavair-card-title">Tranquil Lounges</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="cav-footer">
+        <div class="footer-container">
+            <a href="home.html" class="footer-logo">
+                <img src="assets/images/Cavair_Logo.png" alt="CAV Zambia Airlines Logo" />
+            </a>
+            <div class="footer-columns">
+                <div class="footer-col">
+                    <h4>Flights and Travel</h4>
+                    <ul>
+                        <li><a href="#">Travel Requirements</a></li>
+                        <li><a href="#">Why Cavair</a></li>
+                        <li><a href="#">International Flights</a></li>
+                        <li><a href="#">Flight Deals</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>About us</h4>
+                    <ul>
+                        <li><a href="#">Corporate Profile</a></li>
+                        <li><a href="#">Our Partners</a></li>
+                        <li><a href="#">Ethics and Compliance</a></li>
+                        <li><a href="#">Our Responsibility</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Connect with us</h4>
+                    <div class="footer-socials">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">© 2025 Cav Zambia Airlines. All rights reserved.</div>
+    </footer>
+    <script src="js/home.js"></script>
+    <script src="js/header-auth.js"></script>
+    <script src="js/translate.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const hamburger = document.querySelector(".hamburger");
+            const nav = document.querySelector(".header-nav");
+            const body = document.body;
+            hamburger.addEventListener("click", () => {
+                hamburger.classList.toggle("active");
+                nav.classList.toggle("show");
+                body.classList.toggle("no-scroll");
+            });
+        });
+    </script>
+</body>
+</html>
