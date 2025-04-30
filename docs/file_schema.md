@@ -1,72 +1,95 @@
 # COM322 GROUP 2: CAVAIR File Structure Schema
 
-## Root Directory Structure
+## File Structure Structure
 
 ``` 'markdown':
-CAV-Zambia-Airlines/
-├── admin/              # Administrative interface files
-├── backend/            # Server-side PHP files
-├── docs/               # Documentation files
-├── frontend/           # Client-side files
-└── link.txt            # Deployment link
-```
-
-## Frontend Structure
-
-``` 'markdown':
-frontend/
-├── about_us.html       # About CAVAIR page
-├── admin.html          # Admin login page
-├── assets/             # Static assets
-│   ├── css/           # Frontend CSS files
-│   ├── images/        # Website images
-│   └── js/            # Frontend JavaScript
-├── booking.html        # Flight booking page
-├── contact.html        # Contact information page
-├── css/                # Frontend styles
-│   ├── home.css       # Home page styles
-│   ├── booking.css    # Booking page styles
-│   ├── user_dashboard.css # User dashboard styles
-│   └── admin.css      # Admin interface styles
-├── flights_page.html   # Flights listing page
-├── home.html           # Main landing page
-├── js/                 # Frontend JavaScript
-│   ├── home.js        # Home page functionality
-│   ├── booking.js     # Booking page functionality
-│   ├── user_dashboard.js # User dashboard functionality
-│   └── admin.js       # Admin interface functionality
-├── login.html          # User login page
-├── register.html       # User registration page
-├── services.html       # Services page
-└── user_dashboard.html # User account dashboard
-```
-
-## Backend Structure
-
-``` 'markdown':
-backend/
-├── booking/            # Booking system files
-│   ├── booking.php    # Booking processing
-│   ├── confirm.php    # Booking confirmation
-│   └── cancel.php     # Booking cancellation
-├── group2_cavair_db_setup.sql # Database schema
-├── login.php          # User authentication
-├── register.php       # User registration
-├── uploads/           # User uploaded documents
-├── user_dashboard/    # User dashboard functionality
-└── utils/             # Utility functions
-    ├── db_connect.php # Database connection
-    └── functions.php  # Helper functions
-```
-
-## Admin Structure
-
-``` 'markdown':
-admin/
-├── manage_bookings.php # Booking management
-├── manage_flights.php  # Flight management
-├── manage_schedules.php # Schedule management
-└── manage_users.php    # User management
+CAV-Zambia-Airlines(to send)/
+├── README.md                        # Project overview and instructions
+├── link.txt                         # Deployment/resource link
+├── admin/
+│   ├── manage_bookings.php          # Booking management API
+│   ├── manage_flights.php           # Flight management API
+│   ├── manage_schedules.php         # Schedule management API
+│   └── manage_users.php             # User management API
+│
+├── backend/
+│   ├── group2_cavair_db_setup.sql   # MySQL DB schema & seed data
+│   ├── login.php                    # User login handler
+│   ├── register.php                 # User registration handler
+│   ├── uploads/                     # (empty) For uploaded ID/passport files
+│   ├── booking/
+│   │   ├── booking.php              # Booking submission
+│   │   ├── check_email.php          # Email availability check
+│   │   ├── check_username.php       # Username availability check
+│   │   ├── get_flight_number.php    # Fetch flight numbers
+│   │   ├── get_flight_price.php     # Fetch flight price
+│   │   ├── get_schedule_id.php      # Get schedule IDs
+│   │   ├── get_user_bookings.php    # List user bookings
+│   │   └── track_booking.php        # Track booking status
+│   ├── user_dashboard/
+│   │   └── update_profile.php       # User profile update API
+│   └── utils/
+│       ├── auth.php                 # Authentication/session utilities
+│       └── db_connect.php           # DB connection logic
+│
+├── docs/
+│   ├── documentation.md             # System documentation
+│   ├── file_schema.md               # File schema (this file)
+│   ├── file_schema(TEMP).md         # Temporary/alternate file schema
+│   ├── requirements.txt             # Requirements/dependencies
+│   ├── user_reference_manual.md     # User manual
+│   └── ui-ux_design/
+│       └── ... UI/UX PNG images
+│
+├── frontend/
+│   ├── about_us.html                # About page
+│   ├── admin.html                   # Admin login page
+│   ├── booking.html                 # Booking form page
+│   ├── contact.html                 # Contact information page
+│   ├── home.html                    # Main landing page
+│   ├── login.html                   # User login page
+│   ├── register.html                # User registration page
+│   ├── services.html                # Services page
+│   ├── user_dashboard.html          # User dashboard
+│   ├── assets/
+│   │   ├── icons/                   # PNG/SVG icon files (UI icons)
+│   │   ├── images/
+│   │   │   ├── About-Us-Page/
+│   │   │   ├── Home-Page/
+│   │   │   ├── Login-Register-Pages/
+│   │   │   ├── Services-Page/
+│   │   │   └── Cavair_Logo.png
+│   │   └── videos/
+│   │       ├── Emirates_ad.mp4
+│   │       └── Qatar_Airways_ad.mp4
+│   │
+│   ├── css/
+│   │   ├── about_us.css
+│   │   ├── admin.css
+│   │   ├── booking.css
+│   │   ├── common.css
+│   │   ├── contact.css
+│   │   ├── flights_page.css
+│   │   ├── home.css
+│   │   ├── login.css
+│   │   ├── register.css
+│   │   ├── services.css
+│   │   └── user_dashboard.css
+│   │
+│   └── js/
+│       ├── about_us.js
+│       ├── admin.js
+│       ├── booking-ajax.js
+│       ├── booking.js
+│       ├── contact.js
+│       ├── flights_page.js
+│       ├── header-auth.js
+│       ├── home.js
+│       ├── login.js
+│       ├── register.js
+│       ├── services.js
+│       ├── translate.js
+│       └── user_dashboard.js
 ```
 
 ## Database Schema

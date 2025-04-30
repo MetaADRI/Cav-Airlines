@@ -43,9 +43,4 @@
 
 - Manage users, flights, schedules, and bookings
 
-## Security & Support
-
-- All sensitive data is protected
-- For account or booking issues, use the contact form or reach out via provided support channels
-
 ---
