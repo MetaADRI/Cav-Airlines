@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const isLoggedIn = sessionStorage.getItem('cavair_isLoggedIn') === '1';
     if (!isLoggedIn) {
         // Show Login button
-        slot.innerHTML = '<a href="/CAV-Zambia-Airlines/frontend/login.html" class="header-login-btn">Login</a>';
+        slot.innerHTML = '<a href="../frontend/login.html" class="header-login-btn">Login</a>';
         return;
     }
     // Show user icon with dropdown
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
           <img src="assets/icons/user-icon.svg" alt="User">
         </span>
         <div class="header-user-menu">
-          <a href="/CAV-Zambia-Airlines/frontend/user_dashboard.html" id="header-dashboard-btn">Dashboard</a>
+          <a href="../frontend/user_dashboard.html" id="header-dashboard-btn">Dashboard</a>
           <a href="#" id="header-logout-btn">Logout</a>
         </div>
       </div>
