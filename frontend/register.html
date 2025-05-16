@@ -9,13 +9,13 @@
     <link rel="stylesheet" href="css/register.css">
 </head>
 <body>
-    <!-- Registration form -->
+    <!-- Left container with registration form -->
     <div class="register-container">
         <div class="register-card">
             <!-- Page heading -->
             <h1>Create Account</h1>
             
-            <!-- Registration form -->
+            <!-- Registration form - submits to backend/register.php -->
             <form id="register-form">
             <!-- Full Name input field with floating label -->
             <div class="form-group">
@@ -28,17 +28,15 @@
             <div class="form-group">
                 <input type="email" name="email" id="email" required>
                 <label for="email" class="floating-label">Email Address</label>
-                <span class="field-error" id="email_error"></span>
             </div>
             
-            <!-- Phone Number input field (optional field) -->
+            <!-- Phone Number input field with floating label (optional field) -->
             <div class="form-group">
                 <input type="tel" name="phone" id="phone">
                 <label for="phone" class="floating-label">Phone Number (optional)</label>
-                <span class="field-error" id="phone_error"></span>
             </div>
             
-            <!-- Password input field -->
+            <!-- Password input field with floating label -->
             <div class="form-group">
                 <input type="password" name="password" id="password" required>
                 <label for="password" class="floating-label">Password</label>
@@ -47,19 +45,19 @@
             
             <!-- Register button -->
             <button type="submit" class="register-btn">Register</button>
-            <p class="login-text" style="margin-top: 18px; margin-bottom: 10px;">Do you have an account? <a href="../backend/login.php" class="login-link">Login</a></p>
-            <div id="register-message" class="register-message"></div>
+<p class="login-text" style="margin-top: 18px; margin-bottom: 10px;">Do you have an account? <a href="../backend/login.php" class="login-link">Login</a></p>
+<div id="register-message" class="register-message"></div>
         </form>
         
-        <!-- CAVAIR banner -->
+        <!-- CAVAIR banner at the bottom of the form section -->
         <div class="cavair-banner">CAVAIR</div>
         </div>
     </div>
     
-    <!-- Right container -->
+    <!-- Right container with background image -->
     <div class="image-container"></div>
     
-    <!-- JavaScript -->
+    <!-- JavaScript for form functionality -->
     <script src="js/register.js"></script>
 </body>
 </html>

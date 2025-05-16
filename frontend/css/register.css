@@ -154,7 +154,6 @@ input::placeholder {
     margin-top: auto;
 }
 
-
 /* Error message */
 .field-error {
     color: #d32f2f;
@@ -183,3 +182,48 @@ input::placeholder {
     color: #d32f2f;
 }
 
+/* Responsive Design for Small Screens */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+        height: auto;
+        overflow: auto;
+    }
+
+    .register-container {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .image-container {
+        display: none;
+    }
+
+    h1 {
+        font-size: 26px;
+        margin-bottom: 24px;
+    }
+
+    .register-card {
+        min-height: auto;
+    }
+
+    .cavair-banner {
+        font-size: 18px;
+        padding: 12px;
+        margin-top: 30px;
+    }
+
+    .register-btn {
+        font-size: 16px;
+        padding: 12px;
+    }
+
+    .login-text {
+        font-size: 14px;
+    }
+
+    .register-message {
+        font-size: 0.95rem;
+    }
+}
