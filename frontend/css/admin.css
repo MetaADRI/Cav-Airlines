@@ -10,7 +10,7 @@ body {
 }
 .admin-sidebar {
     width: 220px;
-    background: #7c1fa0;
+    background: var(--theme-blue);
     color: #fff;
     display: flex;
     flex-direction: column;
@@ -46,8 +46,8 @@ body {
 }
 .admin-nav .nav-item.active, .admin-nav .nav-item:hover {
     background: #fff;
-    color: #7c1fa0;
-    border-left: 4px solid #7c1fa0;
+    color: var(--theme-blue);
+    border-left: 4px solid var(--theme-blue);
 }
 .admin-main {
     margin-left: 220px;
@@ -68,13 +68,13 @@ body {
 .admin-title {
     font-size: 1.45rem;
     font-weight: 700;
-    color: #7c1fa0;
+    color: var(--theme-blue);
 }
 .admin-avatar img {
     width: 44px;
     height: 44px;
     border-radius: 50%;
-    border: 2px solid #7c1fa0;
+    border: 2px solid var(--theme-blue);
     background: #fff;
 }
 .admin-section {

@@ -13,6 +13,22 @@ body {
     overflow: hidden;
 }
 
+@media (max-width: 900px) {
+    body {
+        flex-direction: column;
+        overflow-y: auto;
+        height: auto;
+    }
+    .image-container {
+        display: none;
+    }
+    .login-container {
+        padding: 30px 20px;
+        min-height: 100vh;
+        justify-content: center;
+    }
+}
+
 /* Left container with login form */
 .login-container {
     flex: 1;
@@ -82,12 +98,12 @@ input:focus ~ .floating-label,
 input:not(:placeholder-shown) ~ .floating-label {
     top: 0;
     font-size: 12px;
-    color: #6a0dad;
+    color: var(--theme-blue);
 }
 
 /* Change border color and thickness when input is focused */
 input:focus {
-    border-bottom: 2px solid #6a0dad;
+    border-bottom: 2px solid var(--theme-blue);
 }
 
 /* Hide the placeholder text (we're using floating labels instead) */
@@ -97,7 +113,7 @@ input::placeholder {
 
 /* Login button styling */
 .login-btn {
-    background-color: #b400ff;
+    background-color: var(--theme-orange);
     color: white;
     border: none;
     padding: 15px;
@@ -111,7 +127,7 @@ input::placeholder {
 }
 
 .login-btn:hover {
-    background-color: #8000b3;
+    background-color: var(--theme-orange);
 }
 
 #login-message {
@@ -151,19 +167,19 @@ input::placeholder {
 }
 
 .register-link {
-    color: #6a0dad;
+    color: var(--theme-blue);
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s ease;
 }
 
 .register-link:hover {
-    color: #4b0980;
+    color: #003a8c;
 }
 
 /* CAVAIR banner*/
 .cavair-banner {
-    background: linear-gradient(90deg, #4b0980 0%, #9b2eea 100%);
+    background: linear-gradient(90deg, #111 0%, var(--theme-blue) 100%);
     color: white;
     font-family: 'Oxygen', Arial, sans-serif;
     text-align: center;

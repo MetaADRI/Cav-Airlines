@@ -13,6 +13,22 @@ body {
     overflow: hidden;
 }
 
+@media (max-width: 900px) {
+    body {
+        flex-direction: column;
+        overflow-y: auto;
+        height: auto;
+    }
+    .image-container {
+        display: none;
+    }
+    .register-container {
+        padding: 30px 20px;
+        min-height: 100vh;
+        justify-content: center;
+    }
+}
+
 /* Left container with registration form */
 .register-container {
     flex: 1;
@@ -91,11 +107,11 @@ input:focus ~ .floating-label,
 input:not(:placeholder-shown) ~ .floating-label {
     top: 0;
     font-size: 12px;
-    color: #6a0dad;
+    color: var(--theme-blue);
 }
 
 input:focus {
-    border-bottom: 2px solid #6a0dad;
+    border-bottom: 2px solid var(--theme-blue);
 }
 
 input::placeholder {
@@ -131,19 +147,19 @@ input::placeholder {
 
 /* Login link styling */
 .login-link {
-    color: #6a0dad;
+    color: var(--theme-blue);
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s ease;
 }
 
 .login-link:hover {
-    color: #4b0980;
+    color: #003a8c;
 }
 
 /* CAVAIR banner */
 .cavair-banner {
-    background: linear-gradient(90deg, #4b0980 0%, #9b2eea 100%);
+    background: linear-gradient(90deg, #111 0%, var(--theme-blue) 100%);
     color: white;
     font-family: 'Eras Bold ITC', 'Arial Black', Arial, sans-serif;
     text-align: center;

@@ -17,15 +17,24 @@ function applyParallaxBackground() {
 
 window.addEventListener('scroll', applyParallaxBackground);
 
-// Header blur on scroll
+// Header blur and Hero fade on scroll
 window.addEventListener('scroll', function () {
     const header = document.querySelector('.cav-header');
+    const hero = document.querySelector('.hero-section');
+    const heroContent = document.querySelector('.hero-content');
+    
     if (header) {
-        if (window.scrollY) {
+        if (window.scrollY > 50) {
             header.classList.add('scrolled');
         } else {
             header.classList.remove('scrolled');
         }
+    }
+    
+    if (hero && heroContent) {
+        const scrollPercent = Math.min(window.scrollY / 400, 1);
+        heroContent.style.opacity = 1 - scrollPercent;
+        heroContent.style.transform = `translateY(${window.scrollY * 0.3}px)`;
     }
 });
 

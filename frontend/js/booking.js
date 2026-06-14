@@ -122,10 +122,9 @@ document.addEventListener('DOMContentLoaded', function() {
         // Submit booking via AJAX
         e.preventDefault();
         const formData = new FormData(form);
-        fetch('backend/booking/booking.php', {
+        fetch('/api/bookings/create', {
             method: 'POST',
-            body: formData,
-            credentials: 'include'
+            body: formData
         })
         .then(res => res.json())
         .then(data => {
@@ -160,21 +159,14 @@ document.addEventListener('DOMContentLoaded', function() {
         priceSpan.textContent = '';
         if (!origin || !destination || !departureDate) return;
         try {
-            // 1. Fetch flight number
-            const flightRes = await fetch('../backend/booking/get_flight_number.php?origin=' + encodeURIComponent(origin) + '&destination=' + encodeURIComponent(destination));
+            // 1. Fetch flight and schedule info
+            const flightRes = await fetch('/api/flights/schedule-id?origin=' + encodeURIComponent(origin) + '&destination=' + encodeURIComponent(destination));
             const flightData = await flightRes.json();
-            if (!flightData.success || !flightData.flight_number) {
+            if (!flightData.schedule_id || typeof flightData.price !== 'number') {
                 priceSpan.textContent = 'N/A';
                 return;
             }
-            // 2. Fetch price from backend using the flight number
-            const priceRes = await fetch('../backend/booking/get_flight_price.php?flight_number=' + encodeURIComponent(flightData.flight_number));
-            const priceData = await priceRes.json();
-            if (!priceData.success || typeof priceData.price !== 'number') {
-                priceSpan.textContent = 'N/A';
-                return;
-            }
-            let basePrice = priceData.price;
+            let basePrice = flightData.price;
             let multiplier = (classType === 'Business Class') ? 1.5 : 1.0;
             let total = basePrice * multiplier * passengers;
             priceSpan.textContent = 'ZMW ' + total.toLocaleString();

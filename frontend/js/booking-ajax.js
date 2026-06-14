@@ -86,21 +86,17 @@ document.addEventListener('DOMContentLoaded', function() {
                     price = parseFloat(priceText.replace(/[^0-9.]/g, '')) || 0;
                 }
                 formData.set('amount', price);
-                // 4. Fetch flight_number from backend using origin & destination
-                const flightRes = await fetch('../backend/booking/get_flight_number.php?origin=' + encodeURIComponent(origin) + '&destination=' + encodeURIComponent(destination));
+                // 4. Fetch flight and schedule info from backend using origin & destination
+                const flightRes = await fetch('/api/flights/schedule-id?origin=' + encodeURIComponent(origin) + '&destination=' + encodeURIComponent(destination));
                 const flightData = await flightRes.json();
-                if (!flightData.success || !flightData.flight_number) {
+                
+                if (!flightData.schedule_id) {
                     throw new Error('Could not find flight for selected route.');
                 }
+                
+                formData.set('schedule_id', flightData.schedule_id);
                 formData.set('flight_number', flightData.flight_number);
-
-                // 5. Fetch schedule_id from backend using flight_number & departure_date
-                const schedRes = await fetch('../backend/booking/get_schedule_id.php?flight_number=' + encodeURIComponent(flightData.flight_number) + '&departure_date=' + encodeURIComponent(departureDate));
-                const schedData = await schedRes.json();
-                if (!schedData.success || !schedData.schedule_id) {
-                    throw new Error('Could not find schedule for selected flight and date.');
-                }
-                formData.set('schedule_id', schedData.schedule_id);
+                formData.set('service_type', flightData.type);
             } catch (err) {
                 if (serverErrorDiv) {
                     serverErrorDiv.textContent = err.message;
@@ -111,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
 
-            fetch('../backend/booking/booking.php', {
+            fetch('/api/bookings/create', {
                 method: 'POST',
                 body: formData
             })

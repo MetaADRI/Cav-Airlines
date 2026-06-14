@@ -1,15 +1,15 @@
   /* ===== Base Styles ===== */
         :root {
             --services-gradient-angle: -21deg;
-            --services-gradient-top: #2F0039 20%;
-            --services-gradient-bottom: #82019F 100%;
+            --services-gradient-top: #111 20%;
+            --services-gradient-bottom: var(--theme-blue) 100%;
             --services-divider-grey: #e0e0e0;
             --services-card-radius: 22px;
             --services-btn-brown: #99753d;
             --services-btn-brown-hover: #765627;
-            --services-purple-underline: #82009F;
-            --services-banner-gradient: linear-gradient(-84deg, #25002D 0%, #600075 100%);
-            --services-banner-link-underline: #FF00CC;
+            --services-accent-underline: var(--theme-blue);
+            --services-banner-gradient: linear-gradient(-84deg, #111 0%, var(--theme-blue) 100%);
+            --services-banner-link-underline: var(--theme-orange);
             --header-height: 80px;
         }
 
@@ -83,7 +83,7 @@
         }
 
         .header-logo img {
-            height: 40px;
+            height: 54px;
             transition: transform 0.3s;
         }
 
@@ -107,7 +107,7 @@
         }
 
         .header-nav a:hover {
-            color: #DD62FF;
+            color: var(--theme-blue);
         }
 
         .header-nav a::after {
@@ -115,7 +115,7 @@
             display: block;
             width: 0;
             height: 3px;
-            background: #DD62FF;
+            background: var(--theme-blue);
             border-radius: 2px;
             transition: width 0.22s cubic-bezier(.4,0,.2,1);
             position: absolute;
@@ -134,7 +134,7 @@
 
         .header-nav a.active::after {
             width: 100%;
-            background: #DD62FF;
+            background: var(--theme-blue);
         }
 
         .header-icons {
@@ -155,7 +155,7 @@
         }
 
         .translate-icon:hover {
-            background: #e369ff;
+            background: var(--theme-blue);
         }
 
         .translate-icon:hover img {
@@ -182,7 +182,7 @@
 
         .header-login-btn {
             display: inline-block;
-            background: #7C0098;
+            background: var(--theme-orange);
             color: #fff;
             border: none;
             border-radius: 18px;
@@ -198,7 +198,7 @@
         }
 
         .header-login-btn:hover {
-            background: #970bd3;
+            background: #e67e00;
         }
 
         /* User Dropdown Styles */
@@ -217,7 +217,7 @@
         }
 
         .header-user-icon:focus {
-            box-shadow: 0 0 0 2px #b400ff33;
+            box-shadow: 0 0 0 2px rgba(0, 71, 171, 0.2);
         }
 
         .header-user-icon img {
@@ -261,8 +261,8 @@
         }
 
         .header-user-menu a:hover {
-            background: #f5e6ff;
-            color: #b400ff;
+            background: #f0f0f0;
+            color: var(--theme-blue);
         }
 
         .header-user-menu a#header-logout-btn {
@@ -338,7 +338,7 @@
         }
 
         .mobile-nav a.active {
-            color: #82019F;
+            color: var(--theme-blue);
             font-weight: 600;
         }
 
@@ -503,8 +503,8 @@
         }
 
         .perks-title-highlight {
-            color: #FF00CC;
-            background: linear-gradient(90deg, #FF00CC 0%, #82019F 100%);
+            color: var(--theme-orange);
+            background: linear-gradient(90deg, var(--theme-orange) 0%, var(--theme-blue) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -842,13 +842,13 @@
             font-size: 1.09rem;
             font-weight: 700;
             color: #fff;
-            text-decoration: underline #DD62FF 3px;
+            text-decoration: underline var(--theme-blue) 3px;
             text-underline-offset: 7px;
             transition: color 0.18s;
         }
 
         .offers-banner-link:hover {
-            color: #FF00CC;
+            color: var(--theme-orange);
         }
 
         .offers-banner-img-container {
@@ -888,7 +888,7 @@
 
         /* ===== Footer Styles ===== */
         .cav-footer {
-            background: #18122B;
+            background: #111;
             color: #fff;
             font-family: 'Oxygen', sans-serif;
             padding-top: 8px;
@@ -915,7 +915,7 @@
         }
 
         .footer-logo img {
-            height: 48px;
+            height: 65px;
             margin-bottom: 16px;
             cursor: pointer;
         }
@@ -958,7 +958,7 @@
         }
 
         .footer-col ul li a:hover {
-            color: #DD62FF;
+            color: var(--theme-blue);
         }
 
         .footer-socials {
@@ -973,7 +973,7 @@
             height: 38px;
             border-radius: 50%;
             background: #fff;
-            color: #18122B;
+            color: #111;
             font-size: 1.5rem;
             display: flex;
             align-items: center;
@@ -985,7 +985,7 @@
         }
 
         .social-icon:hover {
-            background: #d600ff;
+            background: var(--theme-blue);
             color: #fff;
             transform: translateY(-6px) scale(1.12);
             box-shadow: 0 4px 12px rgba(214, 0, 255, 0.11);
@@ -1191,4 +1191,8 @@
             .discover-left p {
                 font-size: 1rem;
             }
-        }
+        }     }
+        }}}}      }}}}  }}}}      }}}}
+        }     }
+        }}}}      }}}}     }
+        }}}}      }}}}}}      }}}}

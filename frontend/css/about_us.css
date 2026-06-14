@@ -29,7 +29,7 @@ html, body {
 .cav-header .header-nav a.active {
     font-weight: 700;
     color: #fff;
-    text-decoration: underline #DD62FF 3px;
+    text-decoration: underline var(--theme-blue) 3px;
     text-underline-offset: 7px;
 }
 .about-hero-section {
@@ -44,14 +44,14 @@ html, body {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    background: linear-gradient(315deg, #2F0039 0%, #8701a5 100%);
+    background: linear-gradient(315deg, #111 0%, var(--theme-blue) 100%);
     overflow: hidden;
     z-index: 1;
 }
 .about-hero-overlay {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(315deg, #2F0039 0%, #8701a5 100%);
+    background: linear-gradient(315deg, #111 0%, var(--theme-blue) 100%);
     z-index: 2;
     pointer-events: none;
 }
@@ -92,7 +92,7 @@ html, body {
     width: 100vw;
     margin-left: 50%;
     transform: translateX(-50%);
-    background: #59006d;
+    background: var(--theme-blue);
     padding: 72px 0;
 }
 .about-section.our-story {
@@ -407,7 +407,7 @@ html, body {
 }
 .about-section h2 {
     font-size: 2.1rem;
-    color: #6E0086;
+    color: var(--theme-blue);
     font-weight: 700;
     margin-bottom: 18px;
 }
@@ -560,7 +560,7 @@ html, body {
 }
 .sets-apart h2 {
     text-align: center;
-    color: #6E0086;
+    color: var(--theme-blue);
     font-size: 2.1rem;
     font-weight: 700;
     margin-bottom: 36px;
@@ -722,7 +722,7 @@ html, body {
 }
 
 .apart-card:hover {
-    box-shadow: 0 10px 40px #b400ff33;
+    box-shadow: 0 10px 40px rgba(0, 71, 171, 0.2);
     transform: translateY(-5px) scale(1.03);
 }
 .apart-card img {
@@ -733,7 +733,7 @@ html, body {
     border-radius: 13px;
     object-fit: cover;
     margin-bottom: 18px;
-    box-shadow: 0 2px 12px #b400ff18;
+    box-shadow: 0 2px 12px rgba(0, 71, 171, 0.1);
 }
 .apart-card h3 {
     color: #F3E8D5;

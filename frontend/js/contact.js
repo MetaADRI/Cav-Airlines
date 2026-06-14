@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let tooltip = document.createElement('span');
         tooltip.textContent = msg;
         tooltip.style.position = 'absolute';
-        tooltip.style.background = '#d600ff';
+        tooltip.style.background = '#0047AB';
         tooltip.style.color = '#fff';
         tooltip.style.padding = '3px 10px';
         tooltip.style.borderRadius = '7px';

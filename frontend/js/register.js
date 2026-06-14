@@ -55,9 +55,12 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!valid) return;
 
             const formData = new FormData(form);
-            fetch('../backend/register.php', {
+            fetch('/api/auth/register', {
                 method: 'POST',
-                body: formData
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(Object.fromEntries(formData))
             })
             .then(response => response.json())
             .then(data => {
@@ -80,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             sessionStorage.setItem('cavair_phone', data.phone);
                             localStorage.setItem('cavair_phone', data.phone);
                         }
-                        window.location.href = '/CAV-Zambia-Airlines/frontend/home.html';
+                        window.location.href = '/frontend/home.html';
                     }, 2000);
                 } else {
                     // Try to match backend error to a field

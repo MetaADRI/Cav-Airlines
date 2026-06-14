@@ -1,5 +1,5 @@
 html, body {
-    background: linear-gradient(-15deg, #4C005E 42%, #2F0039 74%, #600075 100%);
+    background: #fff;
     background-repeat: no-repeat;
     background-attachment: scroll;
     min-height: 100vh;
@@ -13,6 +13,7 @@ html, body {
     margin: 0;
     background-position: 0 0;
     transition: background-position 0.2s linear;
+    color: #333;
 }
 
 /* Hero Section Styles */
@@ -23,8 +24,8 @@ html, body {
     right: 50%;
     margin-left: -50vw;
     margin-right: -50vw;
-    min-height: 50vh;
-    height: 60vh;
+    min-height: 100vh;
+    height: 100vh;
     max-width: 100vw;
     margin-top: 0;
     margin-bottom: 0;
@@ -36,6 +37,7 @@ html, body {
     box-sizing: border-box;
     z-index: 1;
     top: 0;
+    transition: opacity 0.5s ease;
 }
 
 
@@ -47,49 +49,65 @@ html, body {
 .hero-overlay {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(90deg, rgba(24,18,43,0.85) 0%, rgba(24,18,43,0.25) 100%);
+    background: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.6) 100%);
     z-index: 2;
 }
 .hero-content {
     position: relative;
     z-index: 3;
-    text-align: left;
-    max-width: 700px;
-    margin-left: 8vw;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
 }
 .hero-title {
     font-family: 'Oxygen', sans-serif;
-    font-size: 5.5rem;
-    color: #DD62FF;
+    font-size: 6rem;
+    color: #fff;
     font-weight: 700;
     margin-bottom: 18px;
     line-height: 1.08;
     letter-spacing: -1px;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
 }
 .hero-subtitle {
     font-family: 'Oxygen', sans-serif;
-    font-size: 1.45rem;
+    font-size: 1.6rem;
     color: #fff;
     font-weight: 400;
     margin-bottom: 0;
     line-height: 1.28;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
 }
 @media (max-width: 900px) {
-    .hero-title { font-size: 2.7rem; }
-    .hero-section { height: 320px; }
-    .hero-content { margin-left: 3vw; }
+    .hero-title { font-size: 3.5rem; }
+    .hero-subtitle { font-size: 1.3rem; }
+    .hero-section { height: 70vh; min-height: 400px; }
+    .booking-card-container { margin: -50px auto 40px auto; padding: 0 15px; }
+    .booking-tabs { border-radius: 15px; }
+    .booking-tab { padding: 0 15px; font-size: 0.9rem; }
+    .booking-card { padding: 40px 20px 20px; border-radius: 15px; }
+    .booking-row { flex-direction: column; gap: 15px; }
+    .booking-field, .booking-field-wide { width: 100%; max-width: 100%; margin: 0; }
+    .booking-field-dates { min-width: 0 !important; width: 100% !important; }
+}
+
+@media (max-width: 600px) {
+    .hero-title { font-size: 2.5rem; }
+    .hero-subtitle { font-size: 1.1rem; }
+    .booking-tab { padding: 0 10px; font-size: 0.8rem; }
+    .tab-icon { display: none; }
 }
 
 /* ===== Booking Card Styles ===== */
 .booking-card-container {
     position: relative;
     width: 100%;
-    max-width: 800px;
-    margin: -75px auto 44px auto;
+    max-width: 1000px;
+    margin: -100px auto 60px auto;
     z-index: 10;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     padding-left: 0;
     font-family: 'Oxygen', Montserrat, Arial, sans-serif;
 }
@@ -99,88 +117,53 @@ html, body {
 }
 
 .booking-tabs-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    z-index: 2;
-    background: transparent;
-    pointer-events: none;
-    max-width: 800px;
-}
-
-.booking-tabs {
-    pointer-events: auto;
-}
-
-.booking-tabs-container {
     position: relative;
     display: flex;
-    align-items: flex-start;
-    left: 0;
-    margin-left: 0;
-    margin-bottom: -32px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: -22px;
     z-index: 2;
     background: transparent;
-    width: 100%;
-    max-width: 900px;
 }
 
 .booking-tabs {
     display: flex;
     align-items: center;
     background: #fff;
-    border: 2px solid #eae7df;
-    border-radius: 28px;
-    box-shadow: none;
-    padding: 8px 14px;
+    border: 1px solid #ddd;
+    border-radius: 30px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 6px;
     gap: 0;
     position: relative;
-    min-width: 0;
-    white-space: nowrap;
     width: auto;
-    max-width: 100%;
-    margin-left: 0;
-}
-
-.booking-tabs {
-    position: relative;
-    display: flex;
-    align-items: center;
-    left: 0;
-    margin-left: 36px;
-    margin-bottom: -26px;
-    z-index: 2;
 }
 
 .booking-tab {
     display: flex;
     align-items: center;
-    padding: 0 28px;
+    padding: 0 24px;
     height: 44px;
     border-radius: 22px;
     border: none;
     background: transparent;
-    color: #838383;
+    color: #666;
     font-family: 'Montserrat', sans-serif;
-    font-size: 1.08rem;
+    font-size: 1rem;
     font-weight: 600;
-    margin-right: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-    box-shadow: none;
-    outline: none;
     cursor: pointer;
-    transition: color 0.18s, background 0.18s;
-    position: relative;
+    transition: all 0.2s ease;
+}
+
+.booking-tab.active {
+    background: var(--theme-blue);
+    color: #fff;
 }
 
 .booking-tab:not(.active):hover {
-    background: #f5eaff;
-    color: #7d24a7;
+    background: #eef4ff;
+    color: var(--theme-blue);
 }
 
 .booking-tab .tab-icon {
@@ -191,7 +174,7 @@ html, body {
 }
 
 .booking-tab.active {
-    background: #7d24a7;
+    background: var(--theme-blue);
     color: #fff;
     z-index: 3;
     box-shadow: none;
@@ -356,7 +339,7 @@ html, body {
 }
 
 #tab-status .booking-field-wide input[type="date"] {
-    color: #6E0086;
+    color: var(--theme-blue);
     font-weight: 700;
     font-family: 'Oxygen', Arial, sans-serif;
     border: none !important;
@@ -387,7 +370,7 @@ html, body {
 #tab-book .to-field input.booking-input:focus,
 #tab-manage .booking-field-wide input.booking-input:focus,
 #tab-status .booking-field-wide input.booking-input:focus {
-    border-bottom: 2px solid #6a0dad;
+    border-bottom: 2px solid var(--theme-blue);
 }
 
 #tab-book .from-field .booking-floating-label,
@@ -419,7 +402,7 @@ html, body {
 #tab-status .booking-field-wide input.booking-input:not(:placeholder-shown) ~ .booking-floating-label {
     top: 0;
     font-size: 12px;
-    color: #6a0dad;
+    color: var(--theme-blue);
 }
 
 /* Ensure underline/border is always inside field container */
@@ -440,7 +423,7 @@ html, body {
 }
 #tab-manage .booking-field-wide input.booking-input:focus,
 #tab-status .booking-field-wide input.booking-input:focus {
-    border-bottom: 2px solid #6a0dad;
+    border-bottom: 2px solid var(--theme-blue);
     outline: none;
 }
 
@@ -523,7 +506,7 @@ html, body {
     top: -8px;
     left: 16px;
     font-size: 0.88rem;
-    color: #6E0086;
+    color: var(--theme-blue);
     background: #f5f5f5;
     padding: 0 4px;
     border-radius: 4px;
@@ -536,7 +519,7 @@ html, body {
     top: 7px;
     left: 16px;
     font-size: 0.88rem;
-    color: #6E0086;
+    color: var(--theme-blue);
     background: #f5f5f5;
     padding: 0 4px;
     border-radius: 4px;
@@ -559,7 +542,7 @@ html, body {
     top: 7px;
     left: 16px;
     font-size: 0.88rem;
-    color: #6E0086;
+    color: var(--theme-blue);
     background: #f5f5f5;
     padding: 0 4px;
     border-radius: 4px;
@@ -600,12 +583,12 @@ html, body {
 .booking-form select option,
 .booking-select,
 .booking-select option {
-    color: #6E0086 !important;
+    color: var(--theme-blue) !important;
     font-weight: 700 !important;
 }
 
 .booking-date-input {
-    color: #6E0086 !important;
+    color: var(--theme-blue) !important;
     font-weight: 700 !important;
     font-family: 'Oxygen', Montserrat, Arial, sans-serif !important;
 }
@@ -718,7 +701,7 @@ html, body {
 .booking-value {
     font-family: 'Oxygen', Montserrat, Arial, sans-serif !important;
     font-size: 1.15rem;
-    color: #7d24a7;
+    color: var(--theme-blue);
     font-weight: 700;
     display: flex;
     align-items: center;
@@ -830,23 +813,34 @@ html, body {
 @media (max-width: 700px) {
     .booking-card-container {
         max-width: 100vw;
-        margin: -40px auto 18px auto;
-        padding-left: 0;
+        margin: -60px auto 20px auto;
+        padding: 0 10px;
     }
     .booking-tabs-container {
-        margin-bottom: -22px;
+        margin-bottom: -18px;
     }
     .booking-tabs {
-        min-width: 0;
-        width: 100%;
-        padding: 2px 0;
+        padding: 4px;
+        border-radius: 25px;
+    }
+    .booking-tab {
+        padding: 0 12px;
+        font-size: 0.85rem;
+        height: 38px;
     }
     .booking-card {
-        min-width: 0;
-        max-width: 100vw;
-        padding: 10px 2vw 10px 2vw;
-        border-radius: 18px;
+        padding: 40px 15px 20px 15px;
+        border-radius: 20px;
+        margin-top: 15px;
     }
+    .booking-row {
+        gap: 12px;
+    }
+}
+
+@media (max-width: 500px) {
+    .hero-title { font-size: 2.2rem; }
+    .booking-tab { padding: 0 8px; font-size: 0.75rem; }
 }
 
 /* ===== End Booking Card Styles ===== */
@@ -896,7 +890,7 @@ html, body {
 }
 .deals-title-lusaka {
     font-family: 'Oxygen', Arial, sans-serif;
-    color: #DA55FF;
+    color: var(--theme-orange);
     border-bottom: 4px solid #DA55FF;
     padding-bottom: 2px;
 }
@@ -1082,7 +1076,7 @@ html, body {
     font-size: 2rem;
     font-weight: 700;
     margin-bottom: 3px;
-    color: #DA55FF;
+    color: var(--theme-orange);
     text-shadow: 0 2px 8px rgba(0,0,0,0.18);
     letter-spacing: 0.01em;
     line-height: 1.1;
@@ -1295,7 +1289,7 @@ html, body {
 }
 
 .flight-schedules-table th {
-    background: #8A0CBF;
+    background: var(--theme-blue);
     color: #fff;
     font-family: 'Oxygen', Arial, sans-serif;
     font-size: 1.01rem;
@@ -1321,7 +1315,7 @@ html, body {
 }
 
 .flight-schedules-table tbody tr {
-    border-bottom: 1.5px solid #ede7f6;
+    border-bottom: 1.5px solid #eee;
 }
 .flight-schedules-table tbody tr:last-child {
     border-bottom: none;
@@ -1357,7 +1351,7 @@ html, body {
     display: block;
     margin: 8px auto 0 auto;
     text-align: center;
-    color: #fff !important;
+    color: #666 !important;
     font-family: 'Oxygen', Arial, sans-serif;
     font-size: 1.08rem;
     font-weight: 400;
@@ -1368,7 +1362,7 @@ html, body {
     position: relative;
 }
 .flight-schedules-note i {
-    color: #fff !important;
+    color: var(--theme-blue) !important;
     margin-right: 6px;
     vertical-align: middle;
 }
@@ -1382,8 +1376,8 @@ html, body {
 }
 
 .arrow, .flight-route-arrow {
-    color: #A01CB6 !important;
-    fill: #A01CB6 !important;
+    color: var(--theme-blue) !important;
+    fill: var(--theme-blue) !important;
     font-weight: 700;
     font-size: 1.1em;
     vertical-align: middle;
@@ -1393,12 +1387,12 @@ html, body {
 
 /* ===== Experience Cavair Section ===== */
 .experience-cavair-section {
-    background: linear-gradient(90deg, #2f0039 80%, #4c005e 100%);
+    background: #f9f9f9;
     border-radius: 24px;
     margin: 48px auto 0 auto;
     max-width: 1200px;
     padding: 36px 32px 36px 32px;
-    box-shadow: 0 4px 32px 0 rgba(44,0,60,0.14);
+    box-shadow: 0 4px 32px 0 rgba(0,0,0,0.06);
     display: flex;
     flex-direction: column;
     align-items: stretch;
@@ -1420,19 +1414,19 @@ html, body {
 .experience-cavair-title {
     font-family: 'Oxygen', Arial, sans-serif;
     font-size: 2.7rem;
-    color: #fff;
+    color: #333;
     font-weight: 700;
     margin-bottom: 18px;
     letter-spacing: -1px;
     line-height: 1.12;
 }
 .cavair-highlight {
-    color: #DA55FF;
+    color: var(--theme-orange);
 }
 .experience-cavair-desc {
     font-family: 'Oxygen', Arial, sans-serif;
     font-size: 1.18rem;
-    color: #fff;
+    color: #555;
     font-weight: 400;
     margin-bottom: 0;
     margin-top: 0;
@@ -1523,4 +1517,6 @@ html, body {
     box-shadow: 0 1px 8px 0 rgba(0,0,0,0.10);
 }
 /* ===== End Experience Cavair Section ===== */
+
+
 

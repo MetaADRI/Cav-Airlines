@@ -245,10 +245,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Clear previous content
                 manageBookingResults.innerHTML = '';
                 // Call backend to find booking
-                fetch('../backend/booking/track_booking.php', {
+                fetch('/api/bookings/track-search', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                    body: `booking_ref=${encodeURIComponent(bookingId)}&name=${encodeURIComponent(bookingName)}`
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ booking_ref: bookingId, name: bookingName })
                 })
                 .then(res => res.json())
                 .then(data => {
@@ -306,10 +306,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const noTripsContainer = document.querySelector('.no-trips-container');
     console.log('userId:', userId);
 if (bookingInfoContainer) {
-        fetch('../backend/booking/get_user_bookings.php')
+        fetch('/api/bookings/user')
             .then(res => {
                 // If redirected to login.html (session expired), force logout
-                if (res.redirected && res.url.includes('login.html')) {
+                if (res.status === 401) {
                     sessionStorage.clear();
                     localStorage.clear();
                     window.location.href = 'login.html';

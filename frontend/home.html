@@ -13,96 +13,7 @@
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/home.css">
     <style>
-        /* --- Header Styles --- */
-        .cav-header {
-        /* background: #261447; Removed solid background, only scroll blur remains */
-        padding: 1rem 0;
-        position: fixed;
-        top: 0;
-        width: 100%;
-        z-index: 1000;
-        transition: top 0.3s;
-        }
-        
-        .header-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 2rem;
-        }
-        
-      /* Navigation Links */
-        .header-nav {
-        display: flex;
-        gap: 2rem;
-        }
-        
-        .header-nav a {
-        color: white;
-        text-decoration: none;
-        font-weight: 500;
-        }
-        
-      /* --- Hamburger Icon --- */
-        .hamburger {
-        display: none;
-        background: none;
-        border: none;
-        cursor: pointer;
-        padding: 0.5rem;
-        }
-        
-        .hamburger div {
-        width: 25px;
-        height: 3px;
-        background-color: white;
-        margin: 4px 0;
-        transition: all 0.3s ease;
-        }
-        
-      /* --- Mobile Navigation --- */
-        @media (max-width: 768px) {
-        .header-nav {
-            display: none;
-            position: fixed;
-            top: 70px;
-            right: 0;
-            background: #480171;
-            flex-direction: column;
-            width: 200px;
-            padding: 1rem;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        
-        .header-nav.show {
-            display: flex;
-        }
-        
-        .hamburger {
-            display: block;
-        }
-        
-        .hamburger.active div:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
-        
-        .hamburger.active div:nth-child(2) {
-            opacity: 0;
-        }
-        
-        .hamburger.active div:nth-child(3) {
-            transform: rotate(-45deg) translate(5px, -5px);
-        }
-        }
-        
-      /* --- No Scroll When Menu Open --- */
-        .no-scroll {
-            overflow: hidden;
-        }
-        
-      /* --- Page-Specific Section Styling --- */
+        /* --- Page-Specific Section Styling --- */
         .services-section {
             margin-top: 100px;
             padding: 2rem;
@@ -132,9 +43,13 @@
     <header class="cav-header" id="cav-header">
         <div class="header-container">
             <a href="home.html" class="header-logo">
-                <img src="assets/images/Cavair_Logo.png" alt="CAV Zambia Airlines Logo" />
+                <img src="WhatsApp_Image_2026-06-03_at_00.23.52-removebg-preview.png" alt="CAV Zambia Airlines Logo" />
             </a>
             
+            <div class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </div>
+
             <nav class="header-nav">
                 <a href="booking.html">Booking</a>
                 <a href="services.html">Services</a>
@@ -164,9 +79,6 @@
                 <span style="display:inline-block; width:18px;"></span>
                 <span id="header-auth-slot"></span>
             </div>
-        </div>
-        <div class="hamburger" id="hamburger" aria-label="Toggle menu">
-            <i class="fas fa-bars"></i>
         </div>
     </header>
     <!-- Mobile Navigation
@@ -474,7 +386,7 @@
     <footer class="cav-footer">
         <div class="footer-container">
             <a href="home.html" class="footer-logo">
-                <img src="assets/images/Cavair_Logo.png" alt="CAV Zambia Airlines Logo" />
+                <img src="WhatsApp_Image_2026-06-03_at_00.23.52-removebg-preview.png" alt="CAV Zambia Airlines Logo" />
             </a>
             <div class="footer-columns">
                 <div class="footer-col">

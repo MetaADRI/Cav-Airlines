@@ -28,9 +28,12 @@ document.addEventListener('DOMContentLoaded', function() {
             const formData = new FormData(form);
 
             // Send login credentials to the backend using fetch (AJAX)
-            fetch('../backend/login.php', {
+            fetch('/api/auth/login', {
                 method: 'POST',
-                body: formData
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(Object.fromEntries(formData))
             })
             .then(response => response.json()) // Parse JSON response
             .then(data => {
@@ -54,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         localStorage.setItem('cavair_phone', data.phone);
                     }
                     sessionStorage.setItem('cavair_isLoggedIn', '1');
-                    window.location.href = '/CAV-Zambia-Airlines/frontend/home.html';
+                    window.location.href = '/frontend/home.html';
                 } else {
                     // On failed login, show error message in red below the button
                     messageDiv.textContent = data.message || 'Invalid email or password';
