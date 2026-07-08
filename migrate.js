@@ -1,73 +1,92 @@
-const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('./database.sqlite');
+require('dotenv').config();
+const { Pool } = require('pg');
 
-db.serialize(() => {
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: { rejectUnauthorized: false },
+});
+
+async function migrate() {
+  console.log('Running migration on Neon PostgreSQL...');
+
   // Drop tables in reverse dependency order
-  db.run("DROP TABLE IF EXISTS bookings");
-  db.run("DROP TABLE IF EXISTS flight_schedules");
-  db.run("DROP TABLE IF EXISTS flights");
-  db.run("DROP TABLE IF EXISTS admins");
-  db.run("DROP TABLE IF EXISTS users");
+  await pool.query('DROP TABLE IF EXISTS bookings CASCADE');
+  await pool.query('DROP TABLE IF EXISTS flight_schedules CASCADE');
+  await pool.query('DROP TABLE IF EXISTS flights CASCADE');
+  await pool.query('DROP TABLE IF EXISTS admins CASCADE');
+  await pool.query('DROP TABLE IF EXISTS users CASCADE');
 
   // USERS TABLE
-  db.run(`CREATE TABLE users (
-    user_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    full_name TEXT NOT NULL,
-    email TEXT UNIQUE NOT NULL,
-    password TEXT NOT NULL,
-    phone TEXT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-  )`);
+  await pool.query(`
+    CREATE TABLE users (
+      user_id SERIAL PRIMARY KEY,
+      full_name TEXT NOT NULL,
+      email TEXT UNIQUE NOT NULL,
+      password TEXT NOT NULL,
+      phone TEXT,
+      profile_pic TEXT DEFAULT NULL,
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    )
+  `);
+  console.log('Created users table');
 
   // ADMINS TABLE
-  db.run(`CREATE TABLE admins (
-    admin_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    username TEXT UNIQUE NOT NULL,
-    password TEXT NOT NULL
-  )`);
+  await pool.query(`
+    CREATE TABLE admins (
+      admin_id SERIAL PRIMARY KEY,
+      username TEXT UNIQUE NOT NULL,
+      password TEXT NOT NULL
+    )
+  `);
+  console.log('Created admins table');
 
   // FLIGHTS TABLE
-  db.run(`CREATE TABLE flights (
-    flight_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    flight_number TEXT UNIQUE NOT NULL,
-    origin TEXT NOT NULL,
-    destination TEXT NOT NULL,
-    type TEXT CHECK(type IN ('Domestic', 'International')) NOT NULL,
-    price REAL NOT NULL
-  )`);
+  await pool.query(`
+    CREATE TABLE flights (
+      flight_id SERIAL PRIMARY KEY,
+      flight_number TEXT UNIQUE NOT NULL,
+      origin TEXT NOT NULL,
+      destination TEXT NOT NULL,
+      type TEXT CHECK(type IN ('Domestic', 'International')) NOT NULL,
+      price REAL NOT NULL
+    )
+  `);
+  console.log('Created flights table');
 
   // FLIGHT SCHEDULES TABLE
-  db.run(`CREATE TABLE flight_schedules (
-    schedule_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    flight_id INTEGER NOT NULL,
-    frequency TEXT CHECK(frequency IN ('Daily', 'Weekly', 'Monthly')) NOT NULL,
-    departure_date DATE NOT NULL,
-    departure_time TIME NOT NULL,
-    arrival_time TIME NOT NULL,
-    FOREIGN KEY (flight_id) REFERENCES flights(flight_id) ON DELETE CASCADE
-  )`);
+  await pool.query(`
+    CREATE TABLE flight_schedules (
+      schedule_id SERIAL PRIMARY KEY,
+      flight_id INTEGER NOT NULL REFERENCES flights(flight_id) ON DELETE CASCADE,
+      frequency TEXT CHECK(frequency IN ('Daily', 'Weekly', 'Monthly')) NOT NULL,
+      departure_date DATE NOT NULL,
+      departure_time TIME NOT NULL,
+      arrival_time TIME NOT NULL
+    )
+  `);
+  console.log('Created flight_schedules table');
 
   // BOOKINGS TABLE
-  db.run(`CREATE TABLE bookings (
-    booking_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    user_id INTEGER NOT NULL,
-    name TEXT NOT NULL,
-    schedule_id INTEGER NOT NULL,
-    flight_number TEXT NOT NULL,
-    service_type TEXT CHECK(service_type IN ('Domestic', 'International')) NOT NULL,
-    class_type TEXT CHECK(class_type IN ('Economy Class', 'Business Class')) NOT NULL,
-    num_passengers INTEGER NOT NULL,
-    amount REAL NOT NULL,
-    id_type TEXT CHECK(id_type IN ('ID', 'Passport')) NOT NULL,
-    id_file_path TEXT NOT NULL,
-    booking_status TEXT CHECK(booking_status IN ('Pending', 'Confirmed', 'Cancelled')) DEFAULT 'Pending',
-    booking_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    is_round_trip INTEGER DEFAULT 0,
-    return_date DATE DEFAULT NULL,
-    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
-    FOREIGN KEY (schedule_id) REFERENCES flight_schedules(schedule_id) ON DELETE CASCADE,
-    FOREIGN KEY (flight_number) REFERENCES flights(flight_number) ON DELETE CASCADE
-  )`);
+  await pool.query(`
+    CREATE TABLE bookings (
+      booking_id SERIAL PRIMARY KEY,
+      user_id INTEGER NOT NULL REFERENCES users(user_id) ON DELETE CASCADE,
+      name TEXT NOT NULL,
+      schedule_id INTEGER NOT NULL REFERENCES flight_schedules(schedule_id) ON DELETE CASCADE,
+      flight_number TEXT NOT NULL,
+      service_type TEXT CHECK(service_type IN ('Domestic', 'International')) NOT NULL,
+      class_type TEXT CHECK(class_type IN ('Economy Class', 'Business Class')) NOT NULL,
+      num_passengers INTEGER NOT NULL,
+      amount REAL NOT NULL,
+      id_type TEXT CHECK(id_type IN ('ID', 'Passport')) NOT NULL,
+      id_file_path TEXT NOT NULL,
+      booking_status TEXT CHECK(booking_status IN ('Pending', 'Confirmed', 'Cancelled')) DEFAULT 'Pending',
+      booking_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+      is_round_trip INTEGER DEFAULT 0,
+      return_date DATE DEFAULT NULL
+    )
+  `);
+  console.log('Created bookings table');
 
   // Insert initial flights
   const flights = [
@@ -81,33 +100,31 @@ db.serialize(() => {
     ['CAV108', 'Lusaka', 'Nairobi', 'International', 2500.00],
     ['CAV109', 'Lusaka', 'Johannesburg', 'Domestic', 1500.00],
     ['CAV110', 'Lusaka', 'Casablanca', 'International', 3000.00],
-    ['CAV111', 'Lusaka', 'Ndola', 'Domestic', 3800.00]
+    ['CAV111', 'Lusaka', 'Ndola', 'Domestic', 3800.00],
   ];
 
-  const stmt = db.prepare("INSERT INTO flights (flight_number, origin, destination, type, price) VALUES (?, ?, ?, ?, ?)");
-  flights.forEach(f => stmt.run(f));
-  stmt.finalize();
+  for (const f of flights) {
+    await pool.query(
+      'INSERT INTO flights (flight_number, origin, destination, type, price) VALUES ($1, $2, $3, $4, $5)',
+      f
+    );
+  }
+  console.log('Inserted flights');
 
   // Insert initial schedules
-  const schedules = [
-    [1, 'Daily', '2025-04-27', '08:00:00', '10:00:00'],
-    [2, 'Daily', '2025-04-27', '08:00:00', '10:00:00'],
-    [3, 'Daily', '2025-04-27', '08:00:00', '10:00:00'],
-    [4, 'Daily', '2025-04-27', '08:00:00', '10:00:00'],
-    [5, 'Daily', '2025-04-27', '08:00:00', '10:00:00'],
-    [6, 'Daily', '2025-04-27', '08:00:00', '10:00:00'],
-    [7, 'Daily', '2025-04-27', '08:00:00', '10:00:00'],
-    [8, 'Daily', '2025-04-27', '08:00:00', '10:00:00'],
-    [9, 'Daily', '2025-04-27', '08:00:00', '10:00:00'],
-    [10, 'Daily', '2025-04-27', '08:00:00', '10:00:00'],
-    [11, 'Daily', '2025-04-27', '08:00:00', '10:00:00']
-  ];
+  for (let i = 1; i <= 11; i++) {
+    await pool.query(
+      'INSERT INTO flight_schedules (flight_id, frequency, departure_date, departure_time, arrival_time) VALUES ($1, $2, $3, $4, $5)',
+      [i, 'Daily', '2025-04-27', '08:00:00', '10:00:00']
+    );
+  }
+  console.log('Inserted flight schedules');
 
-  const schedStmt = db.prepare("INSERT INTO flight_schedules (flight_id, frequency, departure_date, departure_time, arrival_time) VALUES (?, ?, ?, ?, ?)");
-  schedules.forEach(s => schedStmt.run(s));
-  schedStmt.finalize();
+  console.log('Migration complete.');
+  await pool.end();
+}
 
-  console.log("Database migrated and seeded successfully.");
+migrate().catch((err) => {
+  console.error('Migration failed:', err);
+  process.exit(1);
 });
-
-db.close();
