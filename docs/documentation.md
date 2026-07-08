@@ -2,7 +2,7 @@
 
 ## Introduction & Purpose
 
-CAVAIR (CAV-Zambia Airlines Reservation System) is a modern web application for airline booking, management, and administration. Built by COM322 Group 2 in April 2025, it is designed for passengers and airline staff to provide a seamless digital experience for Zambia’s air travel market.
+CAVAIR (CAV-Zambia Airlines Reservation System) is a modern web application for airline booking, management, and administration. Built by COM322 Group 2, it is designed for passengers and airline staff to provide a seamless digital experience for Zambia’s air travel market.
 
 This system enables users to search for flights, book tickets, manage bookings, and for administrators to manage flights, schedules, users, and bookings. The platform emphasizes usability, security, and scalability.
 
@@ -16,8 +16,8 @@ This system enables users to search for flights, book tickets, manage bookings, 
 ## System Architecture
 
 - **Frontend**: HTML5, CSS3, JavaScript, responsive design, AJAX, file uploads
-- **Backend**: PHP, MySQL, RESTful API, Secure file handling
-- **Database**: Users, Admins, Flights, Schedules, Bookings, with foreign keys and validation constraints
+- **Backend**: Node.js, Express, RESTful API, Secure file handling (Multer)
+- **Database**: SQLite (Users, Admins, Flights, Schedules, Bookings), with foreign keys and validation constraints
 
 ## User Roles & Permissions
 
@@ -85,23 +85,21 @@ This system enables users to search for flights, book tickets, manage bookings, 
 
 ## REST API Endpoints (Summary)
 
-- `/backend/login.php` – User authentication (POST)
-- `/backend/register.php` – User registration (POST)
-- `/admin/manage_users.php` – CRUD users (GET, POST, PUT, DELETE)
-- `/admin/manage_flights.php` – CRUD flights (GET, POST, PUT, DELETE)
-- `/admin/manage_schedules.php` – CRUD schedules (GET, POST, PUT, DELETE)
-- `/admin/manage_bookings.php` – CRUD bookings (GET, POST, PUT, DELETE)
-- `/backend/booking/booking.php` – Booking submission (POST)
+- `/api/auth/login` – User authentication (POST)
+- `/api/auth/register` – User registration (POST)
+- `/api/admin/users` – CRUD users (GET, POST, PUT, DELETE)
+- `/api/admin/flights` – CRUD flights (GET, POST, PUT, DELETE)
+- `/api/admin/schedules` – CRUD schedules (GET, POST, PUT, DELETE)
+- `/api/bookings` – Booking submission and retrieval (GET, POST, PUT, DELETE)
 
 ## Security & Validation
 
-- Passwords hashed with bcrypt
-- Prepared statements (PDO) for SQL injection prevention
-- Input sanitization (XSS/CSRF protection)
-- Secure file upload checks (type, size, extension)
-- Session management for authenticated users
+- Passwords hashed with bcryptjs
+- Prepared statements (SQLite3) for SQL injection prevention
+- Input sanitization (XSS protection)
+- Secure file upload checks (type, size, extension) via Multer
+- Session management for authenticated users via express-session
 - Role-based access control for admin endpoints
-- HTTPS recommended for deployment
 
 ## Error Handling & Validation
 
@@ -109,27 +107,23 @@ This system enables users to search for flights, book tickets, manage bookings, 
 - Server-side validation for all API endpoints
 - Custom error messages for user feedback
 - Graceful handling of server/database errors
-- Logging of critical errors (admin only)
 
 ## Testing & Quality Assurance
 
 - Manual testing of all user flows (booking, registration, admin)
 - Automated validation for forms (JS)
-- Backend unit tests for critical functions (where applicable)
 - Cross-browser and mobile responsiveness checks
-- Security audit for file uploads and authentication
 
 ## Maintenance & Extensibility
 
 - Modular code structure for easy updates
-- Clear separation of frontend, backend, and admin logic
+- Clear separation of frontend, backend routes, and database logic
 - Well-documented API endpoints and database schema
-- Easy to add new service types, destinations, or admin features
-- Version control (Git) recommended for tracking changes
+- Version control (Git) for tracking changes
 
 ## Credits & Acknowledgments
 
 - Developed by COM322 Group 2
-- Uses open-source libraries: Bootstrap, jQuery, Font Awesome, Google Maps API
+- Uses open-source libraries: Express, SQLite3, bcryptjs, Multer, Font Awesome, Google Maps API
 
 --------------------------------

@@ -3,39 +3,23 @@
 ## File Structure Structure
 
 ``` 'markdown':
-CAV-Zambia-Airlines(to send)/
+CAV-Zambia-Airlines/
 ├── README.md                        # Project overview and instructions
-├── link.txt                         # Deployment/resource link
-├── admin/
-│   ├── manage_bookings.php          # Booking management API
-│   ├── manage_flights.php           # Flight management API
-│   ├── manage_schedules.php         # Schedule management API
-│   └── manage_users.php             # User management API
+├── package.json                     # Node.js dependencies and scripts
+├── server.js                        # Express server entry point
+├── db.js                            # SQLite database connection
+├── migrate.js                       # Database migration and seeding script
+├── database.sqlite                  # SQLite database file (generated)
 │
-├── backend/
-│   ├── group2_cavair_db_setup.sql   # MySQL DB schema & seed data
-│   ├── login.php                    # User login handler
-│   ├── register.php                 # User registration handler
-│   ├── uploads/                     # (empty) For uploaded ID/passport files
-│   ├── booking/
-│   │   ├── booking.php              # Booking submission
-│   │   ├── check_email.php          # Email availability check
-│   │   ├── check_username.php       # Username availability check
-│   │   ├── get_flight_number.php    # Fetch flight numbers
-│   │   ├── get_flight_price.php     # Fetch flight price
-│   │   ├── get_schedule_id.php      # Get schedule IDs
-│   │   ├── get_user_bookings.php    # List user bookings
-│   │   └── track_booking.php        # Track booking status
-│   ├── user_dashboard/
-│   │   └── update_profile.php       # User profile update API
-│   └── utils/
-│       ├── auth.php                 # Authentication/session utilities
-│       └── db_connect.php           # DB connection logic
+├── routes/                          # Express API routes
+│   ├── auth.js                      # Authentication routes (login, register)
+│   ├── bookings.js                  # Booking management routes
+│   ├── flights.js                   # Flight and schedule routes
+│   └── admin.js                     # Admin management routes
 │
 ├── docs/
 │   ├── documentation.md             # System documentation
 │   ├── file_schema.md               # File schema (this file)
-│   ├── file_schema(TEMP).md         # Temporary/alternate file schema
 │   ├── requirements.txt             # Requirements/dependencies
 │   ├── user_reference_manual.md     # User manual
 │   └── ui-ux_design/
@@ -64,17 +48,7 @@ CAV-Zambia-Airlines(to send)/
 │   │       └── Qatar_Airways_ad.mp4
 │   │
 │   ├── css/
-│   │   ├── about_us.css
-│   │   ├── admin.css
-│   │   ├── booking.css
-│   │   ├── common.css
-│   │   ├── contact.css
-│   │   ├── flights_page.css
-│   │   ├── home.css
-│   │   ├── login.css
-│   │   ├── register.css
-│   │   ├── services.css
-│   │   └── user_dashboard.css
+│   │   ├── ... CSS files
 │   │
 │   └── js/
 │       ├── about_us.js
@@ -90,26 +64,26 @@ CAV-Zambia-Airlines(to send)/
 │       ├── services.js
 │       ├── translate.js
 │       └── user_dashboard.js
+│
+└── uploads/                         # For uploaded ID/passport files
 ```
 
-## Database Schema
+## Database Schema (SQLite)
 
 ``` 'markdown':
-Database: group2_cavair_db
-
 Tables:
 1. users
    - user_id (PK)
    - full_name
    - email (UNIQUE)
-   - password
+   - password (hashed)
    - phone
    - created_at
 
 2. admins
    - admin_id (PK)
    - username (UNIQUE)
-   - password
+   - password (hashed)
 
 3. flights
    - flight_id (PK)
@@ -122,7 +96,7 @@ Tables:
 4. flight_schedules
    - schedule_id (PK)
    - flight_id (FK)
-   - frequency
+   - frequency (Daily, Weekly, Monthly)
    - departure_date
    - departure_time
    - arrival_time
@@ -136,8 +110,9 @@ Tables:
    - class_type
    - num_passengers
    - amount
+   - id_type (ID/Passport)
    - id_file_path
-   - booking_status
+   - booking_status (Pending, Confirmed, Cancelled)
    - booking_date
    - is_round_trip
    - return_date
@@ -153,10 +128,11 @@ Tables:
 
 ### Backend Dependencies
 
-- PHP 7.4+
-- MySQL 8.0+
-- PDO Extension
-- GD Library for image processing
+- Node.js & Express
+- SQLite3
+- bcryptjs (for password hashing)
+- multer (for file uploads)
+- express-session (for session management)
 
 ## Version Control Structure
 

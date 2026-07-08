@@ -44,5 +44,5 @@ Web Design Project – CAVAIR Requirements
 
 Technical Stack:
 - Frontend: HTML, CSS, JavaScript
-- Backend: PHP
-- Database: MySQL
+- Backend: Node.js (Express)
+- Database: SQLite

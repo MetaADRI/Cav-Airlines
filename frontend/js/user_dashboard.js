@@ -1,6 +1,78 @@
 // --- USER DASHBOARD LOGIC ---
 
 document.addEventListener('DOMContentLoaded', function() {
+    // --- LOAD USER DATA ---
+    fetch('/api/auth/status')
+        .then(res => res.json())
+        .then(data => {
+            if (data.logged_in) {
+                const user = data.user;
+                document.getElementById('dashboard-username').textContent = user.full_name;
+                document.getElementById('profile-name').textContent = user.full_name;
+                document.getElementById('profile-email').textContent = user.email;
+                
+                // Show profile pic if it exists
+                if (user.profile_pic) {
+                    const picElements = [
+                        document.getElementById('dashboard-profile-pic'),
+                        document.querySelector('.header-user-icon img')
+                    ];
+                    picElements.forEach(img => {
+                        if (img) {
+                            img.src = user.profile_pic;
+                            img.style.filter = 'none';
+                        }
+                    });
+                }
+            } else {
+                window.location.href = 'login.html';
+            }
+        });
+
+    // --- PROFILE PICTURE UPLOAD ---
+    const changePicBtnOverlay = document.getElementById('change-pic-btn-overlay');
+    const changePicBtnText = document.getElementById('change-pic-btn-text');
+    const picInput = document.getElementById('profile-pic-input');
+    const profilePicImg = document.getElementById('dashboard-profile-pic');
+
+    if (picInput) {
+        const triggerInput = () => picInput.click();
+        if (changePicBtnOverlay) changePicBtnOverlay.addEventListener('click', triggerInput);
+        if (changePicBtnText) changePicBtnText.addEventListener('click', triggerInput);
+
+        picInput.addEventListener('change', function() {
+            if (this.files && this.files[0]) {
+                const formData = new FormData();
+                formData.append('profile_pic', this.files[0]);
+
+                fetch('/api/auth/update-profile-pic', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+                        // Update UI
+                        profilePicImg.src = data.profile_pic;
+                        profilePicImg.style.filter = 'none';
+                        
+                        // Update header icon too
+                        const headerIcon = document.querySelector('.header-user-icon img');
+                        if (headerIcon) {
+                            headerIcon.src = data.profile_pic;
+                            headerIcon.style.filter = 'none';
+                        }
+                    } else {
+                        alert('Upload failed: ' + data.message);
+                    }
+                })
+                .catch(err => {
+                    console.error('Error uploading pic:', err);
+                    alert('An error occurred during upload.');
+                });
+            }
+        });
+    }
     // --- HEADER BLUR ON SCROLL ---
     const header = document.querySelector('.cav-header');
     function handleHeaderBlur() {

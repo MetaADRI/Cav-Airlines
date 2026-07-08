@@ -59,6 +59,13 @@ html, body {
     max-width: 800px;
     margin: 0 auto;
 }
+.hero-logo {
+    height: 160px;
+    width: auto;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 4px 20px rgba(0,0,0,0.5));
+}
+
 .hero-title {
     font-family: 'Oxygen', sans-serif;
     font-size: 6rem;
@@ -79,6 +86,7 @@ html, body {
     text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
 }
 @media (max-width: 900px) {
+    .hero-logo { height: 100px; }
     .hero-title { font-size: 3.5rem; }
     .hero-subtitle { font-size: 1.3rem; }
     .hero-section { height: 70vh; min-height: 400px; }
@@ -92,6 +100,7 @@ html, body {
 }
 
 @media (max-width: 600px) {
+    .hero-logo { height: 70px; }
     .hero-title { font-size: 2.5rem; }
     .hero-subtitle { font-size: 1.1rem; }
     .booking-tab { padding: 0 10px; font-size: 0.8rem; }

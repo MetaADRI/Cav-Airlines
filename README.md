@@ -11,7 +11,8 @@ CAVAIR is a modern, full-featured web application for airline booking, managemen
 - Booking form with ID/Passport upload, validation, and instant feedback
 - User dashboard for managing bookings and profile
 - Admin dashboard for managing users, flights, schedules, and bookings
-- RESTful backend API (PHP & MySQL)
+- RESTful backend API (Node.js & Express)
+- SQLite database for easy setup and portability
 - Secure authentication, session management, and role-based access
 - Responsive design for desktop and mobile
 
@@ -19,35 +20,34 @@ CAVAIR is a modern, full-featured web application for airline booking, managemen
 
 ```
 CAV-Zambia-Airlines/
-├── admin/        # Admin PHP scripts (user, flight, schedule, booking management)
-├── backend/      # PHP backend, DB schema, booking logic, utilities
 ├── frontend/     # HTML, CSS, JS, assets (images, videos, etc.)
+├── routes/       # Express API routes
 ├── docs/         # Documentation, user manual, schema, etc.
+├── db.js         # SQLite database connection
+├── migrate.js    # Database migration and seeding script
+├── server.js     # Express server entry point
 └── README.md     # This file
-
-``` 
-See `docs/file_schema.md` for a full breakdown.
+```
 
 ## Getting Started
 
 1. **Clone or download** the repository.
-2. **Backend:**
-   - Requires PHP 7.4+ and MySQL 8.0+
-   - Import `backend/group2_cavair_db_setup.sql` into your MySQL server
-   - Configure DB credentials in `backend/utils/db_connect.php`
-3. **Frontend:**
-   - Open `frontend/home.html` in your browser (or deploy to a web server)
-   - All static assets are in `frontend/assets/`
+2. **Setup:**
+   - Requires [Node.js](https://nodejs.org/) installed.
+   - Run `npm install` to install dependencies.
+   - Run `node migrate.js` to initialize and seed the SQLite database.
+3. **Running the App:**
+   - Run `node server.js` to start the server.
+   - The app will be available at `http://localhost:3000`.
 4. **Admin:**
-   - Access admin features via `frontend/admin.html` (requires admin login)
+   - Access admin features via `frontend/admin.html` (requires admin login).
 
 ## Security
 
-- Passwords are securely hashed
-- All input is validated and sanitized
-- File uploads are checked for type/size
-- Admin APIs are protected by role-based access
-- HTTPS recommended for deployment
+- Passwords are securely hashed using bcrypt.
+- All input is validated and sanitized.
+- File uploads are handled securely with multer.
+- Admin APIs are protected by role-based access.
 
 ## Documentation
 

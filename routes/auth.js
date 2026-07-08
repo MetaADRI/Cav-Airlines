@@ -2,6 +2,37 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const db = require('../db');
+const multer = require('multer');
+const path = require('path');
+const fs = require('fs');
+
+// Configure Multer for profile picture uploads
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    const dir = './uploads/profile_pics';
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
+    cb(null, dir);
+  },
+  filename: (req, file, cb) => {
+    cb(null, `profile_${Date.now()}${path.extname(file.originalname)}`);
+  }
+});
+
+const upload = multer({
+  storage: storage,
+  limits: { fileSize: 5 * 1024 * 1024 }, // 5MB limit
+  fileFilter: (req, file, cb) => {
+    const filetypes = /jpeg|jpg|png|webp/;
+    const mimetype = filetypes.test(file.mimetype);
+    const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+    if (mimetype && extname) {
+      return cb(null, true);
+    }
+    cb(new Error('Only images (jpeg, jpg, png, webp) are allowed.'));
+  }
+});
 
 // Register
 router.post('/register', (req, res) => {
@@ -57,6 +88,7 @@ router.post('/login', (req, res) => {
     req.session.user_id = user.user_id;
     req.session.full_name = user.full_name;
     req.session.email = user.email;
+    req.session.profile_pic = user.profile_pic;
     req.session.logged_in = true;
 
     res.json({
@@ -65,8 +97,30 @@ router.post('/login', (req, res) => {
       user_id: user.user_id,
       full_name: user.full_name,
       email: user.email,
-      phone: user.phone
+      phone: user.phone,
+      profile_pic: user.profile_pic
     });
+  });
+});
+
+// Update Profile Picture
+router.post('/update-profile-pic', upload.single('profile_pic'), (req, res) => {
+  if (!req.session.logged_in) {
+    return res.status(401).json({ success: false, message: 'Not logged in.' });
+  }
+
+  if (!req.file) {
+    return res.status(400).json({ success: false, message: 'No file uploaded.' });
+  }
+
+  const profilePicPath = `/uploads/profile_pics/${req.file.filename}`;
+  const userId = req.session.user_id;
+
+  db.run("UPDATE users SET profile_pic = ? WHERE user_id = ?", [profilePicPath, userId], function(err) {
+    if (err) return res.status(500).json({ success: false, message: 'Database error.' });
+    
+    req.session.profile_pic = profilePicPath;
+    res.json({ success: true, message: 'Profile picture updated.', profile_pic: profilePicPath });
   });
 });
 
@@ -84,12 +138,15 @@ router.get('/status', (req, res) => {
       user: {
         user_id: req.session.user_id,
         full_name: req.session.full_name,
-        email: req.session.email
+        email: req.session.email,
+        profile_pic: req.session.profile_pic
       }
     });
   } else {
     res.json({ logged_in: false });
   }
 });
+
+module.exports = router;
 
 module.exports = router;
